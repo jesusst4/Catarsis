@@ -1,15 +1,41 @@
-# Bootstrap
-app/bootstrap*
-
-# Symfony directories
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
-
-# Configuration files
+# -- Symfony2 -----------------------------------------
+app/bootstrap.php.cache
+app/bootstrap_cache.php.cache
 app/config/parameters.ini
-app/config/parameters.yml
+/app/config/parameters.yml
+app/cache/
+app/logs/
+web/bundles/*
+web/css/*
+web/js/*
+web/uploads/*
+src/CSE/ReservacionesBundle/Services/documentos/*
 
-# Composer
+# -- Composer -----------------------------------------
 composer.phar
+
+# -- PHPUnit ------------------------------------------
+app/phpunit.xml  
+
+# -- Editores -----------------------------------------
+# netbeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# -- Sistemas Operativos ------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.*
+!.gitignore
+!.htaccess
+*~
