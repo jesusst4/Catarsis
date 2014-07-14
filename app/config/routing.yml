@@ -1,0 +1,4 @@
+rugc_programacion_catarsis:
+    resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,15 @@
+rugc_programacion_catarsis_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: RUGCProgramacionCatarsisBundle:Default:index }
+    
+principal:
+    pattern:  /conozcanos
+    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:Conozcanos.html.twig' }
+    
+definiciones:
+    pattern:  /deficiones
+    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:Definiciones.html.twig' }
+    
+grupos:
+    pattern:  /grupos
+    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:GruposNacionales.html.twig' }
