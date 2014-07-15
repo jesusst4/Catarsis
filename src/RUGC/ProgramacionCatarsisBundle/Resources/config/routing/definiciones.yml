@@ -1,9 +1,9 @@
 definiciones:
     pattern:  /
-    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Definiciones:index" }
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Definiciones:show" }
 
 definiciones_show:
-    pattern:  /{id}/show
+    pattern:  /show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Definiciones:show" }
 
 definiciones_new:

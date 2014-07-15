@@ -44,7 +44,7 @@ class GeneracionesController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('generaciones_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('generaciones_show'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Generaciones:new.html.twig', array(
@@ -91,21 +91,22 @@ class GeneracionesController extends Controller
      * Finds and displays a Generaciones entity.
      *
      */
-    public function showAction($id)
+    public function showAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Generaciones')->find($id);
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Generaciones')->find(1);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Generaciones entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Generaciones:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+//            'delete_form' => $deleteForm->createView(),        
+            ));
     }
 
     /**
@@ -171,7 +172,8 @@ class GeneracionesController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('generaciones_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('generaciones_show'));
+//            return $this->redirect($this->generateUrl('generaciones_edit', array('id' => $id)));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Generaciones:edit.html.twig', array(

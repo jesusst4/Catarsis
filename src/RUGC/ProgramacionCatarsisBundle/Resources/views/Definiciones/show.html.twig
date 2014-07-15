@@ -1,33 +1,16 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Definiciones</h1>
     {{ entity.texto | raw}}
 
-    {#    <table class="record_properties">
-            <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ entity.id }}</td>
-                </tr>
-                <tr>
-                    <th>Texto</th>
-                    <td>{{ entity.texto }}</td>
-                </tr>
-            </tbody>
-        </table>
-    
-            <ul class="record_actions">
-        <li>
-            <a href="{{ path('definiciones') }}">
-                Back to the list
-            </a>
-        </li>
+    {#    {% if is_granted('ROLE_ADMIN') %}#}
+    <ul class="record_actions">
         <li>
             <a href="{{ path('definiciones_edit', { 'id': entity.id }) }}">
                 Edit
             </a>
         </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>#}
+    </ul>
+    {#    {% endif %}#}
+
 {% endblock %}

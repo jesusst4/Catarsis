@@ -1,9 +1,9 @@
 generaciones:
     pattern:  /
-    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Generaciones:index" }
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Generaciones:show" }
 
 generaciones_show:
-    pattern:  /{id}/show
+    pattern:  /show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Generaciones:show" }
 
 generaciones_new:
