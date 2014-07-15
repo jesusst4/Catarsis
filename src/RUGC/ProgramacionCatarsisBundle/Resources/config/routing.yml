@@ -16,6 +16,14 @@ definiciones:
     
     
 
+RUGCProgramacionCatarsisBundle_definiciones:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/definiciones.yml"
+        prefix:   /definiciones
+
+RUGCProgramacionCatarsisBundle_generaciones:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/generaciones.yml"
+        prefix:   /generaciones        
+
 RUGCProgramacionCatarsisBundle_conozcanos:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/conozcanos.yml"
         prefix:   /conozcanos
