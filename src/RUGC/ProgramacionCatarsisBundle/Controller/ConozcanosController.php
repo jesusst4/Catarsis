@@ -91,17 +91,17 @@ class ConozcanosController extends Controller
      * Finds and displays a Conozcanos entity.
      *
      */
-    public function showAction($id)
+    public function showAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Conozcanos')->find($id);
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Conozcanos')->find(1);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Conozcanos entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm(1);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Conozcanos:show.html.twig', array(
             'entity'      => $entity,
@@ -124,12 +124,12 @@ class ConozcanosController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+
 
         return $this->render('RUGCProgramacionCatarsisBundle:Conozcanos:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            
         ));
     }
 
@@ -147,7 +147,7 @@ class ConozcanosController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr'=>array('class'=>'btn')));
 
         return $form;
     }
@@ -172,7 +172,7 @@ class ConozcanosController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('conozcanos_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('conozcanos'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Conozcanos:edit.html.twig', array(
@@ -217,8 +217,7 @@ class ConozcanosController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('conozcanos_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'btn')))
+            ->getForm();
     }
 }

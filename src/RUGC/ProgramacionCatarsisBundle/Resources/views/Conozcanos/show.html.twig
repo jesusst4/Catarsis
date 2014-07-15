@@ -1,21 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Conozcanos</h1>
 
-   {{ entity.texto | raw}}
+    {{ entity.texto | raw}}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('conozcanos') }}">
-            Back to the list
+    <ul class="record_actions">
+
+        <a class="link" href="{{ path('conozcanos_edit', { 'id': entity.id }) }}">
+            Editar Contenido
         </a>
-    </li>
-    <li>
-        <a href="{{ path('conozcanos_edit', { 'id': entity.id }) }}">
-            Editar
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            
+    </ul>
 {% endblock %}

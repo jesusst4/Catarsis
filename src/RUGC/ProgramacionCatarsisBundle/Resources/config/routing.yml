@@ -10,13 +10,18 @@ definiciones:
     pattern:  /deficiones
     defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:Definiciones.html.twig' }
     
-grupos:
-    pattern:  /grupos
-    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:GruposNacionales.html.twig' }
+#grupos:
+#    pattern:  /grupos
+#    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:GruposNacionales.html.twig' }
     
     
 
 RUGCProgramacionCatarsisBundle_conozcanos:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/conozcanos.yml"
         prefix:   /conozcanos
+        
+
+RUGCProgramacionCatarsisBundle_grupos:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/grupos.yml"
+        prefix:   /grupos
 

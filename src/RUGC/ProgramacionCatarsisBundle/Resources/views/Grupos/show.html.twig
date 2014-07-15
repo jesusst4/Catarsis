@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    {{ entity.texto | raw}} 
+    <a class="link" href="{{ path('grupos_edit', { 'id': entity.id }) }}">
+        Editar contenido
+    </a>
+{% endblock %}
