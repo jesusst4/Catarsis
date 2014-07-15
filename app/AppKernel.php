@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new RUGC\ProgramacionCatarsisBundle\RUGCProgramacionCatarsisBundle(),
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -31,6 +32,6 @@ class AppKernel extends Kernel
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
+        $loader->load(__DIR__.'\config\config_'.$this->getEnvironment().'.yml');
     }
 }
