@@ -17,7 +17,7 @@ class GeneracionesType extends AbstractType
         $builder
             ->add('texto', 'textarea', array(
                     'attr' => array(
-                        'class' => 'tinymce',
+                        'class' => 'tinymce textArea',
                         'data-theme' => 'advanced' // Skip it if you want to use default theme
                     )
                 ))

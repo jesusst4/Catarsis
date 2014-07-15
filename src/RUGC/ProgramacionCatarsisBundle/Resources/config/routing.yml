@@ -32,4 +32,11 @@ RUGCProgramacionCatarsisBundle_conozcanos:
 RUGCProgramacionCatarsisBundle_grupos:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/grupos.yml"
         prefix:   /grupos
-
+        
+RUGCProgramacionCatarsisBundle_encabezado:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/encabezado.yml"
+        prefix:   /encabezado
+        
+RUGCProgramacionCatarsisBundle_programacion:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/programacion.yml"
+        prefix:   /programacion 

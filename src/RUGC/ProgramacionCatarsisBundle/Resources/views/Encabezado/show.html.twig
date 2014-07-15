@@ -3,13 +3,13 @@
 {% block body -%}
     {{ entity.texto | raw}}
 
-    {#    {% if is_granted('ROLE_ADMIN') %}#}
+    {#    {% if is_granted('ROLE_ADMIN') %}#}    
     <ul class="record_actions">
         <li>
-            <a class="link" href="{{ path('generaciones_edit', { 'id': entity.id }) }}">
+            <a class="link" href="{{ path('encabezado_edit', { 'id': entity.id }) }}">
                 Editar Contenido
             </a>
         </li>
     </ul>
-    {#    {% endif %}#}
+    {#    {% endif %}#}            
 {% endblock %}
