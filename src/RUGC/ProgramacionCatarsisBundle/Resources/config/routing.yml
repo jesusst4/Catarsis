@@ -13,3 +13,11 @@ definiciones:
 grupos:
     pattern:  /grupos
     defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:GruposNacionales.html.twig' }
+
+RUGCProgramacionCatarsisBundle_definiciones:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/definiciones.yml"
+        prefix:   /definiciones
+
+RUGCProgramacionCatarsisBundle_generaciones:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/generaciones.yml"
+        prefix:   /generaciones        
