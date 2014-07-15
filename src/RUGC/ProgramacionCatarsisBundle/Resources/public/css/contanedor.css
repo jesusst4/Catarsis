@@ -80,3 +80,24 @@ body {
 .textArea{
     height: 450px;
 }
+
+.divEncabezadoRadio{
+    float: left;
+    width: 400px;
+    height: auto;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.divEncabezadoTV{
+    width: 400px; 
+    height: auto;
+    float: left;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.fechaProgramacion{
+    height: auto;
+    width: 1200px;
+    margin: 10px 0px 10px 0px;
+}

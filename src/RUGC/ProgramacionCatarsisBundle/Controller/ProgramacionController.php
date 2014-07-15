@@ -24,9 +24,17 @@ class ProgramacionController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->findAll();
+        $encabezadoRadio=$em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
+        $encabezadoTV=$em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
+        setlocale(LC_TIME, "es_ES@euro","es_ES","esp");
+        date_default_timezone_set('UTC');
+        $date=  date("B-Y");
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
             'entities' => $entities,
+            'radio'=> $encabezadoRadio,
+            'tv'=> $encabezadoTV,
+            'fecha'=> $date
         ));
     }
     /**

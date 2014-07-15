@@ -1,8 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Programacion list</h1>
+    <h1>PROGRAMACION RADIO Y TELEVISION</h1>
 
+    <div class="fechaProgramacion">
+        <h1>{{fecha}}</h1>
+    </div>
+    <div class="divEncabezadoRadio">{{ radio.texto | raw}}</div>
+    <div class="divEncabezadoTV">{{ tv.texto | raw}}</div>
+    
     <table class="records_list">
         <thead>
             <tr>
