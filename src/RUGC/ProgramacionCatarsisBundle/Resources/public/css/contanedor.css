@@ -52,3 +52,31 @@ body {
     float: left;
     margin: auto;
 }
+.link{
+    float: right;
+    color:#069;
+    width: auto;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    
+}
+
+.btn{
+    float: right;
+    color:#FFFFFF;
+    width: auto;
+    margin-top:20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    border:2px solid darkgreen;
+    background-color: darkgreen;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    
+}
+
+.textArea{
+    height: 700px;
+}

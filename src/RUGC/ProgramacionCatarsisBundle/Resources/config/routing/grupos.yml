@@ -1,0 +1,30 @@
+grupos:
+    path:     /
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:show" }
+
+grupos_show:
+    path:     /show
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:show" }
+
+grupos_new:
+    path:     /new
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:new" }
+
+grupos_create:
+    path:     /create
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:create" }
+    requirements: { _method: post }
+
+grupos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:edit" }
+
+grupos_update:
+    path:     /{id}/update
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:update" }
+    requirements: { _method: post|put }
+
+grupos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Grupos:delete" }
+    requirements: { _method: post|delete }

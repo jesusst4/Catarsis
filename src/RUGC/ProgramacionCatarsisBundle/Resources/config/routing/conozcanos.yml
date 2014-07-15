@@ -1,9 +1,9 @@
 conozcanos:
     path:     /
-    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Conozcanos:index" }
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Conozcanos:show" }
 
 conozcanos_show:
-    path:     /{id}/show
+    path:     /show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Conozcanos:show" }
 
 conozcanos_new:
