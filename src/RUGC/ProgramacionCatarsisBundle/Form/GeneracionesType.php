@@ -15,7 +15,12 @@ class GeneracionesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('texto')
+            ->add('texto', 'textarea', array(
+                    'attr' => array(
+                        'class' => 'tinymce textArea',
+                        'data-theme' => 'advanced' // Skip it if you want to use default theme
+                    )
+                ))
         ;
     }
     

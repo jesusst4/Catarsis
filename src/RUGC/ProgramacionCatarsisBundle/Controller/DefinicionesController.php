@@ -44,7 +44,7 @@ class DefinicionesController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('definiciones_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('definiciones_show'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Definiciones:new.html.twig', array(
@@ -91,21 +91,22 @@ class DefinicionesController extends Controller
      * Finds and displays a Definiciones entity.
      *
      */
-    public function showAction($id)
+    public function showAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Definiciones')->find($id);
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Definiciones')->find(1);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Definiciones entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Definiciones:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+//            'delete_form' => $deleteForm->createView(),        
+            ));
     }
 
     /**
@@ -146,7 +147,7 @@ class DefinicionesController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btn')));
 
         return $form;
     }
@@ -171,7 +172,8 @@ class DefinicionesController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('definiciones_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('definiciones_show'));
+//            return $this->redirect($this->generateUrl('definiciones_edit', array('id' => $id)));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Definiciones:edit.html.twig', array(

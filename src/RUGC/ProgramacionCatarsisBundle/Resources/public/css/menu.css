@@ -14,13 +14,13 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover {
     background-color: #1293EE;
 }
 ul#menu li a {
-    margin:0 2px 0 0;
+    margin:0 1px 0 0;
     letter-spacing: 0.1em;
     font: 100% "lucida sans unicode",arial,sans-serif;
     display: block;
     float: left;
     height: 37px;
-    padding: 29px 10.23px 6px;
+    padding: 29px 8.23px 6px;
     text-align: center;
     color: #FFF;
     text-transform: uppercase;

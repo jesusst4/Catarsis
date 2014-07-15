@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DefinicionesType extends AbstractType
+class ProgramacionType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,12 +15,12 @@ class DefinicionesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('texto', 'textarea', array(
-                    'attr' => array(
-                        'class' => 'tinymce textArea',
-                        'data-theme' => 'advanced' // Skip it if you want to use default theme
-                    )
-                ))
+            ->add('fecha')
+            ->add('titulo')
+            ->add('obra')
+            ->add('descripcion')
+            ->add('imagen')
+            ->add('enlace')
         ;
     }
     
@@ -30,7 +30,7 @@ class DefinicionesType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Definiciones'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Programacion'
         ));
     }
 
@@ -39,6 +39,6 @@ class DefinicionesType extends AbstractType
      */
     public function getName()
     {
-        return 'rugc_programacioncatarsisbundle_definiciones';
+        return 'rugc_programacioncatarsisbundle_programacion';
     }
 }

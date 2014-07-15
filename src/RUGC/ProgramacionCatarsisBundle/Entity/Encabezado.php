@@ -29,14 +29,6 @@ class Encabezado
     private $texto;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="tipo", type="smallint")
-     */
-    private $tipo;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -67,28 +59,5 @@ class Encabezado
     public function getTexto()
     {
         return $this->texto;
-    }
-
-    /**
-     * Set tipo
-     *
-     * @param integer $tipo
-     * @return Encabezado
-     */
-    public function setTipo($tipo)
-    {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
-
-    /**
-     * Get tipo
-     *
-     * @return integer 
-     */
-    public function getTipo()
-    {
-        return $this->tipo;
     }
 }

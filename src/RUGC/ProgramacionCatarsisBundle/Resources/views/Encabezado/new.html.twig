@@ -2,13 +2,13 @@
 
 {% block body -%}
     {{ form(form) }}
-    
-    {#        <ul class="record_actions">
+    {{ tinymce_init() }}
+
+{#    <ul class="record_actions">
         <li>
-            <a href="{{ path('definiciones') }}">
+            <a href="{{ path('encabezado') }}">
                 Back to the list
             </a>
         </li>
     </ul>#}
-    {{ tinymce_init() }}
 {% endblock %}
