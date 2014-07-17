@@ -15,12 +15,12 @@ class ProgramacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fecha')
-            ->add('titulo')
-            ->add('obra')
-            ->add('descripcion')
-            ->add('imagen')
-            ->add('enlace')
+            ->add('fecha','date',array('attr' => array('label' => 'Fecha de Salida', 'class' => 'tcal txt'), 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-yyyy', 'read_only' => 'true'),array('required' => false))
+            ->add('titulo','text',array('attr'=>array('class'=>'txt'),'required' => false))
+            ->add('obra','text',array('attr'=>array('class'=>'txt'),'required' => false))
+            ->add('descripcion','textarea',array('attr'=>array('class'=>'txtArea'),'required' => false))
+            ->add('imagen','file',array('required' => false))
+            ->add('enlace','text',array('attr'=>array('class'=>'txt'),'required' => false))
         ;
     }
     
