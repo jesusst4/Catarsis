@@ -7,6 +7,7 @@
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
     "require": {
+        "gregwar/captcha-bundle": "dev-master",
         "php": ">=5.3.3",
         "symfony/symfony": "2.5.*",
         "doctrine/orm": "~2.2,>=2.2.3",
@@ -18,7 +19,8 @@
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "stfalcon/tinymce-bundle": "dev-master"
+        "stfalcon/tinymce-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

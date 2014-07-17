@@ -1,0 +1,3 @@
+rugc_autenticacion_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: RUGCAutenticacionBundle:Default:index }

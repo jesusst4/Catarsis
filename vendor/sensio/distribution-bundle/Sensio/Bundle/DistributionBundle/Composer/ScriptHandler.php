@@ -43,11 +43,11 @@ class ScriptHandler
     {
         $options = self::getOptions($event);
 
-        if (getenv('SENSIOLABS_DISABLE_NEW_DIRECTORY_STRUCTURE') || !$event->getIO()->askConfirmation('Would you like to use Symfony 3 directory structure? [y/N] ', false)) {
+        if (!getenv('SENSIOLABS_ENABLE_NEW_DIRECTORY_STRUCTURE') || !$event->getIO()->askConfirmation('Would you like to use Symfony 3 directory structure? [y/N] ', false)) {
             return;
         }
 
-        $rootDir = __DIR__ . '/../../../../../../..';
+        $rootDir = getcwd();
         $appDir = $options['symfony-app-dir'];
         $webDir = $options['symfony-web-dir'];
         $binDir = self::$options['symfony-bin-dir'] = 'bin';
@@ -163,7 +163,9 @@ class ScriptHandler
         $appDir = $options['symfony-app-dir'];
         $fs = new Filesystem();
 
-        if (!self::useNewDirectoryStructure($options)) {
+        $newDirectoryStructure = self::useNewDirectoryStructure($options);
+
+        if (!$newDirectoryStructure) {
             if (!self::hasDirectory($event, 'symfony-app-dir', $appDir, 'install the requirements files')) {
                 return;
             }
@@ -180,6 +182,7 @@ class ScriptHandler
             }
             $fs->copy(__DIR__.'/../Resources/skeleton/app/SymfonyRequirements.php', $varDir.'/SymfonyRequirements.php', true);
             $fs->copy(__DIR__.'/../Resources/skeleton/app/check.php', $binDir.'/symfony_requirements', true);
+            $fs->remove(array($appDir.'/check.php', $appDir.'/SymfonyRequirements.php', true));
 
             $fs->dumpFile($binDir.'/symfony_requirements', '#!/usr/bin/env php'.PHP_EOL.str_replace(".'/SymfonyRequirements.php'", ".'/".$fs->makePathRelative($varDir, $binDir)."SymfonyRequirements.php'", file_get_contents($binDir.'/symfony_requirements')), 0755);
         }
@@ -189,7 +192,11 @@ class ScriptHandler
         // if the user has already removed the config.php file, do nothing
         // as the file must be removed for production use
         if ($fs->exists($webDir.'/config.php')) {
-            $fs->copy(__DIR__.'/../Resources/skeleton/web/config.php', $webDir.'/config.php', true);
+            if (!$newDirectoryStructure) {
+                $fs->copy(__DIR__ . '/../Resources/skeleton/web/config.php', $webDir . '/config.php', true);
+            } else {
+                $fs->dumpFile($webDir.'/config.php', str_replace('/../app/SymfonyRequirements.php', '/'.$fs->makePathRelative($varDir, $webDir).'SymfonyRequirements.php', file_get_contents(__DIR__ . '/../Resources/skeleton/web/config.php')));
+            }
         }
     }
 
@@ -212,7 +219,7 @@ class ScriptHandler
 
     public static function installAcmeDemoBundle(CommandEvent $event)
     {
-        $rootDir = __DIR__ . '/../../../../../../..';
+        $rootDir = getcwd();
         $options = self::getOptions($event);
 
         if (file_exists($rootDir.'/src/Acme/DemoBundle')) {
@@ -397,7 +404,7 @@ namespace { return \$loader; }
             $useNewDirectoryStructure = escapeshellarg('--use-new-directory-structure');
         }
 
-        $process = new Process($php.' '.$cmd.' '.$bootstrapDir.' '.$autoloadDir.' '.$useNewDirectoryStructure, null, null, null, $timeout);
+        $process = new Process($php.' '.$cmd.' '.$bootstrapDir.' '.$autoloadDir.' '.$useNewDirectoryStructure, getcwd(), null, null, $timeout);
         $process->run(function ($type, $buffer) use ($event) { $event->getIO()->write($buffer, false); });
         if (!$process->isSuccessful()) {
             throw new \RuntimeException('An error occurred when generating the bootstrap file.');
@@ -427,6 +434,7 @@ namespace { return \$loader; }
 /web/bundles/
 /app/config/parameters.yml
 /var/bootstrap.php.cache
+/var/SymfonyRequirements.php
 /var/cache/*
 /var/logs/*
 !var/cache/.gitkeep
@@ -500,7 +508,6 @@ EOF;
         $options = self::getOptions($event);
 
         if (self::useNewDirectoryStructure($options)) {
-            $varDir = $options['symfony-var-dir'];
             if (!self::hasDirectory($event, 'symfony-bin-dir', $options['symfony-bin-dir'], $actionName)) {
                 return;
             }
