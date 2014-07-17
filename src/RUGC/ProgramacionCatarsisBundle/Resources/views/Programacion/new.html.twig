@@ -1,15 +1,38 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Programacion creation</h1>
+    <h1> Crear Programacion</h1>
+    <form action="{{ path('programacion_create')}}" method="POST" {{form_enctype(form)}}>
 
-    {{ form(form) }}
+        <div class="validaciones">
+            {{ form(form) }}
+        </div>
+    </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('programacion') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <table class="records_list table">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Titulo</th>
+                <th>Obra</th>
+                <th>Descripcion</th>
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for programacion in programaciones %}
+                <tr>
+                    <td>{% if programacion.fecha %}{{ programacion.fecha|date('d-m-Y') }}{% endif %}</td>
+                    <td>{{ programacion.titulo }}</td>
+                    <td>{{ programacion.obra }}</td>
+                    <td>{{ programacion.descripcion }}</td>
+                    <td>
+                        <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}">Eliminar</a>
+                        <a href="{{ path('programacion_edit', { 'id': programacion.id }) }}">Editar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

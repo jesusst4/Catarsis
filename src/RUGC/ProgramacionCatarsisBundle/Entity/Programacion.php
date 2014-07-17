@@ -3,15 +3,20 @@
 namespace RUGC\ProgramacionCatarsisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Programacion
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ProgramacionRepository")
+ * @UniqueEntity(fields={"fecha"},
+ *    message="Ya se ingreso una programación para este día")
  */
-class Programacion
-{
+class Programacion {
+
     /**
      * @var integer
      *
@@ -24,7 +29,11 @@ class Programacion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date")
+     * @ORM\Column(name="fecha", type="date", unique=true)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar la fecha."
+     * )
      */
     private $fecha;
 
@@ -32,6 +41,10 @@ class Programacion
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=100)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar el título."
+     * )
      */
     private $titulo;
 
@@ -39,6 +52,7 @@ class Programacion
      * @var string
      *
      * @ORM\Column(name="obra", type="string", length=50, nullable=true)
+     * 
      */
     private $obra;
 
@@ -46,13 +60,16 @@ class Programacion
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=255)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar la descripción."
+     * )
      */
     private $descripcion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="imagen", type="blob", nullable=true)
      */
     private $imagen;
 
@@ -63,14 +80,18 @@ class Programacion
      */
     private $enlace;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+    private $temp;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -80,8 +101,7 @@ class Programacion
      * @param \DateTime $fecha
      * @return Programacion
      */
-    public function setFecha($fecha)
-    {
+    public function setFecha($fecha) {
         $this->fecha = $fecha;
 
         return $this;
@@ -92,8 +112,7 @@ class Programacion
      *
      * @return \DateTime 
      */
-    public function getFecha()
-    {
+    public function getFecha() {
         return $this->fecha;
     }
 
@@ -103,8 +122,7 @@ class Programacion
      * @param string $titulo
      * @return Programacion
      */
-    public function setTitulo($titulo)
-    {
+    public function setTitulo($titulo) {
         $this->titulo = $titulo;
 
         return $this;
@@ -115,8 +133,7 @@ class Programacion
      *
      * @return string 
      */
-    public function getTitulo()
-    {
+    public function getTitulo() {
         return $this->titulo;
     }
 
@@ -126,8 +143,7 @@ class Programacion
      * @param string $obra
      * @return Programacion
      */
-    public function setObra($obra)
-    {
+    public function setObra($obra) {
         $this->obra = $obra;
 
         return $this;
@@ -138,8 +154,7 @@ class Programacion
      *
      * @return string 
      */
-    public function getObra()
-    {
+    public function getObra() {
         return $this->obra;
     }
 
@@ -149,8 +164,7 @@ class Programacion
      * @param string $descripcion
      * @return Programacion
      */
-    public function setDescripcion($descripcion)
-    {
+    public function setDescripcion($descripcion) {
         $this->descripcion = $descripcion;
 
         return $this;
@@ -161,20 +175,27 @@ class Programacion
      *
      * @return string 
      */
-    public function getDescripcion()
-    {
+    public function getDescripcion() {
         return $this->descripcion;
     }
 
     /**
      * Set imagen
      *
-     * @param string $imagen
+     * @param  UploadedFile $imagen
      * @return Programacion
      */
-    public function setImagen($imagen)
-    {
+    public function setImagen(UploadedFile $imagen = null) {
         $this->imagen = $imagen;
+
+
+        if (isset($this->path)) {
+            // store the old name to delete after the update
+            $this->temp = $this->path;
+            $this->path = $this->getImagen()->getClientOriginalName();
+        } else {
+            $this->path = $this->getImagen()->getClientOriginalName();
+        }
 
         return $this;
     }
@@ -182,10 +203,9 @@ class Programacion
     /**
      * Get imagen
      *
-     * @return string 
+     * @return UploadedFile 
      */
-    public function getImagen()
-    {
+    public function getImagen() {
         return $this->imagen;
     }
 
@@ -195,8 +215,7 @@ class Programacion
      * @param string $enlace
      * @return Programacion
      */
-    public function setEnlace($enlace)
-    {
+    public function setEnlace($enlace) {
         $this->enlace = $enlace;
 
         return $this;
@@ -207,8 +226,69 @@ class Programacion
      *
      * @return string 
      */
-    public function getEnlace()
-    {
+    public function getEnlace() {
         return $this->enlace;
     }
+
+    
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload() {
+        if (null !== $this->getImagen()) {
+            // haz lo que quieras para generar un nombre único
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename . '.' . $this->getImagen()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload() {
+        if (null === $this->getImagen()) {
+            return;
+        }
+
+        // si hay un error al mover el archivo, move() automáticamente
+        // envía una excepción. This will properly prevent
+        // the entity from being persisted to the database on error
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            unlink($this->getUploadRootDir() . '/' . $this->temp);
+            // clear the temp image path
+            $this->temp = null;
+        } 
+            $this->path = $this->getImagen()->getClientOriginalName();
+            $this->getImagen()->move($this->getUploadRootDir(), $this->path);
+        
+        $this->imagen = null;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload() {
+        if ($imagen = $this->getAbsolutePath()) {
+            unlink($imagen);
+        }
+    }
+
+    public function getAbsolutePath() {
+        return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
+    }
+
+    public function getWebPath() {
+        return null === $this->path ? null : 'uploads/documents' . '/' . $this->path;
+    }
+
+    protected function getUploadRootDir() {
+        // la ruta absoluta del directorio donde se deben
+        // guardar los archivos cargados
+        return __DIR__ . '/../../../../web/' . 'uploads/documents';
+    }
+
 }

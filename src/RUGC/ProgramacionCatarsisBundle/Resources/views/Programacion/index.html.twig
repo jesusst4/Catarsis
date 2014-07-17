@@ -1,57 +1,55 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>PROGRAMACION RADIO Y TELEVISION</h1>
+{% block body -%}    
+    <h1>PROGRAMACIÓN RADIO Y TELEVISION</h1>
 
     <div class="fechaProgramacion">
-        <h1>{{fecha}}</h1>
+        <h1>{{fecha | upper}}</h1>
     </div>
-    <div class="divEncabezadoRadio">{{ radio.texto | raw}}</div>
-    <div class="divEncabezadoTV">{{ tv.texto | raw}}</div>
-    
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fecha</th>
-                <th>Titulo</th>
-                <th>Obra</th>
-                <th>Descripcion</th>
-                <th>Imagen</th>
-                <th>Enlace</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+    <div class="divEncabezadoRadio">
+        {{ radio.texto | raw}}
+        <a class="link" href="{{ path('encabezado_edit', { 'id': radio.id }) }}">
+            Editar Contenido Radio
+        </a>
+    </div>
+
+
+
+    <div class="divEncabezadoTV">
+        {{ tv.texto | raw}}
+        <a class="link" href="{{ path('encabezado_edit', { 'id': tv.id }) }}">
+            Editar Contenido TV
+        </a>
+    </div>
+
+
+
+
+    <table class="records_list table">
+
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('programacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.titulo }}</td>
-                <td>{{ entity.obra }}</td>
-                <td>{{ entity.descripcion }}</td>
-                <td>{{ entity.imagen }}</td>
-                <td>{{ entity.enlace }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('programacion_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('programacion_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('programacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.titulo }}</td>
+                    <td>{{ entity.obra }}</td>
+                    <td>{{ entity.descripcion }}</td>
+                    <td>{{ entity.imagen }}</td>
+                    <td>{{ entity.enlace }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('programacion_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('programacion_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('programacion_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}

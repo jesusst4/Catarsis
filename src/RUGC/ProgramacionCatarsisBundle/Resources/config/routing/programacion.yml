@@ -27,4 +27,4 @@ programacion_update:
 programacion_delete:
     path:     /{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:delete" }
-    requirements: { _method: post|delete }
+    requirements: { _method: post|delete|get }
