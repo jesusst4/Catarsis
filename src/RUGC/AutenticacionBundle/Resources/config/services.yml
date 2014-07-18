@@ -1,0 +1,7 @@
+parameters:
+#    rugc_autenticacion.example.class: RUGC\AutenticacionBundle\Example
+
+services:
+#    rugc_autenticacion.example:
+#        class: %rugc_autenticacion.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

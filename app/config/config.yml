@@ -148,3 +148,9 @@ stfalcon_tinymce:
             inline_styles: false
             convert_fonts_to_spans: false
 
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: RUGC\AutenticacionBundle\Entity\User
+
+gregwar_captcha: ~    
