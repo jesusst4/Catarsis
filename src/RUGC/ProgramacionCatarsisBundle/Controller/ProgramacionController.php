@@ -20,14 +20,15 @@ class ProgramacionController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->findAll();
+//        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->findAll();
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
         setlocale(LC_TIME, "es_ES@euro", "es_ES", "esp");
         $date = strftime('%B-%Y');
-
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionActual();
+        
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
-                    'entities' => $entities,
+                    'entities' => $listaProgramaciones,
                     'radio' => $encabezadoRadio,
                     'tv' => $encabezadoTV,
                     'fecha' => $date
@@ -49,7 +50,7 @@ class ProgramacionController extends Controller {
             $em->persist($entity);
             $em->flush();
             $entity->upload();
-            return $this->redirect($this->generateUrl('programacion_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('programacion_new'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:new.html.twig', array(
@@ -218,8 +219,32 @@ class ProgramacionController extends Controller {
 
         $em->remove($entity);
         $em->flush();
+        $entity->removeUpload();
 
         return $this->redirect($this->generateUrl('programacion_new'));
+    }
+
+    /**
+     * Deletes a Programacion entity.
+     *
+     */
+    public function deleteImagenAction(Request $request, $id) {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Programacion entity.');
+        }
+        $entity->removeUpload();
+        $entity->path=null;
+        $em->persist($entity);
+        $em->flush();
+        
+
+        return $this->redirect($this->generateUrl('programacion_edit', array('id' => $entity->getId())));
     }
 
     /**

@@ -5,19 +5,22 @@
         <h1>Editar Programación</h1>
 
         <div class="validaciones">
-        {{ form_row(edit_form.fecha, {'attr': {'novalidate': 'true'}}) }}
-        {{ form_row(edit_form.titulo, {'attr': {'novalidate': 'true'}}) }}
-        {{ form_row(edit_form.obra, {'attr': {'novalidate': 'true'}}) }}
-        {{ form_row(edit_form.descripcion, {'attr': {'novalidate': 'true'}}) }}
+            {{form_row(edit_form.tipo)}}
+            {{ form_row(edit_form.fecha, {'attr': {'novalidate': 'true'}}) }}
+            {{ form_row(edit_form.titulo, {'attr': {'novalidate': 'true'}}) }}
+            {{ form_row(edit_form.obra, {'attr': {'novalidate': 'true'}}) }}
+            {{ form_row(edit_form.descripcion, {'attr': {'novalidate': 'true'}}) }}
 
-        <div>
-            {{ form_row(edit_form.imagen, {'attr': {'novalidate': 'true'}}) }}
-            <img style="margin-top: 10px; margin-left: 150px;" src="{{asset('uploads/documents/'~entity.path)}} " width="100" height="100"  />
+            <div>
+                {{ form_row(edit_form.imagen, {'attr': {'novalidate': 'true'}}) }}
+                {% if entity.path %}
+                    <img class="imagenEdit" src="{{asset('uploads/documents/'~entity.path)}} " width="100" height="100"  />
+                    <a style="margin-right: 20px;" href="{{ path('programacion_delete_imagen', { 'id': entity.id }) }}">Eliminar Imágen</a>
+                {% endif %}
+            </div>
 
-        </div>
+            {{ form_rest(edit_form, {'attr': {'novalidate': 'true'}})}}
 
-        {{ form_rest(edit_form, {'attr': {'novalidate': 'true'}})}}
-        
         </div>
     </form>
 {% endblock %}

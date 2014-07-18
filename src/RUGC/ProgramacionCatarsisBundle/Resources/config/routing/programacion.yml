@@ -33,3 +33,8 @@ programacion_selectMonth:
     path:     /selectMonth
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:selectMonth" }
 #    requirements: { _method: post|delete|get }    
+
+programacion_delete_imagen:
+    path:     /{id}/delete_imagen
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:deleteImagen" }
+    requirements: { _method: post|delete|get }

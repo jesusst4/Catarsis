@@ -6,8 +6,9 @@
     <div class="fechaProgramacion">
         <h1>{{fecha | upper}}</h1>
     </div>
+
     <div class="divEncabezadoRadio">
-        {{ radio.texto | raw}}
+        <p> {{ radio.texto | raw}}</p>
         <a class="link" href="{{ path('encabezado_edit', { 'id': radio.id }) }}">
             Editar Contenido Radio
         </a>
@@ -16,40 +17,64 @@
 
 
     <div class="divEncabezadoTV">
-        {{ tv.texto | raw}}
+        <p>{{ tv.texto | raw}}</p>
         <a class="link" href="{{ path('encabezado_edit', { 'id': tv.id }) }}">
             Editar Contenido TV
         </a>
     </div>
+    <div style="clear: both"></div>
+
+    <div class="divRadio">
+        {% for entity in entities  if entity.tipo== 1%}
+            <center>
+                <div class="programacion">
+                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
+                    &nbsp;
+                    <p>
+                        <label class="tiulo">{{ entity.titulo }}</label><br>
+                          
+                        {%if entity.obra%}
+                            <label  class="obra" >"{{ entity.obra }}"</label><br>
+                        {% endif %}
+                        <label class="descripcion">
+                        {{ entity.descripcion }}
+                        </label><br>
+                        {%if entity.path %}
+                            <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
+                        {% endif%}
+                    </p>
+                </div>
+            </center>
+
+        {% endfor %}
+    </div>
+    <div class="divTV">
+
+        {% for entity in entities  if entity.tipo== 2%}
+
+            <center>
+                <div class="programacion">
+                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
+                    &nbsp;
+                     <p>
+                        <label class="tiulo">{{ entity.titulo }}</label><br>
+                          
+                        {%if entity.obra%}
+                            <label  class="obra" >"{{ entity.obra }}"</label><br>
+                        {% endif %}
+                        <label class="descripcion">
+                        {{ entity.descripcion }}
+                        </label><br>
+                        {%if entity.path %}
+                            <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
+                        {% endif%}
+                    </p>
+                </div>
+            </center>
+
+        {% endfor %}
+    </div>
 
 
-
-
-    <table class="records_list table">
-
-        <tbody>
-            {% for entity in entities %}
-                <tr>
-                    <td><a href="{{ path('programacion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    <td>{{ entity.titulo }}</td>
-                    <td>{{ entity.obra }}</td>
-                    <td>{{ entity.descripcion }}</td>
-                    <td>{{ entity.imagen }}</td>
-                    <td>{{ entity.enlace }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('programacion_show', { 'id': entity.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('programacion_edit', { 'id': entity.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
 {% endblock %}

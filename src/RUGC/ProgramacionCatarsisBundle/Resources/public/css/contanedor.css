@@ -105,10 +105,30 @@ body {
     height: auto;
     margin-left: 100px;
     margin-right: 100px;
+    display: block;
+    margin-bottom: 20px;
 }
 .divEncabezadoTV{
     width: 400px; 
     height: auto;
+    float: left;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: block;
+    margin-bottom: 20px;
+}
+
+
+.divRadio{
+    float: left;
+    width: 400px;
+    overflow-y: auto;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.divTV{
+    width: 400px; 
+    overflow-y: auto;
     float: left;
     margin-left: 100px;
     margin-right: 100px;
@@ -299,5 +319,29 @@ form div label{display: block; float: left; height: 20px; width: 150px;color: gr
     list-style-type:none;
     font-size: 14px;
     font-family: sans-serif;
+    margin-bottom: 2px;
 }
 
+
+.imagenEdit{
+    margin-top: 10px;
+    margin-left: 150px;
+}
+
+.programacion{
+    margin-bottom: 20px;
+    background-color: lemonchiffon;
+}
+
+
+.tiulo{
+    font-weight: bold;
+    font-size: 25pt;
+}
+.obra{
+     font-size: 20pt;
+}
+
+.descripcion{
+    font-size: 13pt;
+}

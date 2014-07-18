@@ -12,8 +12,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ProgramacionRepository")
- * @UniqueEntity(fields={"fecha"},
- *    message="Ya se ingreso una programación para este día")
+ * @UniqueEntity(fields={"fecha","tipo"},
+ *   errorPath="tipo",
+ *    message="Ya se ingreso este tipo de programación para este día")
  */
 class Programacion {
 
@@ -29,7 +30,7 @@ class Programacion {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha", type="date", unique=true)
+     * @ORM\Column(name="fecha", type="date")
      * 
      * @Assert\NotNull(
      *      message = "Debe ingresar la fecha."
@@ -85,6 +86,19 @@ class Programacion {
      */
     public $path;
     private $temp;
+
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tipo", type="integer")
+     * 
+     */
+    
+    private $tipo;
+
+
+
 
     /**
      * Get id
@@ -230,6 +244,29 @@ class Programacion {
         return $this->enlace;
     }
 
+    
+    
+    /**
+     * Get tipo
+     *
+     * @return integer 
+     */
+    public function getTipo() {
+        return $this->tipo;
+    }
+
+    /**
+     * Set tipo
+     *
+     * @param integer $tipo
+     * @return Programacion
+     */
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
+
+        return $this;
+    }
+    
     
     /**
      * @ORM\PrePersist()
