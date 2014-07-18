@@ -43,7 +43,7 @@ class ProgramacionController extends Controller {
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes();
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes("11-01-2009");
         if ($form->isValid()) {
 
             $em->persist($entity);
@@ -69,7 +69,7 @@ class ProgramacionController extends Controller {
     private function createCreateForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear','attr'=>array('class'=>'btn')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn')));
 
         return $form;
     }
@@ -78,9 +78,12 @@ class ProgramacionController extends Controller {
      * Displays a form to create a new Programacion entity.
      *
      */
-    public function newAction() {
+    public function newAction(Request $request) {
+        $fecha = split(" ", $request->request->get("fecha"));
+        $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+
         $em = $this->getDoctrine()->getManager();
-        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes();
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha1);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
 
@@ -89,6 +92,21 @@ class ProgramacionController extends Controller {
                     'form' => $form->createView(),
                     'programaciones' => $listaProgramaciones
         ));
+    }
+
+    private function obtenerNumeroMes($pMes, $pAnio) {
+        $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+            'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $fecha = "";
+
+        foreach ($meses as $key => $value) {
+            $mes = $key + 1;
+            if ($value == $pMes) {
+                $fecha = $pAnio . "-" . $mes . "-01";                
+                break;
+            }
+        }
+        return $fecha;
     }
 
     /**
@@ -146,7 +164,7 @@ class ProgramacionController extends Controller {
     private function createEditForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar','attr'=>array('class'=>'btn')));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => 'btn')));
 
         return $form;
     }
@@ -167,7 +185,7 @@ class ProgramacionController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-        
+
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
@@ -175,7 +193,7 @@ class ProgramacionController extends Controller {
 
             return $this->redirect($this->generateUrl('programacion'));
         }
-        
+
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:edit.html.twig', array(
                     'entity' => $entity,
                     'edit_form' => $editForm->createView(),
@@ -215,9 +233,13 @@ class ProgramacionController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('programacion_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar','attr'=>array('class'=>'btn')))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'btn')))
                         ->getForm()
         ;
+    }
+
+    public function selectMonthAction() {
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig');
     }
 
 }
