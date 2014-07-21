@@ -5,12 +5,12 @@ namespace RUGC\ProgramacionCatarsisBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Conozcanos
+ * Contenido
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ConozcanosRepository")
+ * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ContenidoRepository")
  */
-class Conozcanos
+class Contenido
 {
     /**
      * @var integer
@@ -43,7 +43,7 @@ class Conozcanos
      * Set texto
      *
      * @param string $texto
-     * @return Conozcanos
+     * @return Contenido
      */
     public function setTexto($texto)
     {

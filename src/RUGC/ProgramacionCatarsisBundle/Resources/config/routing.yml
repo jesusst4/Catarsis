@@ -1,38 +1,11 @@
 rugc_programacion_catarsis_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: RUGCProgramacionCatarsisBundle:Default:index }
-    
-#principal:
-#    pattern:  /conozcanos
-#    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:Conozcanos.html.twig' }
-    
+   
 definiciones:
     pattern:  /deficiones
     defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:Definiciones.html.twig' }
-    
-#grupos:
-#    pattern:  /grupos
-#    defaults: { _controller: FrameworkBundle:Template:template, template:  'RUGCProgramacionCatarsisBundle:Static:GruposNacionales.html.twig' }
-    
-    
-
-RUGCProgramacionCatarsisBundle_definiciones:
-        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/definiciones.yml"
-        prefix:   /definiciones
-
-RUGCProgramacionCatarsisBundle_generaciones:
-        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/generaciones.yml"
-        prefix:   /generaciones        
-
-RUGCProgramacionCatarsisBundle_conozcanos:
-        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/conozcanos.yml"
-        prefix:   /conozcanos
-        
-
-RUGCProgramacionCatarsisBundle_grupos:
-        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/grupos.yml"
-        prefix:   /grupos
-        
+         
 RUGCProgramacionCatarsisBundle_encabezado:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/encabezado.yml"
         prefix:   /encabezado
@@ -40,3 +13,7 @@ RUGCProgramacionCatarsisBundle_encabezado:
 RUGCProgramacionCatarsisBundle_programacion:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/programacion.yml"
         prefix:   /programacion 
+        
+RUGCProgramacionCatarsisBundle_contenido:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/contenido.yml"
+        prefix:   /contenido

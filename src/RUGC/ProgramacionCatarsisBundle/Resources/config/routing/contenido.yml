@@ -1,0 +1,30 @@
+contenido:
+    path:     /
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:index" }
+
+contenido_show:
+    path:     /{id}/show
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:show" }
+
+contenido_new:
+    path:     /new
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:new" }
+
+contenido_create:
+    path:     /create
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:create" }
+    requirements: { _method: post }
+
+contenido_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:edit" }
+
+contenido_update:
+    path:     /{id}/update
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:update" }
+    requirements: { _method: post|put }
+
+contenido_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:delete" }
+    requirements: { _method: post|delete }

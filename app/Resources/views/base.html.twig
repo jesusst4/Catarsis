@@ -19,7 +19,7 @@
 
     <div id="menubar">
         <ul id="menu-horizontal">
-            <li><a href="{{path('conozcanos')}}" title="Texto">CONOZCANOS</a></li>
+            <li><a href="{{path('contenido_show', {'id':1})}}" title="Texto">CONOZCANOS</a></li>
             <li><a href="" title="Texto">PROGRAMACIÓN:RADIO/TV</a>
                 <ul>  
                     <li><a href="{{path('programacion')}}" title="Texto">MES ACTUAL</a></li>
@@ -29,11 +29,11 @@
                         {% endif %}
                 </ul>
             </li>
-            <li><a href="{{path('definiciones')}}" title="Texto">DEFINICIONES</a></li>
-            <li><a href="{{path('grupos')}}" title="Texto">GRUPOS NACIONALES</a></li>
-            <li><a href="{{path('generaciones')}}" title="Texto">GENERACIONES CATÁRTICAS</a></li>
-            <li><a href="{{path('grupos')}}" title="Texto">NOTICIAS</a></li>
-            <li><a href="{{path('grupos')}}" title="Texto">ENLACES RECOMENDADOS</a></li>
+            <li><a href="{{path('contenido_show', {'id':2})}}" title="Texto">DEFINICIONES</a></li>
+            <li><a href="{{path('contenido_show', {'id':4})}}" title="Texto">GRUPOS NACIONALES</a></li>
+            <li><a href="{{path('contenido_show', {'id':3})}}" title="Texto">GENERACIONES CATÁRTICAS</a></li>
+            <li><a href="{{path('contenido_show', {'id':1})}}" title="Texto">NOTICIAS</a></li>
+            <li><a href="{{path('contenido_show', {'id':1})}}" title="Texto">ENLACES RECOMENDADOS</a></li>
         </ul>
     </div>
 </head>

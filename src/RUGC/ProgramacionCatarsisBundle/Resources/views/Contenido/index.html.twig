@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Conozcanos list</h1>
+    <h1>Contenido list</h1>
 
     <table class="records_list">
         <thead>
@@ -14,15 +14,15 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('conozcanos_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('contenido_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.texto }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('conozcanos_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('contenido_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('conozcanos_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('contenido_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -33,7 +33,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('conozcanos_new') }}">
+            <a href="{{ path('contenido_new') }}">
                 Create a new entry
             </a>
         </li>

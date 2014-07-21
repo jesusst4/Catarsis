@@ -7,7 +7,7 @@
     <ul class="record_actions">
 
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="link" href="{{ path('conozcanos_edit', { 'id': entity.id }) }}">
+            <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
                 Editar Contenido
             </a>
         {% endif %}

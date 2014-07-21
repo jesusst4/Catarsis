@@ -6,13 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ConozcanosType extends AbstractType {
-
-    /**
+class ContenidoType extends AbstractType
+{
+        /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
                 ->add('texto', 'textarea', array(
                     'attr' => array(
@@ -22,21 +23,22 @@ class ConozcanosType extends AbstractType {
                 ))
         ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Conozcanos'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Contenido'
         ));
     }
 
     /**
      * @return string
      */
-    public function getName() {
-        return 'rugc_programacioncatarsisbundle_conozcanos';
+    public function getName()
+    {
+        return 'rugc_programacioncatarsisbundle_contenido';
     }
-
 }
