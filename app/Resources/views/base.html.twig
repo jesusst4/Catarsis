@@ -7,8 +7,8 @@
             {% stylesheets '@RUGCProgramacionCatarsisBundle/Resources/public/css/*' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
-            
-            {%javascripts '@RUGCProgramacionCatarsisBundle/Resources/public/js/*' %}
+
+            {%javascripts '@RUGCProgramacionCatarsisBundle/Resources/public/JS/*' %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
@@ -18,9 +18,15 @@
     </div>
 
     <div id="menubar">
-        <ul id="menu">
+        <ul id="menu-horizontal">
             <li><a href="{{path('conozcanos')}}" title="Texto">CONOZCANOS</a></li>
-            <li><a href="{{path('programacion')}}" title="Texto">PROGRAMACIÓN:RADIO/TV</a></li>
+            <li><a href="" title="Texto">PROGRAMACIÓN:RADIO/TV</a>
+                <ul>  
+                    <li><a href="{{path('programacion')}}" title="Texto">MES ACTUAL</a></li>
+                    <li><a href=""> BUSACR</a></li>
+                    <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>                        
+                </ul>
+            </li>
             <li><a href="{{path('definiciones')}}" title="Texto">DEFINICIONES</a></li>
             <li><a href="{{path('grupos')}}" title="Texto">GRUPOS NACIONALES</a></li>
             <li><a href="{{path('generaciones')}}" title="Texto">GENERACIONES CATÁRTICAS</a></li>
@@ -34,9 +40,7 @@
     <div class="contenedor">
         {% block body %}           
         {% endblock %}
-
         
-  
         {% block footer %}
             <div class="footer">                
             </div>

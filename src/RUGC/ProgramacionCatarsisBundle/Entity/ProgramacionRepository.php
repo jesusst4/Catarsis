@@ -12,12 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProgramacionRepository extends EntityRepository {
 
-    public function programacionesXMes() {
-        $mes = strftime('%m');
-        $anio = strftime('%Y');
+    public function programacionesXMes($fecha) {
+        $mes = date("m", strtotime($fecha));
+        $anio = date("Y", strtotime($fecha));
         $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
-        $fechaActual = date('d-m-Y');
-        $fechaFin = $ultimo_dia . "-" . $mes . "-" . $anio;
+        $fechaActual = $anio . "-" . $mes . "-" . "01";
+        $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
 
         return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha > :mes AND  p.fecha < :anio')
@@ -31,11 +31,10 @@ class ProgramacionRepository extends EntityRepository {
         $mes = strftime('%m');
         $anio = strftime('%Y');
         $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
-        $fechaActual = $anio. "-" . $mes . "-" . "1";
+        $fechaActual = $anio . "-" . $mes . "-" . "1";
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
-
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha > :mes AND  p.fecha < :anio')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio')
                         ->setParameters(array(
                             'mes' => $fechaActual,
                             'anio' => $fechaFin

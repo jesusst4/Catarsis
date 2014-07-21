@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+
+    <h1>Seleccione el mes y año...</h1>
+
+    <form action="{{path('programacion_new')}}" method="POST" >
+        <div class="validaciones">
+            Select Date : <input type='text' id='txtDate' name='fecha'/>
+        </div>
+        <input type="submit" name="btnBuscar" class="btn" value="Ir"/>
+    </form>
+{% endblock %}

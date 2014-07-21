@@ -28,6 +28,11 @@ programacion_delete:
     path:     /{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:delete" }
     requirements: { _method: post|delete|get }
+    
+programacion_selectMonth:
+    path:     /selectMonth
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:selectMonth" }
+#    requirements: { _method: post|delete|get }    
 
 programacion_delete_imagen:
     path:     /{id}/delete_imagen
