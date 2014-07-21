@@ -23,8 +23,10 @@
             <li><a href="" title="Texto">PROGRAMACIÓN:RADIO/TV</a>
                 <ul>  
                     <li><a href="{{path('programacion')}}" title="Texto">MES ACTUAL</a></li>
-                    <li><a href=""> BUSACR</a></li>
-                    <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>                        
+                    <li><a href=""> BUSCAR</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>
+                        {% endif %}
                 </ul>
             </li>
             <li><a href="{{path('definiciones')}}" title="Texto">DEFINICIONES</a></li>
@@ -40,7 +42,7 @@
     <div class="contenedor">
         {% block body %}           
         {% endblock %}
-        
+
         {% block footer %}
             <div class="footer">                
             </div>

@@ -26,7 +26,7 @@ class ProgramacionController extends Controller {
         setlocale(LC_TIME, "es_ES@euro", "es_ES", "esp");
         $date = strftime('%B-%Y');
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionActual();
-        
+
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
                     'entities' => $listaProgramaciones,
                     'radio' => $encabezadoRadio,
@@ -40,23 +40,31 @@ class ProgramacionController extends Controller {
      *
      */
     public function createAction(Request $request) {
+        $t = $request->request->get("fecha");
+        $fecha = split(" ", $request->request->get("fecha"));
+        $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes("11-01-2009");
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha1);
         if ($form->isValid()) {
 
             $em->persist($entity);
             $em->flush();
             $entity->upload();
-            return $this->redirect($this->generateUrl('programacion_new'));
+//            $request = new Request();
+//            $request->request->set('fecha', $t);
+            $entity = new Programacion();
+            $form = $this->createCreateForm($entity);
+            return $this->redirect($this->generateUrl('programacion_new', array('fecha' => $t)));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:new.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
-                    'programaciones' => $listaProgramaciones
+                    'programaciones' => $listaProgramaciones,
+                    'fecha' => $t
         ));
     }
 
@@ -80,8 +88,24 @@ class ProgramacionController extends Controller {
      *
      */
     public function newAction(Request $request) {
-        $fecha = split(" ", $request->request->get("fecha"));
-        $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+
+        $fechaGet = $request->query->get("fecha");
+
+
+        $fechaPost = $request->request->get("fecha");
+        $fechaGeneral=NULL;
+        if ($fechaGet) {
+            $fechaGeneral=$fechaGet;
+            $fecha = split(" ", $fechaGet);
+            $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+        }elseif ($fechaPost) {
+            $fechaGeneral=$fechaPost;
+            $fecha = split(" ", $fechaPost);
+            $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+        }
+
+        echo $fechaPost . "lo que trae fecha " . $fechaGet;
+
 
         $em = $this->getDoctrine()->getManager();
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha1);
@@ -91,7 +115,8 @@ class ProgramacionController extends Controller {
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:new.html.twig', array(
                     'entity' => $entity,
                     'form' => $form->createView(),
-                    'programaciones' => $listaProgramaciones
+                    'programaciones' => $listaProgramaciones,
+                    'fecha' => $fechaGeneral
         ));
     }
 
@@ -103,7 +128,7 @@ class ProgramacionController extends Controller {
         foreach ($meses as $key => $value) {
             $mes = $key + 1;
             if ($value == $pMes) {
-                $fecha = $pAnio . "-" . $mes . "-01";                
+                $fecha = $pAnio . "-" . $mes . "-01";
                 break;
             }
         }
@@ -221,7 +246,7 @@ class ProgramacionController extends Controller {
         $em->flush();
         $entity->removeUpload();
 
-        return $this->redirect($this->generateUrl('programacion_new'));
+        return $this->redirect($this->generateUrl('programacion'));
     }
 
     /**
@@ -239,10 +264,10 @@ class ProgramacionController extends Controller {
             throw $this->createNotFoundException('Unable to find Programacion entity.');
         }
         $entity->removeUpload();
-        $entity->path=null;
+        $entity->path = null;
         $em->persist($entity);
         $em->flush();
-        
+
 
         return $this->redirect($this->generateUrl('programacion_edit', array('id' => $entity->getId())));
     }

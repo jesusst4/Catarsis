@@ -6,9 +6,11 @@
 
     <ul class="record_actions">
 
-        <a class="link" href="{{ path('conozcanos_edit', { 'id': entity.id }) }}">
-            Editar Contenido
-        </a>
-            
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="link" href="{{ path('conozcanos_edit', { 'id': entity.id }) }}">
+                Editar Contenido
+            </a>
+        {% endif %}
+
     </ul>
 {% endblock %}

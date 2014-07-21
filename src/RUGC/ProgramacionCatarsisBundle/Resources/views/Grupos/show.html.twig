@@ -3,7 +3,9 @@
 {% block body -%}
 
     {{ entity.texto | raw}} 
-    <a class="link" href="{{ path('grupos_edit', { 'id': entity.id }) }}">
-        Editar contenido
-    </a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="link" href="{{ path('grupos_edit', { 'id': entity.id }) }}">
+            Editar contenido
+        </a>
+    {% endif %}
 {% endblock %}

@@ -14,7 +14,7 @@ class ProgramacionType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('tipo', 'choice', array('choices' => array('1' => 'Radio', '2' => 'Televisión'), 'empty_value' => 'Seleccione tipo programción','attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Tipo Programación'))
+                ->add('tipo', 'choice', array('choices' => array('1' => 'Radio', '2' => 'Televisión'), 'empty_value' => 'Seleccione el tipo de programación','attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Tipo Programación'))
                 ->add('fecha', 'date', array('attr' => array('class' => 'tcal txt'), 'label' => ' Fecha', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-yyyy', 'read_only' => 'true'), array('required' => false))
                 ->add('titulo', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Artista ó Título'))
                 ->add('obra', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Título de la  Obra'))
