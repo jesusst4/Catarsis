@@ -92,7 +92,9 @@ class Programacion {
      * @var integer
      *
      * @ORM\Column(name="tipo", type="integer")
-     * 
+     * @Assert\NotNull(
+     *      message = "Debe seleccionar el tipo de programación."
+     * )
      */
     
     private $tipo;
