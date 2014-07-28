@@ -1,10 +1,9 @@
 <div id="menubar">
     <ul id="menu-horizontal">
         {%  for opcion in entities %}
-            {% if opcion.id == 19%}
-                <li><a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a>
-                    <ul>
-                        <li><a href="{{path('programacion')}}" title="Texto">PROGRAMACION ACTUAL</a></li>
+            {% if opcion.nombreOpcion == 'programación:radio/tv'%}
+                <li><a href="{{path('programacion')}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                    <ul>                        
                         <li><a href=""> BUSCAR</a></li>
                             {% if is_granted('ROLE_ADMIN') %}
                             <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>

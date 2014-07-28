@@ -20,7 +20,7 @@ class ProgramacionRepository extends EntityRepository {
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
 
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha > :mes AND  p.fecha < :anio')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha > :mes AND  p.fecha < :anio order by p.fecha')
                         ->setParameters(array(
                             'mes' => $fechaActual,
                             'anio' => $fechaFin
@@ -34,7 +34,7 @@ class ProgramacionRepository extends EntityRepository {
         $fechaActual = $anio . "-" . $mes . "-" . "1";
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio order by p.fecha')
                         ->setParameters(array(
                             'mes' => $fechaActual,
                             'anio' => $fechaFin
