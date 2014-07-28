@@ -2,9 +2,22 @@
 
 {% block body -%}
     <h1>Editar contenido de Conozcanos</h1>
+    <div class="validaciones">
+        <form action="{{path('contenido_update',{'id':entity.id})}}" method="POST">
+            {{ form_start(edit_form) }}
+            {{ form_errors(edit_form) }}
+            {{form_row(edit_form.opcionMenu.nombreOpcion)}}
+            {{form_row(edit_form.opcionMenu.ruta)}} 
+            {{form_row(edit_form.opcionMenu.prioridad)}}
+            {{form_row(edit_form.opcionMenu.menuPrincipal)}}
 
-    {{ form(edit_form) }}
+            {{form_row(edit_form.texto)}}
 
+            {{ form(edit_form)}}
 
-    {{ tinymce_init() }}
+            {{ tinymce_init() }}
+            {{ form_end(edit_form) }}
+
+        </form>
+    </div>
 {% endblock %}

@@ -1,15 +1,29 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Contenido creation</h1>
+    <h1>Crear Contenido</h1>
+    <div class="validaciones">
+        <form action="{{path('contenido_create')}}" method="POST">
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            {{form_row(form.opcionMenu.nombreOpcion)}}
+            {{form_row(form.opcionMenu.ruta)}} 
+            {{form_row(form.opcionMenu.prioridad)}}
+            {{form_row(form.opcionMenu.menuPrincipal)}}
 
-    {{ form(form) }}
+            {{form_row(form.texto)}}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('contenido') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+            {{ form(form)}}
+
+            {{ tinymce_init() }}
+            {{ form_end(form) }}
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('contenido') }}">
+                        Back to the list
+                    </a>
+                </li>
+            </ul>
+        </form>
+    </div>
 {% endblock %}

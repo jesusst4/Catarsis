@@ -7,109 +7,21 @@ and open the template in the editor.
     Created on : 09/07/2014, 11:35:25 AM
     Author     : jsoto-gvasquez
 */
-
-/*
-
-
-
-#menu li a {
-    margin:0 1px 0 0;
-    letter-spacing: 0.1em;
-    font: 100% "lucida sans unicode",arial,sans-serif;
-    display: block;
-    float: left;
-    height: 37px;
-    padding: 29px 8.23px 6px;
-    text-align: center;
-    color: #FFF;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: none repeat scroll 0% 0% darkgreen;
-}
-
-#menu>li {
-    float: left;
-    color: #FFF;
-    list-style: none outside none;
-}
-
-#menu li a:hover{
-    color: #FFF;
-    background-color: #1293EE;
-}
-
-#menubar {
-    width: 1200px;
-    height: 70px;
-    padding: 0px;
-    background: repeat-x scroll 0% 0% #FFF;
-}
-
-#menu li ul {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-}
-
-#menu li ul li {
-    padding-left: 0px;
-}
-
-#menu li:hover>ul {
-    display: block;
-}
-
-
-
-
-
-a, a:hover {
-    outline: medium none;
-    text-decoration: underline;
-    color: #1293EE;
-
-}
-
-
-body {
-    font: 0.8em "trebuchet ms",arial,calibri,sans-serif;
-    color: #777;
-}
-
-
-#main, #logo, #menubar, #site_content, #footer {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-*/
-
-
-* {
+/** {
     padding: 0px;
     margin: 0px;
-}
-
-ul,ol {
-    list-style: none;
-}
-
+}*/
 #menu-horizontal li a {
-    background-color:blue ;
     color: #FFF;
     text-decoration: none;
-    /*padding: 11px 0px 10px 0px;*/
     display: block;
     font: 100% "lucida sans unicode",arial,sans-serif;
-
     height: 27px;
-    padding: 29px 18.05px 6px;
+    padding: 29px 20.4px 6px;
     text-align: center;
-    color: #FFF;
     text-transform: uppercase;
     text-decoration: none;
-    background: none repeat scroll 0% 0% darkgreen;
+    background:darkgreen;
 }
 
 #menu-horizontal>li {
@@ -124,14 +36,9 @@ ul,ol {
     margin: auto;
     text-align: center;
     width: 1200px;
-    /*    font-family: Arial;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        color: #82A83D;
-        background-color: #82A83D;
-        margin-bottom: 40px;*/
+    background-color: #82A83D;
+    padding: 0px;     
+
 }
 
 #menu-horizontal li ul {
@@ -146,6 +53,7 @@ ul,ol {
 
 #menu-horizontal li:hover>ul {
     display: block;
+     padding-left: 0px;
 }
 
 #menu-horizontal li {
@@ -156,7 +64,12 @@ ul,ol {
     list-style:none;
 }
 
+​
 .ui-datepicker-calendar {
     display: none;
 }
-​
+
+#menubar{
+    height: auto;
+    overflow-y: auto;
+}
