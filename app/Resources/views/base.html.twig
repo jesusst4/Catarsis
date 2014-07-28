@@ -17,26 +17,7 @@
     <div class="divBanner">    
         {#{% render controller('RUGCProgramacionCatarsisBundle:Contenido:mainMenu') %}#}
     </div>
-
-    <div id="menubar">
-        <ul id="menu-horizontal">
-            <li><a href="{{path('contenido_show', {'id':1})}}" title="Texto">CONOZCANOS</a></li>
-            <li><a href="" title="Texto">PROGRAMACIÓN:RADIO/TV</a>
-                <ul>  
-                    <li><a href="{{path('programacion')}}" title="Texto">MES ACTUAL</a></li>
-                    <li><a href=""> BUSCAR</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>
-                        {% endif %}
-                </ul>
-            </li>
-            <li><a href="{{path('contenido_show', {'id':2})}}" title="Texto">DEFINICIONES</a></li>
-            <li><a href="{{path('contenido_show', {'id':4})}}" title="Texto">GRUPOS NACIONALES</a></li>
-            <li><a href="{{path('contenido_show', {'id':3})}}" title="Texto">GENERACIONES CATÁRTICAS</a></li>
-            <li><a href="{{path('contenido_show', {'id':1})}}" title="Texto">NOTICIAS</a></li>
-            <li><a href="{{path('contenido_show', {'id':1})}}" title="Texto">ENLACES RECOMENDADOS</a></li>
-        </ul>
-    </div>
+    {{render_hinclude( controller('RUGCProgramacionCatarsisBundle:OpcionesMenu:index') )}}
 </head>
 
 <body>

@@ -17,3 +17,8 @@ RUGCProgramacionCatarsisBundle_programacion:
 RUGCProgramacionCatarsisBundle_contenido:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/contenido.yml"
         prefix:   /contenido
+
+RUGCProgramacionCatarsisBundle_opcionesmenu:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/opcionesmenu.yml"
+        prefix:   /opcionesmenu
+

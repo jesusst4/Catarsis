@@ -16,6 +16,10 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
+                 # field names for the username and password fields
+                username_parameter: _username
+                password_parameter: _password               
+              
             logout:       
                 path: fos_user_security_logout
                 target: /contenido/1/show

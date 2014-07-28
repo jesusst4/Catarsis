@@ -3,6 +3,7 @@
 namespace RUGC\ProgramacionCatarsisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Contenido
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ContenidoRepository")
  */
-class Contenido
-{
+class Contenido {
+
     /**
      * @var integer
      *
@@ -25,17 +26,27 @@ class Contenido
      * @var string
      *
      * @ORM\Column(name="texto", type="text")
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar el texto."
+     * )
      */
     private $texto;
 
+    /**
+     * @ORM\OneToOne(targetEntity="OpcionesMenu", inversedBy="contenido", cascade={"all"})
+     * @ORM\JoinColumn(name="opcioMenu_id", referencedColumnName="id")
+     * 
+     * @Assert\Valid
+     */
+    private $opcionMenu;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -45,8 +56,7 @@ class Contenido
      * @param string $texto
      * @return Contenido
      */
-    public function setTexto($texto)
-    {
+    public function setTexto($texto) {
         $this->texto = $texto;
 
         return $this;
@@ -57,8 +67,29 @@ class Contenido
      *
      * @return string 
      */
-    public function getTexto()
-    {
+    public function getTexto() {
         return $this->texto;
     }
+
+    /**
+     * Set opcionMenu
+     *
+     * @param string $opcionMenu
+     * @return Contenido
+     */
+    public function setOpcionMenu($opcionMenu) {
+        $this->opcionMenu = $opcionMenu;
+
+        return $this;
+    }
+
+    /**
+     * Get opcionMenu
+     *
+     * @return string 
+     */
+    public function getOpcionMenu() {
+        return $this->opcionMenu;
+    }
+
 }

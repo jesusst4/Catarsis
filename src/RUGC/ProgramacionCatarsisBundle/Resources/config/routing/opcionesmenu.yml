@@ -1,0 +1,30 @@
+opcionesmenu:
+    path:     /
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:index" }
+
+opcionesmenu_show:
+    path:     /{id}/show
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:show" }
+
+opcionesmenu_new:
+    path:     /new
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:new" }
+
+opcionesmenu_create:
+    path:     /create
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:create" }
+    requirements: { _method: post }
+
+opcionesmenu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:edit" }
+
+opcionesmenu_update:
+    path:     /{id}/update
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:update" }
+    requirements: { _method: post|put }
+
+opcionesmenu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:OpcionesMenu:delete" }
+    requirements: { _method: post|delete }
