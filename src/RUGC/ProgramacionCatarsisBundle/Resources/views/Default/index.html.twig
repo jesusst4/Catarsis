@@ -11,6 +11,8 @@
 
                     </ul>
                 </li>
+            {% elseif opcion.nombreOpcion == 'Agregar Contenido' %}
+                <li><a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
             {% else %}
                 <li><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
 

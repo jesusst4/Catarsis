@@ -79,7 +79,7 @@ class ContenidoController extends Controller {
         $entity->setOpcionMenu($opcionMenu);
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:new.html.twig', array(
                     'entity' => $entity,
-                    'opcionMenu'=>$opcionMenu,
+                    'opcionMenu' => $opcionMenu,
                     'form' => $form->createView(),
         ));
     }
@@ -209,6 +209,28 @@ class ContenidoController extends Controller {
                         ->add('submit', 'submit', array('label' => 'Delete'))
                         ->getForm()
         ;
+    }
+
+    /**
+     * Finds and displays a Contenido entity.
+     *
+     */
+    public function homeAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $idOpcion = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->consultarHome();
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByOpcionMenu($idOpcion[0]);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Contenido entity.');
+        }
+
+//        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
+                    'entity' => $entity,
+//                    'delete_form' => $deleteForm->createView(),
+        ));
     }
 
 }

@@ -28,3 +28,6 @@ contenido_delete:
     path:     /{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:delete" }
     requirements: { _method: post|delete }
+contenido_home:
+    path:     /home
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:home" }

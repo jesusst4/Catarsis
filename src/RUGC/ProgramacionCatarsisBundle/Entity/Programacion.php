@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Programacion
@@ -17,6 +18,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *    message="Ya se ingreso este tipo de programación para este día")
  */
 class Programacion {
+
+    
+    
+    public function __construct() {
+        $this->comentarios=new ArrayCollection();
+    }
+
 
     /**
      * @var integer
@@ -100,6 +108,13 @@ class Programacion {
     private $tipo;
 
 
+    
+    /**
+     * @var type 
+     * 
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="programacion")
+     */
+    private  $comentarios;
 
 
     /**
@@ -270,6 +285,12 @@ class Programacion {
     }
     
     
+    public function getComentarios() {
+        return $this->comentarios;
+        
+    }
+    
+     
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()

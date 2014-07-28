@@ -21,4 +21,8 @@ RUGCProgramacionCatarsisBundle_contenido:
 RUGCProgramacionCatarsisBundle_opcionesmenu:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/opcionesmenu.yml"
         prefix:   /opcionesmenu
+        
+RUGCProgramacionCatarsisBundle_comentario:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/comentario.yml"
+        prefix:   /comentario
 

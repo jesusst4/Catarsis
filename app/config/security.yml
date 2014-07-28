@@ -22,7 +22,7 @@ security:
               
             logout:       
                 path: fos_user_security_logout
-                target: /contenido/1/show
+                target: /contenido/home
             anonymous:    true
 
     access_control:
