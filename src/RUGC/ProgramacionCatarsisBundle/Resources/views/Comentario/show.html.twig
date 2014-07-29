@@ -2,47 +2,44 @@
 
 {% block body -%}
     <h1>Comentario</h1>
+    <form action="{{ path('comentario_update', { 'id': entity.id }) }}" method="POST">
+        <table class="record_properties">
+            <tbody>
+                <tr>
+                    <th>Correo</th>
+                    <td>{{ entity.correo }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ entity.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Comentario</th>
+                    <td>{{ entity.comentario }}</td>
+                </tr>
+                <tr>
+                    <th>Estado</th>
+                    <td>
+                        {% if entity.estado == 0%}
+                            Sin revisar
+                        {%else%}
+                            Revisado
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fecha</th>
+                    <td>{{ entity.fecha|date('d-m-Y H:i:s') }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Correo</th>
-                <td>{{ entity.correo }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ entity.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Comentario</th>
-                <td>{{ entity.comentario }}</td>
-            </tr>
-            <tr>
-                <th>Estado</th>
-                <td>{{ entity.estado }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('comentario') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+        <input type="submit"   class="publicar" value="Publicar" />
+
+    </form>
+
+    {{ form(delete_form) }}
+
 {% endblock %}

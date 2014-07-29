@@ -1,22 +1,46 @@
-<div id="menubar">
-    <ul id="menu-horizontal">
-        {%  for opcion in entities %}
-            {% if opcion.nombreOpcion == 'programación:radio/tv'%}
-                <li><a href="{{path('programacion')}}" title="Texto">{{opcion.nombreOpcion}}</a>
-                    <ul>                        
-                        <li><a href=""> BUSCAR</a></li>
-                            {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>
-                            {% endif %}
 
-                    </ul>
-                </li>
-            {% elseif opcion.nombreOpcion == 'Agregar Contenido' %}
-                <li><a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
-            {% else %}
-                <li><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
 
-            {% endif%}
-        {% endfor%}
-    </ul>
-</div>
+
+
+
+
+{#<li><a href="#">Inicio</a></li>
+<li><a href="#">Conozcanos</a></li>
+<li><a href="#">Programación: TV y Radio</a></li>
+<li><a href="#">Definiciones</a></li>
+<li><a href="#">Grupos nacionales</a></li>
+<li><a href="#">Contacto</a></li>#}
+
+
+<div id="menubar" class="s">
+    <nav>
+        <ul id="menu-horizontal">
+            {%  for opcion in entities %}
+                {% if opcion.nombreOpcion == 'programación:radio/tv'%}
+                    <li><a href="" title="Texto">{{opcion.nombreOpcion}}</a>
+                        <ul>        
+                            <li><a href="{{path('programacion')}}"> PROGRAMACION ACTUAL</a></li>
+                            <li><a href=""> BUSCAR</a></li>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href ="{{path('programacion_selectMonth')}}" title = "Texto">EDITAR</a></li>
+                                {% endif %}
+
+                        </ul>
+                    </li>
+                {% elseif opcion.nombreOpcion == 'Administar' %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="" title="Texto">{{opcion.nombreOpcion}}</a>
+                            <ul>
+                                <li><a href="{{path('contenido_new')}}">AGREGAR CONTENIDO</a></li>
+                                <li><a href="{{path('comentario')}}"> REVISAR COMENTARIOS </a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
+
+                {% endif%}
+            {% endfor%}
+        </ul>
+    </nav>
+</div> <!-- FIN DEL MENU -->
