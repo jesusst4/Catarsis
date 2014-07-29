@@ -4,6 +4,8 @@ namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use RUGC\ProgramacionCatarsisBundle\Entity\Programacion;
+use RUGC\ProgramacionCatarsisBundle\Form\ProgramacionType;
 use RUGC\ProgramacionCatarsisBundle\Entity\Comentario;
 use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
 
@@ -32,26 +34,33 @@ class ComentarioController extends Controller {
      *
      */
     public function createAction(Request $request) {
-        $entity = new Comentario();
-        $form = $this->createCreateForm($entity);
+        $comentario = new Comentario();
+        $form = $this->createCreateForm($comentario);
         $form->handleRequest($request);
 
-         $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $idProgramacion = $request->request->get("idProgramacion");
-        $entityProgramacion = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($idProgramacion);
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($idProgramacion);
         if ($form->isValid()) {
-           $entity->setProgramacion($entityProgramacion);
-            $entity->setFecha(new \DateTime("now"));
-            $entity->setEstado(0);
-            $em->persist($entity);
+            $comentario->setProgramacion($entityProgramacion);
+            $comentario->setFecha(new \DateTime("now"));
+            $comentario->setEstado(0);
+            $em->persist($comentario);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('comentario_show', array('id' => $entity->getId())));
+
+            $this->get('enviarNotificacionServices')->enviarEmail();
+
+            return $this->redirect($this->generateUrl('comentario_show', array('id' => $comentario->getId())));
         }
 
-        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:new.html.twig', array(
+
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:show.html.twig', array(
                     'entity' => $entity,
-                    'form' => $form->createView(),
+//                    'delete_form' => $deleteForm->createView(),
+//                    'path' => $path,
+                    'comentario' => $comentario,
+                    'form' => $form->createView()
         ));
     }
 
@@ -63,12 +72,17 @@ class ComentarioController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Comentario $entity) {
-        $form = $this->createForm(new ComentarioType(), $entity, array(
-            'action' => $this->generateUrl('comentario_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(new ComentarioType(), $entity);
 
         $form->add('submit', 'submit', array('label' => 'Create'));
+
+        return $form;
+    }
+
+    private function createCreateComentarioForm(Comentario $entity) {
+        $form = $this->createForm(new ComentarioType(), $entity);
+
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn')));
 
         return $form;
     }
