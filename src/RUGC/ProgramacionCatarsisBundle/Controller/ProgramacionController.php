@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RUGC\ProgramacionCatarsisBundle\Entity\Programacion;
 use RUGC\ProgramacionCatarsisBundle\Form\ProgramacionType;
+use RUGC\ProgramacionCatarsisBundle\Entity\Comentario;
+use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
 
 /**
  * Programacion controller.
@@ -93,13 +95,13 @@ class ProgramacionController extends Controller {
 
 
         $fechaPost = $request->request->get("fecha");
-        $fechaGeneral=NULL;
+        $fechaGeneral = NULL;
         if ($fechaGet) {
-            $fechaGeneral=$fechaGet;
+            $fechaGeneral = $fechaGet;
             $fecha = split(" ", $fechaGet);
             $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
-        }elseif ($fechaPost) {
-            $fechaGeneral=$fechaPost;
+        } elseif ($fechaPost) {
+            $fechaGeneral = $fechaPost;
             $fecha = split(" ", $fechaPost);
             $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
         }
@@ -135,6 +137,14 @@ class ProgramacionController extends Controller {
         return $fecha;
     }
 
+    private function createCreateComentarioForm(Comentario $entity) {
+        $form = $this->createForm(new ComentarioType(), $entity);
+
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn')));
+
+        return $form;
+    }
+
     /**
      * Finds and displays a Programacion entity.
      *
@@ -144,6 +154,9 @@ class ProgramacionController extends Controller {
         $entity = new Programacion();
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($id);
 
+        $comentario = new Comentario();
+        $comentario->setProgramacion($entity);
+        $form = $this->createCreateComentarioForm($comentario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Programacion entity.');
         }
@@ -153,7 +166,9 @@ class ProgramacionController extends Controller {
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:show.html.twig', array(
                     'entity' => $entity,
                     'delete_form' => $deleteForm->createView(),
-                    'path' => $path
+                    'path' => $path,
+                    'comentario' => $comentario,
+                    'form' => $form->createView()
         ));
     }
 

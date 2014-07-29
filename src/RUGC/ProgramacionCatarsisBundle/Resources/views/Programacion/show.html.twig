@@ -27,18 +27,31 @@
                 <td>{{ entity.descripcion }}</td>
             </tr>
             <tr>
-                <th>Imagen</th>
 
-                <td>
-                    <img src="{{asset('uploads/documents/'~entity.path)}} " width="100" height="100"  />
-                </td>
+                {% if entity.path %}
+                    <th>Imagen</th>
+
+                    <td>
+                        <img src="{{asset('uploads/documents/'~entity.path)}} " width="100" height="100"  />
+                    </td>
+                {% endif %}
+
             </tr>
             <tr>
-                <th>Enlace</th>
-                <td><a href="{{entity.enlace }}">{{ entity.enlace }}</a></td>
+                {% if entity.enlace %}
+                    <th>Enlace</th>
+                    <td><a href="{{entity.enlace }}">{{ entity.enlace }}</a></td>
+                    {% endif %}
+
             </tr>
         </tbody>
     </table>
+                    
+    <form action="{{path('comentario_create')}}" method="POST">
+        <input type="hidden" name="idProgramacion" value="{{entity.id}}"
+        {{form(form)}}  
+    </form>
+    
     <table>
         {% for comentario in entity.comentarios if comentario.estado == 1 %}
             <tr>   <td>{{comentario.nombre}}</td><td> {{comentario.comentario}}</td></tr>
@@ -46,9 +59,9 @@
         {% endfor %} 
     </table>
 
-    <a class="enlace" href="{{ path('programacion_edit', { 'id': entity.id }) }}">
-        Editar
-    </a>
+    {# <a class="enlace" href="{{ path('programacion_edit', { 'id': entity.id }) }}">
+         Editar
+     </a>#}
 
 
 {% endblock %}

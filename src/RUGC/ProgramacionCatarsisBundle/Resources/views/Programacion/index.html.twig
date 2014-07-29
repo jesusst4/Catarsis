@@ -81,6 +81,7 @@
                         {%if entity.enlace %}
                            <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{entity.enlace}}"> {{entity.enlace}}</a></label>
                         {% endif %}
+                         <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
                     </p>
                 </div>
             </center>

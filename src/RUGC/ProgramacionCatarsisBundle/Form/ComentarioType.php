@@ -17,11 +17,7 @@ class ComentarioType extends AbstractType
         $builder
             ->add('correo')
             ->add('nombre')
-            ->add('comentario')
-            ->add('estado')
-            ->add('fecha')
-            ->add('programacion')
-        ;
+            ->add('comentario','textarea');
     }
     
     /**

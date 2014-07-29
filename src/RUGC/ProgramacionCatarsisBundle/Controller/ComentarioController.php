@@ -4,7 +4,6 @@ namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use RUGC\ProgramacionCatarsisBundle\Entity\Comentario;
 use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
 
@@ -12,35 +11,38 @@ use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
  * Comentario controller.
  *
  */
-class ComentarioController extends Controller
-{
+class ComentarioController extends Controller {
 
     /**
      * Lists all Comentario entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findAll();
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Comentario entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Comentario();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
+         $em = $this->getDoctrine()->getManager();
+        $idProgramacion = $request->request->get("idProgramacion");
+        $entityProgramacion = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($idProgramacion);
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+           $entity->setProgramacion($entityProgramacion);
+            $entity->setFecha(new \DateTime("now"));
+            $entity->setEstado(0);
             $em->persist($entity);
             $em->flush();
 
@@ -48,8 +50,8 @@ class ComentarioController extends Controller
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -60,8 +62,7 @@ class ComentarioController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Comentario $entity)
-    {
+    private function createCreateForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity, array(
             'action' => $this->generateUrl('comentario_create'),
             'method' => 'POST',
@@ -76,14 +77,13 @@ class ComentarioController extends Controller
      * Displays a form to create a new Comentario entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Comentario();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -91,8 +91,7 @@ class ComentarioController extends Controller
      * Finds and displays a Comentario entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->find($id);
@@ -104,8 +103,8 @@ class ComentarioController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -113,8 +112,7 @@ class ComentarioController extends Controller
      * Displays a form to edit an existing Comentario entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->find($id);
@@ -127,21 +125,20 @@ class ComentarioController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Comentario entity.
-    *
-    * @param Comentario $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Comentario $entity)
-    {
+     * Creates a form to edit a Comentario entity.
+     *
+     * @param Comentario $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity, array(
             'action' => $this->generateUrl('comentario_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -151,12 +148,12 @@ class ComentarioController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Comentario entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->find($id);
@@ -176,17 +173,17 @@ class ComentarioController extends Controller
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Comentario entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -212,13 +209,13 @@ class ComentarioController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }
