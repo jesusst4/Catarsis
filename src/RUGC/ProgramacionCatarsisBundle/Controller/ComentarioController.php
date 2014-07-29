@@ -179,18 +179,12 @@ class ComentarioController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
-        if ($editForm->isValid()) {
+          
+            $entity->setEstado(1);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('comentario_edit', array('id' => $id)));
-        }
+            return $this->redirect($this->generateUrl('comentario'));
 
-        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
@@ -227,7 +221,7 @@ class ComentarioController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'eliminar')))
                         ->getForm()
         ;
     }

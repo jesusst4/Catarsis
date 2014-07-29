@@ -11,7 +11,7 @@ and open the template in the editor.
     padding: 0px;
     margin: 0px;
 }*/
-#menu-horizontal li a {
+/*#menu-horizontal li a {
     color: #FFF;
     text-decoration: none;
     display: block;
@@ -65,18 +65,10 @@ and open the template in the editor.
 #menu-horizontal li {
     margin:0 1px;
     margin-bottom: 1px;
-    /*width:198px;*/
+    width:198px;
     min-height:19px;
     text-align:center;
     list-style:none;
 }
 
-​
-.ui-datepicker-calendar {
-    display: none;
-}
-
-#menubar{
-    height: auto;
-    overflow-y: auto;
-}
+*/

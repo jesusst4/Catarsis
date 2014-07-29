@@ -1,49 +1,35 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Comentario list</h1>
+    <h1>Lista de Comentarios sin Revisar</h1>
 
-    <table class="records_list">
+    <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Correo</th>
                 <th>Nombre</th>
                 <th>Comentario</th>
-                <th>Estado</th>
                 <th>Fecha</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('comentario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.correo }}</td>
-                <td>{{ entity.nombre }}</td>
-                <td>{{ entity.comentario }}</td>
-                <td>{{ entity.estado }}</td>
-                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('comentario_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities  if entity.estado == 0%}
+                <tr>
+                    <td>{{ entity.correo }}</td>
+                    <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.comentario }}</td>
+                    <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</td>
+                    <td>
+                      
+                                <a href="{{ path('comentario_show', { 'id': entity.id }) }}">Revisar</a>
+                          
+                          {#  <li>
+                                <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>#}
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('comentario_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}

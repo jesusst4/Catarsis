@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Grupo Catarsis{% endblock %}</title>
@@ -12,24 +13,44 @@
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />   
+    </head>
 
-    <div class="divBanner">    
-        {#{% render controller('RUGCProgramacionCatarsisBundle:Contenido:mainMenu') %}#}
-    </div>
-    {{render_hinclude( controller('RUGCProgramacionCatarsisBundle:OpcionesMenu:index') )}}
-</head>
+    <body>
+        <div id="wrapper">
+            <div id="banner">
 
-<body>
-    <div class="contenedor">
-        {% block body %}           
-        {% endblock %}
+                {% image '@RUGCProgramacionCatarsisBundle/Resources/public/images/banner.jpg' %}
+                <img class="er s banner" src="{{ asset_url }}" alt="banner"/>
+                {% endimage %}
+            </div> <!-- FIN DEL BANNER -->
 
-        {% block footer %}
-            <div class="footer">                
-            </div>
-        {% endblock %}
-    </div>
-</body>
+            {{render_hinclude( controller('RUGCProgramacionCatarsisBundle:OpcionesMenu:index') )}}
+
+
+
+            <div id="main">        	
+                <div id="info2">
+                    {% block body %} 
+
+                    {% endblock %}
+                </div> <!-- FIN DEL INFO -->
+                <div style="clear:both;"></div>
+            </div> <!-- FIN DEL MAIN -->
+
+
+            {% block footer %}
+                <div id="footer">
+                    <div id="izq_bar">
+                        &copy; 2014 Grupo Catarsis
+                    </div>
+
+                    <div id="der_bar">
+                        Desarrollado por EPROM
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </body>
 
 </html>
