@@ -132,8 +132,8 @@ body {
     float: left;
     width: 400px;
     height: auto;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 35px;
+    margin-right: 35px;
     display: block;
     margin-bottom: 20px;
 }
@@ -141,8 +141,8 @@ body {
     width: 400px; 
     height: auto;
     float: left;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 35px;
+    margin-right: 35px;
     display: block;
     margin-bottom: 20px;
 }
@@ -152,20 +152,20 @@ body {
     float: left;
     width: 400px;
     overflow-y: auto;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 35px;
+    margin-right: 35px;
 }
 .divTV{
     width: 400px; 
     overflow-y: auto;
     float: left;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 35px;
+    margin-right: 35px;
 }
 
 .fechaProgramacion{
     height: auto;
-    width: 1200px;
+    width: 1000px;
     margin: 10px 0px 10px 0px;
 }
 
@@ -429,7 +429,7 @@ form div label{
     outline: 0;
     font-weight: inherit;
     font-style: inherit;
-    font-size: 100%;
+    /*font-size: 100%;*/
     font-family: inherit;
     vertical-align: baseline;
 }*/
@@ -487,11 +487,10 @@ body{
 }
 
 #menubar{
-    width:1000px;
-    height:auto;
-    background:url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png) repeat;
+    width:1000px;    
+    background:url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);
+    height: auto;
     overflow-x: auto;
-    margin-top:-2px;
 }
 
 
@@ -500,48 +499,18 @@ body{
                                 MENU
 ***********************************/
 
-#menu-horizontal li ul {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-}
-
-#menu-horizontal li ul li {
-    padding-left: 0px;
-    float:left;	
-
-}
-
-#menu-horizontal li ul li a{
-    float: left;
-    font-size: 14px;
-}
-
-
-#menu-horizontal li:hover>ul {
-    display: block;
-    float: left;
-    padding-left: 0px;
-}
-
-
-
-
-
-
-
-#menu-horizontal{
+.menu-horizontal{
     list-style-type:none;
     padding:0px;
     margin:0px;
 
 }
-#menu-horizontal  li {
+.prin {
     float:left;	
-    /*border-right: 1px dashed #FFFFFF;*/
+    display:block;
     transition:all 0.7s;
-    padding-right:13.2px;
-    padding-left: 13.2px;
+    padding-right:11.2px;
+    padding-left: 11.2px;
 
     margin:0 1px;
     margin-bottom: 1px;
@@ -550,11 +519,11 @@ body{
     list-style:none;
 }
 
-#menu-horizontal li:hover{
+.menu-horizontal li:hover{
     background:rgba(255,255,255,0.2);
 }
 
-#menu-horizontal li a{
+.menu-horizontal li a{
     text-decoration:none;
     color:#ffeacd;
     font-family:Verdana, Geneva, sans-serif;
@@ -564,6 +533,43 @@ body{
     line-height:58px;
     display: block;
 }
+
+.menu-horizontal li ul {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    border-radius: 10px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    /*    background-image: url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);*/
+    background-color: #82A83D;
+    /*background:rgba(255,255,255,0.2);*/
+}
+
+.menu-horizontal li ul li {
+    width:100%;
+    list-style:none;
+    display:block;
+    border-radius: 10px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+}
+
+.menu-horizontal li ul li a{
+    text-decoration:none;
+    color:#ffeacd;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:13px;
+    font-variant:small-caps;
+    text-shadow: 1px 1px 1px #000;
+    line-height:58px;
+    display: block;
+}
+
+.menu-horizontal li:hover ul{
+    display:block;
+}
+
 /***********************************
                                 MAIN
 ***********************************/
@@ -572,7 +578,7 @@ body{
     margin-top:-1px;
     background-color:#FFF;
     padding-top:15px;
-    padding-left:30px;
+    padding-bottom: 30px;
 }
 
 .titulo {
@@ -587,6 +593,7 @@ body{
     margin-right: 20px;
     color:#624a35;
     margin-bottom: 10px;
+
 }
 
 #sidebar{
@@ -598,11 +605,13 @@ body{
 }
 
 #info2{
-    width:750px;
+    width:940px;
     min-height:250px;		
     color:#624a35;
     margin-bottom: 10px;
     text-align:justify;
+    padding-left:30px;
+    padding-right:30px;
 }
 
 /***********************************

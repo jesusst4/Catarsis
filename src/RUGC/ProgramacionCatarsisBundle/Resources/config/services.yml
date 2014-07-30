@@ -1,7 +1,11 @@
 parameters:
-#    rugc_programacion_catarsis.example.class: RUGC\ProgramacionCatarsisBundle\Example
+    enviarNotificacionServices.class: RUGC\ProgramacionCatarsisBundle\Services\EnviarNotificacionServices
+
 
 services:
+    enviarNotificacionServices:
+        class: %enviarNotificacionServices.class%
+        arguments: [@mailer]
 #    rugc_programacion_catarsis.example:
 #        class: %rugc_programacion_catarsis.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
