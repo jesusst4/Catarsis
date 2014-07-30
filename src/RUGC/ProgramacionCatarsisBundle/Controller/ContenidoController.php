@@ -64,9 +64,11 @@ class ContenidoController extends Controller {
 
 
         $form = $this->createForm(new ContenidoType(), $entity);
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btn')));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'button')));
         return $form;
     }
+    
+    
 
     /**
      * Displays a form to create a new Contenido entity.
@@ -137,7 +139,7 @@ class ContenidoController extends Controller {
     private function createEditForm(Contenido $entity) {
         $form = $this->createForm(new ContenidoType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btn')));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'button')));
 
         return $form;
     }
@@ -149,7 +151,7 @@ class ContenidoController extends Controller {
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->find($id);
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByOpcionMenu($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Contenido entity.');

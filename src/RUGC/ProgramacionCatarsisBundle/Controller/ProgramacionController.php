@@ -80,7 +80,7 @@ class ProgramacionController extends Controller {
     private function createCreateForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'button')));
 
         return $form;
     }
@@ -140,7 +140,7 @@ class ProgramacionController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'button')));
 
         return $form;
     }
@@ -205,7 +205,7 @@ class ProgramacionController extends Controller {
     private function createEditForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => 'btn')));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => 'button')));
 
         return $form;
     }
@@ -298,7 +298,7 @@ class ProgramacionController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('programacion_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'btn')))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'button')))
                         ->getForm()
         ;
     }

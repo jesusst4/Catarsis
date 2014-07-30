@@ -26,9 +26,9 @@ class OpcionesMenuType extends AbstractType {
                                     ->where('om.menuPrincipal  is null')  
                                     ;
             }))
-                ->add('nombreOpcion','text',array( 'required' => false,))
-                ->add('ruta','text',array( 'required' => false,))
-                ->add('prioridad','text',array( 'required' => false,))    
+                ->add('nombreOpcion','text',array( 'required' => false,'attr' => array('class' => 'txt')))
+                ->add('ruta','text',array( 'required' => false,'attr' => array('class' => 'txt')))
+                ->add('prioridad','text',array( 'required' => false,'attr' => array('class' => 'txt')))    
         ;
     }
 

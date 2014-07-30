@@ -169,8 +169,19 @@ body {
     margin: 10px 0px 10px 0px;
 }
 
-form div { padding: 7px; }
-form div label{display: block; float: left; height: 20px; width: 150px;color: grey; font-weight: bold; font-size:14px; font-family:sans-serif;}
+form div { 
+    padding: 7px; 
+}
+form div label{
+    display: block; 
+    float: left; 
+    height: 20px;
+    width: 150px;
+    color: grey; 
+    font-weight: bold; 
+    font-size:14px;
+    font-family:sans-serif;
+}
 
 
 .table{
@@ -237,7 +248,7 @@ form div label{display: block; float: left; height: 20px; width: 150px;color: gr
     font-family: sans-serif;
     font-size: 12px;
     width: 250px;
-    height: 20px;
+    height: 23px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border:2px groove;
@@ -411,7 +422,7 @@ form div label{display: block; float: left; height: 20px; width: 150px;color: gr
                               Reset
 ***************************************************/
 
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, form, label, legend, caption, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary {
+/*html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, form, label, legend, caption, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary {
     margin: 0;
     padding: 0;
     border: 0;
@@ -421,10 +432,10 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, form, label, legen
     font-size: 100%;
     font-family: inherit;
     vertical-align: baseline;
-}
+}*/
 
 ol, ul {
-    list-style: none;
+    /*list-style: none;*/
 }
 
 
@@ -602,14 +613,15 @@ form{
     font-family:"Arial Black", Gadget, sans-serif;
 }
 
-input{	
+/*input{	
     width: 220px;
     height: 23px;
     background-color:#dbba95;
     font-family:"Arial Black", Gadget, sans-serif;
-}
+}*/
 
 .button{
+    float: right;
     width: 102px;
     height: 28px;
     -webkit-border-radius: 5px;
