@@ -7,68 +7,83 @@ and open the template in the editor.
     Created on : 09/07/2014, 11:35:25 AM
     Author     : jsoto-gvasquez
 */
-/** {
-    padding: 0px;
-    margin: 0px;
-}*/
-/*#menu-horizontal li a {
-    color: #FFF;
-    text-decoration: none;
-    display: block;
-    font: 100% "lucida sans unicode",arial,sans-serif;
-    height: 27px;
-    padding: 29px 18px 6px;
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-    background:darkgreen;
+/**********************************
+                                MENU
+***********************************/
+
+#menubar{
+    width:1000px;    
+    background:url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);
+    height: auto;
+    overflow-x: auto;
 }
 
-#menu-horizontal>li {
-    float: left;
-}
-
-#menu-horizontal li a:hover {
-    background-color: #00A6D6;
-}
-
-#menu-horizontal {
-    margin: auto;
-    text-align: center;
-    width: 1200px;
-    background-color: #82A83D;
-    padding: 0px;     
+.menu-horizontal{
+    list-style-type:none;
+    padding:0px;
+    margin:0px;
 
 }
-
-#menu-horizontal li ul {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-}
-
-#menu-horizontal li ul li {
-    padding-left: 0px;
-    
-}
-
-#menu-horizontal li ul li a{
-    background:#6d6;
-}
- 
-
-#menu-horizontal li:hover>ul {
-    display: block;
-     padding-left: 0px;
-}
-
-#menu-horizontal li {
+.prin {
+    float:left;	
+    display:block;
+    transition:all 0.7s;
+    padding-right:11.2px;
+    padding-left: 11.2px;
     margin:0 1px;
     margin-bottom: 1px;
-    width:198px;
     min-height:19px;
     text-align:center;
     list-style:none;
 }
 
-*/
+.menu-horizontal li:hover{
+    background:rgba(255,255,255,0.2);
+}
+
+.menu-horizontal li a{
+    text-decoration:none;
+    color:#ffeacd;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:14px;
+    font-variant:small-caps;
+    text-shadow: 1px 1px 1px #000;
+    line-height:58px;
+    display: block;
+}
+
+.menu-horizontal li ul {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    border-radius: 10px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    /*    background-image: url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);*/
+    background-color: #82A83D;
+    /*background:rgba(255,255,255,0.2);*/
+}
+
+.menu-horizontal li ul li {
+    width:100%;
+    list-style:none;
+    display:block;
+    border-radius: 10px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+}
+
+.menu-horizontal li ul li a{
+    text-decoration:none;
+    color:#ffeacd;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:13px;
+    font-variant:small-caps;
+    text-shadow: 1px 1px 1px #000;
+    line-height:58px;
+    display: block;
+}
+
+.menu-horizontal li:hover ul{
+    display:block;
+}

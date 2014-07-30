@@ -147,7 +147,7 @@ class EncabezadoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btn')));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btnDer')));
 
         return $form;
     }

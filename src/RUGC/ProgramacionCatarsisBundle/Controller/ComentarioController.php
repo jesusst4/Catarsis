@@ -82,7 +82,7 @@ class ComentarioController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btn')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -221,7 +221,7 @@ class ComentarioController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'eliminar')))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'btnIzq')))
                         ->getForm()
         ;
     }

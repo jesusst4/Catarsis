@@ -64,7 +64,7 @@ class ContenidoController extends Controller {
 
 
         $form = $this->createForm(new ContenidoType(), $entity);
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btnDer')));
         return $form;
     }
     
@@ -139,7 +139,7 @@ class ContenidoController extends Controller {
     private function createEditForm(Contenido $entity) {
         $form = $this->createForm(new ContenidoType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
