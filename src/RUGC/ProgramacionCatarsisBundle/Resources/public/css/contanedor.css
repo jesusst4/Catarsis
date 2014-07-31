@@ -25,7 +25,7 @@ and open the template in the editor.
     margin-bottom: 20px;
     font-size: 14px;
     font-family: sans-serif;
-    -moz-border-radius: 5px 5px 5px 5pxx;
+    -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     background-color: #ffeacd;
@@ -164,7 +164,7 @@ form div label{
     width:1000px;
     white-space:nowrap;
     font-weight: bold;
-    background:lightskyblue;
+    background:#579c84;
     padding-left:2px;
     font: caption;
     color:#ffffff;

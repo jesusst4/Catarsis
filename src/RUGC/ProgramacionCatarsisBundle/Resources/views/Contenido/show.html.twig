@@ -2,14 +2,25 @@
 
 {% block body -%}
 
-    {{ entity.texto | raw}}
+    {% if mensaje=='' %}
+        {{ entity.texto | raw}}
+
+    {% else %}
+        {{mensaje}}
+
+    {% endif %}
 
     <ul class="record_actions">
 
         {% if is_granted('ROLE_ADMIN') %}
-            <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
+
+
+            {% if mensaje=='' %}
+               <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
                 Editar Contenido
             </a>
+
+            {% endif %}
         {% endif %}
 
     </ul>
