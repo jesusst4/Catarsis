@@ -22,7 +22,6 @@ class ProgramacionController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-//        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->findAll();
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
         setlocale(LC_TIME, "es_ES@euro", "es_ES", "esp");
@@ -105,8 +104,6 @@ class ProgramacionController extends Controller {
             $fecha = split(" ", $fechaPost);
             $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
         }
-
-        echo $fechaPost . "lo que trae fecha " . $fechaGet;
 
 
         $em = $this->getDoctrine()->getManager();
