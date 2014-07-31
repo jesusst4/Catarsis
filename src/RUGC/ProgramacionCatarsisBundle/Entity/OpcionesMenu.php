@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenuRepository")
- * @UniqueEntity(fields={"prioridad"},
+ * @UniqueEntity(fields={"prioridad", "menuPrincipal"},
  *    message="Ya se asignó esta prioridad")
  * 
  */

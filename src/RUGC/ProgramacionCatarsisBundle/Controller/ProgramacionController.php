@@ -79,7 +79,7 @@ class ProgramacionController extends Controller {
     private function createCreateForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -89,9 +89,7 @@ class ProgramacionController extends Controller {
      *
      */
     public function newAction(Request $request) {
-
         $fechaGet = $request->query->get("fecha");
-
 
         $fechaPost = $request->request->get("fecha");
         $fechaGeneral = NULL;
@@ -103,12 +101,18 @@ class ProgramacionController extends Controller {
             $fechaGeneral = $fechaPost;
             $fecha = split(" ", $fechaPost);
             $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+        } else {
+            return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
+                        'mensaje' => "Ingrese la fecha"
+            ));
         }
-
-
         $em = $this->getDoctrine()->getManager();
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha1);
         $entity = new Programacion();
+
+        $date = new \DateTime($fecha1);
+
+        $entity->setFecha($date);
         $form = $this->createCreateForm($entity);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:new.html.twig', array(
@@ -137,7 +141,7 @@ class ProgramacionController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -202,7 +206,7 @@ class ProgramacionController extends Controller {
     private function createEditForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -295,13 +299,16 @@ class ProgramacionController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('programacion_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'button')))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'btnDer')))
                         ->getForm()
         ;
     }
 
     public function selectMonthAction() {
-        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig');
+//        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig');
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
+                    'mensaje' => ""
+        ));
     }
 
 }

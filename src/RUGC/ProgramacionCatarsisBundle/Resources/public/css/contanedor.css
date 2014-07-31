@@ -8,47 +8,6 @@ and open the template in the editor.
     Author     : jsoto
 */
 
-.contenedor {
-    width: 1200px;
-    height: auto;
-    margin: auto;
-}
-
-.contenedorDerecho{
-    width: 200px;
-    height: auto;
-    margin: auto;
-    float: left;
-    background-color: #5eb5e0;
-}
-
-.contenedorIzquierdo{
-    width: 800px;
-    height: auto;
-    margin: auto;
-    float: left;
-}
-
-/*p {
-    padding: 0px 0px 20px;
-    line-height: 1.7em;
-}*/
-
-#content {
-    text-align: left;
-}
-body {
-    font: 0.8em "trebuchet ms",arial,calibri,sans-serif;
-    color: #777;
-}
-
-.footer{
-    width: 1200px;
-    background-color: #6d6;
-    height: 100px;
-    float: left;
-    margin: auto;
-}
 .link{
     float: right;
     color:#069;
@@ -56,55 +15,37 @@ body {
     margin-bottom: 20px;
     font-size: 14px;
     font-family: sans-serif;
-
 }
 
-.btn{
+.btnIzq{
     float: right;
     padding: 2px 7px 2px 7px;
-    color:#FFFFFF;
     width: auto;
-    margin-top:20px;
+    margin-top:6px;
     margin-bottom: 20px;
     font-size: 14px;
     font-family: sans-serif;
-    border:2px solid darkgreen;
-    background-color: darkgreen;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #ffeacd;
 }
 
-.eliminar{
-    float: left;
-    padding: 2px 7px 2px 7px;
-    color:#FFFFFF;
-    width: auto;
-    margin-top:8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    font-family: sans-serif;
-    border:2px solid darkgreen;
-    background-color: darkgreen;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-}
-
-.publicar{
-    float: left;
-    color:#FFFFFF;
+.btnDer{
+    float: right;
     width: auto;
     margin-top:20px;
     padding: 2px 7px 2px 7px;
     margin-bottom: 20px;
-    margin-right: 50px;
+    margin-left: 50px;
     font-size: 14px;
     font-family: sans-serif;
-    border:2px solid darkgreen;
-    background-color: darkgreen;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
     text-decoration: none; 
+    border-radius: 5px 5px 5px 5px;
+    background-color: #ffeacd;
+    
 }
 
 .enlace{
@@ -121,7 +62,6 @@ body {
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
     text-decoration: none;
-
 }
 
 .textArea{
@@ -137,6 +77,7 @@ body {
     display: block;
     margin-bottom: 20px;
 }
+
 .divEncabezadoTV{
     width: 400px; 
     height: auto;
@@ -147,7 +88,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 .divRadio{
     float: left;
     width: 400px;
@@ -155,6 +95,7 @@ body {
     margin-left: 35px;
     margin-right: 35px;
 }
+
 .divTV{
     width: 400px; 
     overflow-y: auto;
@@ -172,6 +113,7 @@ body {
 form div { 
     padding: 7px; 
 }
+
 form div label{
     display: block; 
     float: left; 
@@ -182,7 +124,6 @@ form div label{
     font-size:14px;
     font-family:sans-serif;
 }
-
 
 .table{
     margin-top: 20px;
@@ -219,16 +160,14 @@ form div label{
     padding: 0.2em 0.6em;
 }
 
-
 .table thead th {
     width:1000px;
     white-space:nowrap;
     font-weight: bold;
-    background:lightskyblue;
+    background:#579c84;
     padding-left:2px;
     font: caption;
     color:#ffffff;
-    /*color: red;*/
 }
 
 .table th a {
@@ -283,8 +222,6 @@ form div label{
     border:1px solid #e5e5e5;
     font-size:12px;
     background:#fbfbfb;
-
-
     -moz-box-shadow:inset 1px 1px 2px rgba(200,200,200,0.2);
     -webkit-box-shadow:inset 1px 1px 2px rgba(200,200,200,0.2);
     box-shadow:inset 1px 1px 2px rgba(200,200,200,0.2);
@@ -362,7 +299,6 @@ form div label{
     margin-bottom: 2px;
 }
 
-
 .imagenEdit{
     margin-top: 10px;
     margin-left: 150px;
@@ -372,7 +308,6 @@ form div label{
     margin-bottom: 20px;
     background-color: lemonchiffon;
 }
-
 
 .tiulo{
     font-weight: bold;
@@ -390,61 +325,18 @@ form div label{
     display: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* CSS Document */
 
 /***************************************************
-              online solutions by marija zaric
+        online solutions by marija zaric
         template distributed by
         http://freehtml5templates.com 
-***************************************************
-
-
-***************************************************
-                              Reset
 ***************************************************/
-
-/*html, body, div, span, h1, h2, h3, h4, h5, h6, p, ol, ul, li, form, label, legend, caption, aside, details, figcaption, figure, footer,header, hgroup, menu, nav, section, summary {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
-}*/
-
-ol, ul {
-    /*list-style: none;*/
-}
-
 
 a img {border:none}
 
-
 aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {display: block}
-
 
 /***************************************************
                               Global styles
@@ -453,7 +345,6 @@ footer, header, hgroup, menu, nav, section {display: block}
 html, body {
     width:100%;
     height:100%;
-
 }
 
 body{
@@ -486,89 +377,6 @@ body{
     background-size: auto auto;
 }
 
-#menubar{
-    width:1000px;    
-    background:url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);
-    height: auto;
-    overflow-x: auto;
-}
-
-
-
-/**********************************
-                                MENU
-***********************************/
-
-.menu-horizontal{
-    list-style-type:none;
-    padding:0px;
-    margin:0px;
-
-}
-.prin {
-    float:left;	
-    display:block;
-    transition:all 0.7s;
-    padding-right:11.2px;
-    padding-left: 11.2px;
-
-    margin:0 1px;
-    margin-bottom: 1px;
-    min-height:19px;
-    text-align:center;
-    list-style:none;
-}
-
-.menu-horizontal li:hover{
-    background:rgba(255,255,255,0.2);
-}
-
-.menu-horizontal li a{
-    text-decoration:none;
-    color:#ffeacd;
-    font-family:Verdana, Geneva, sans-serif;
-    font-size:14px;
-    font-variant:small-caps;
-    text-shadow: 1px 1px 1px #000;
-    line-height:58px;
-    display: block;
-}
-
-.menu-horizontal li ul {
-    display: none;
-    position: absolute;
-    min-width: 100px;
-    border-radius: 10px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 5px 5px 5px 5px;
-    /*    background-image: url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);*/
-    background-color: #82A83D;
-    /*background:rgba(255,255,255,0.2);*/
-}
-
-.menu-horizontal li ul li {
-    width:100%;
-    list-style:none;
-    display:block;
-    border-radius: 10px;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    -moz-border-radius: 5px 5px 5px 5px;
-}
-
-.menu-horizontal li ul li a{
-    text-decoration:none;
-    color:#ffeacd;
-    font-family:Verdana, Geneva, sans-serif;
-    font-size:13px;
-    font-variant:small-caps;
-    text-shadow: 1px 1px 1px #000;
-    line-height:58px;
-    display: block;
-}
-
-.menu-horizontal li:hover ul{
-    display:block;
-}
 
 /***********************************
                                 MAIN
@@ -593,7 +401,6 @@ body{
     margin-right: 20px;
     color:#624a35;
     margin-bottom: 10px;
-
 }
 
 #sidebar{
@@ -622,25 +429,6 @@ form{
     font-family:"Arial Black", Gadget, sans-serif;
 }
 
-/*input{	
-    width: 220px;
-    height: 23px;
-    background-color:#dbba95;
-    font-family:"Arial Black", Gadget, sans-serif;
-}*/
-
-.button{
-    float: right;
-    width: 102px;
-    height: 28px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background-color: #ffeacd;
-    margin-top:15px;
-    margin-left: 100px;
-    margin-bottom: 25px;
-}
 
 /***********************************
                         FOOTER

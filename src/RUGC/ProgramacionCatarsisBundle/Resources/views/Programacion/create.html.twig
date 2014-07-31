@@ -7,8 +7,13 @@
 
     <form action="{{path('programacion_new')}}" method="POST" >
         <div class="validaciones">
-            <label> Seleccione la Fecha :</label> <input type='text' class="txt" id='txtDate' name='fecha'/>
+            <label>Mes y año :</label> 
+            {% if mensaje %}
+                <ul><li>{{mensaje}}</li></ul>
+                    {% endif %}
+            <input type='text' class="txt" id='txtDate' name='fecha' readonly=""/>
         </div>
-        <input type="submit" name="btnBuscar" class="button" value="Ir"/>
+        <input type="submit" name="btnBuscar" class="btnDer" value="Ir"/>
+
     </form>
 {% endblock %}

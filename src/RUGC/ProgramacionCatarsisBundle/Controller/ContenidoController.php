@@ -39,12 +39,11 @@ class ContenidoController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            echo 'SI es valido';
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('contenido_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('contenido_show', array('id' => $entity->getOpcionMenu()->getId())));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:new.html.twig', array(
@@ -64,11 +63,9 @@ class ContenidoController extends Controller {
 
 
         $form = $this->createForm(new ContenidoType(), $entity);
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btnDer')));
         return $form;
     }
-    
-    
 
     /**
      * Displays a form to create a new Contenido entity.
@@ -96,14 +93,15 @@ class ContenidoController extends Controller {
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByOpcionMenu($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Contenido entity.');
+            return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
+                        'entity' => $entity,
+                        'mensaje' => 'No hay contenido disponible'
+            ));
         }
-
-//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
                     'entity' => $entity,
-//                    'delete_form' => $deleteForm->createView(),
+                    'mensaje' => ''
         ));
     }
 
@@ -139,7 +137,7 @@ class ContenidoController extends Controller {
     private function createEditForm(Contenido $entity) {
         $form = $this->createForm(new ContenidoType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'button')));
+        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -162,6 +160,7 @@ class ContenidoController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('contenido_show', array('id' => $id)));
@@ -221,17 +220,21 @@ class ContenidoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $idOpcion = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->consultarHome();
-        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByOpcionMenu($idOpcion[0]);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Contenido entity.');
+        $entity = null;
+        if ($idOpcion != null) {
+            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByOpcionMenu($idOpcion[0]);
         }
 
-//        $deleteForm = $this->createDeleteForm($id);
+
+        if (!$entity) {
+            return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
+            'entity' => $entity,
+            'mensaje' => 'No hay contenido disponible'));
+        }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
                     'entity' => $entity,
-//                    'delete_form' => $deleteForm->createView(),
         ));
     }
 

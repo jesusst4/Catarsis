@@ -16,14 +16,16 @@ class OpcionesMenuType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('menuPrincipal', 'entity', array(
-                    'empty_value' => 'Seleccione una opción',
-                    'required'=>FALSE,
+                    'required'=>TRUE,
                     'class' => 'RUGCProgramacionCatarsisBundle:OpcionesMenu',
                     'query_builder' =>
                     function(OpcionesMenuRepository $er) {
                             return $er->createQueryBuilder('om')
                                     ->orderBy('om.prioridad', 'ASC')
-                                    ->where('om.menuPrincipal  is null')  
+                                    ->where('om.menuPrincipal = 1')
+                                    ->orWhere('om.menuPrincipal is null')
+                                    ->andWhere("om.nombreOpcion != 'programacion:radio/tv'")
+                                    ->andWhere("om.nombreOpcion != 'Administrar'")
                                     ;
             }))
                 ->add('nombreOpcion','text',array( 'required' => false,'attr' => array('class' => 'txt')))

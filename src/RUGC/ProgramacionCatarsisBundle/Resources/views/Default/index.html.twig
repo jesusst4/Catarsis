@@ -1,22 +1,8 @@
-
-
-
-
-
-
-{#<li><a href="#">Inicio</a></li>
-<li><a href="#">Conozcanos</a></li>
-<li><a href="#">Programación: TV y Radio</a></li>
-<li><a href="#">Definiciones</a></li>
-<li><a href="#">Grupos nacionales</a></li>
-<li><a href="#">Contacto</a></li>#}
-
-
 <div id="menubar" class="s">
     <nav>
         <ul class="menu-horizontal">
             {%  for opcion in entities %}
-                {% if opcion.nombreOpcion == 'programación:radio/tv'%}
+                {% if opcion.nombreOpcion == 'programacion:radio/tv'%}
                     <li class="prin"><a href="" title="Texto">{{opcion.nombreOpcion}}</a>
                         <ul>        
                             <li><a href="{{path('programacion')}}"> PROGRAMACION ACTUAL</a></li>
@@ -27,7 +13,7 @@
 
                         </ul>
                     </li>
-                {% elseif opcion.nombreOpcion == 'Administar' %}
+                {% elseif opcion.nombreOpcion == 'Administrar' %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="prin"><a href="" title="Texto">{{opcion.nombreOpcion}}</a>
                             <ul>
