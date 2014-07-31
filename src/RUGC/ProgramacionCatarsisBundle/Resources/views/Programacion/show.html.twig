@@ -1,63 +1,57 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Comentarios</h1>
-
-    <table class="record_properties">
-        <tbody>
-
-            <tr>
-                <th>Tipo</th>
-                <td>{{ entity.tipo }}</td>
-            </tr>
-            <tr>
-                <th>Fecha</th>
-                <td>{{ entity.fecha|date('d-m-Y') }}</td>
-            </tr>
-            <tr>
-                <th>Título</th>
-                <td>{{ entity.titulo }}</td>
-            </tr>
-            <tr>
-                <th>Obra</th>
-                <td>{{ entity.obra }}</td>
-            </tr>
-            <tr>
-                <th>Descripción</th>
-                <td>{{ entity.descripcion }}</td>
-            </tr>
-            <tr>
-
+    <div class="divTodo">
+        <div class="divProgramacionComentario">            
+            <table class="record_properties">
+                <tbody>
+                    {#<tr>
+                        <th>Tipo</th>
+                        <td>{{ entity.tipo }}</td>
+                    </tr>#}
+                <label>{{ entity.fecha|date('d-m-Y') }}</label>
                 {% if entity.path %}
-                    <th>Imagen</th>
-
-                    <td>
-                        <img src="{{asset('uploads/documents/'~entity.path)}} " width="100" height="100"  />
-                    </td>
+                    <img src="{{asset('uploads/documents/'~entity.path)}}"/>
                 {% endif %}
 
-            </tr>
-            <tr>
-                {% if entity.enlace %}
-                    <th>Enlace</th>
-                    <td><a href="{{entity.enlace }}">{{ entity.enlace }}</a></td>
-                    {% endif %}
+                <tr>
+                    <th>Título</th>
+                    <td>{{ entity.titulo }}</td>
+                </tr>
+                <tr>
+                    <th>Obra</th>
+                    <td>{{ entity.obra }}</td>
+                </tr>
+                <tr>
+                    <th>Descripción</th>
+                    <td>{{ entity.descripcion }}</td>
+                </tr>
+                <tr>
+                    {% if entity.enlace %}
+                        <th>Enlace</th>
+                        <td><a href="{{entity.enlace }}">{{ entity.enlace }}</a></td>
+                        {% endif %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-            </tr>
-        </tbody>
-    </table>
-                    
-    <form action="{{path('comentario_create')}}" method="POST">
-        <input type="hidden" name="idProgramacion" value="{{entity.id}}"
-        {{form(form)}}  
-    </form>
-    
-    <table>
+        <div class="divFormComentario">
+            <div class="validaciones">
+                <form action="{{path('comentario_create')}}" method="POST">
+                    <input type="hidden" name="idProgramacion" value="{{entity.id}}"
+                           {{form(form)}}  
+                </form>
+            </div>
+        </div>
+
+        <h1>Comentarios</h1>
         {% for comentario in entity.comentarios if comentario.estado == 1 %}
-            <tr>   <td>{{comentario.nombre}}</td><td> {{comentario.comentario}}</td></tr>
-
-        {% endfor %} 
-    </table>
-
-
+            <div class="divComentario">
+                <p>Por <label>{{comentario.nombre}}</label> el {{comentario.fecha|date('d-m-Y')}}</p>
+                {{comentario.comentario}}
+                <br>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -197,7 +197,7 @@ form div label{
     font-family: sans-serif;
     font-size: 12px;
     width: 250px;
-    height: 150px;
+    height: 75px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border:2px groove;
@@ -454,4 +454,76 @@ form{
     text-align:right;
     padding: 15px;
     font-weight:bold;
+}
+
+
+/***********************************
+                        COMENTARIOS DE PROGRAMACIÓN
+***********************************/
+
+.divTodo{
+    width: 600px;
+    margin: auto;
+    height: auto;
+    /*color: black;*/
+}
+.divComentario{
+    color: black;
+    margin: auto;
+    width: 600px;
+    border: solid #ffeed7;
+    height: auto;
+    font-size: 12px;
+    font-family: sans-serif;       
+    padding: 1px 7px 5px 7px;
+    margin-top:4px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #fff8f0;
+}
+
+.divComentario p {
+    color: black;
+}
+
+.divComentario p label {
+    font-size: 14px;
+}
+
+.divProgramacionComentario{
+    color: black;
+    margin: auto;
+    width: 600px;
+    border: solid #ffeed7;
+    height: auto;
+    font-size: 12px;
+    font-family: sans-serif;       
+    padding: 2px 7px 2px 7px;
+    margin-top:6px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #fff8f0;    
+}
+
+.divProgramacionComentario label{
+    float: right;
+}
+
+.divProgramacionComentario img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+.divFormComentario{
+    width: 600px;
+    border: solid #ffeed7;  
+    overflow-y: auto;
+    padding: 2px 7px 2px 7px;
+    margin-top:14px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
 }

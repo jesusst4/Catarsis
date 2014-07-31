@@ -35,14 +35,14 @@ class ComentarioController extends Controller {
      */
     public function createAction(Request $request) {
         $comentario = new Comentario();
-        $form = $this->createCreateForm($comentario);
+        $form = $this->createCreateComentarioForm($comentario);
         $form->handleRequest($request);
 
         $em = $this->getDoctrine()->getManager();
         $idProgramacion = $request->request->get("idProgramacion");
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($idProgramacion);
         if ($form->isValid()) {
-            $comentario->setProgramacion($entityProgramacion);
+            $comentario->setProgramacion($entity);
             $comentario->setFecha(new \DateTime("now"));
             $comentario->setEstado(0);
             $em->persist($comentario);
@@ -71,13 +71,13 @@ class ComentarioController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Comentario $entity) {
-        $form = $this->createForm(new ComentarioType(), $entity);
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
-        return $form;
-    }
+//    private function createCreateForm(Comentario $entity) {
+//        $form = $this->createForm(new ComentarioType(), $entity);
+//
+//        $form->add('submit', 'submit', array('label' => 'Create'));
+//
+//        return $form;
+//    }
 
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);

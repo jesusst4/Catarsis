@@ -3,6 +3,7 @@
 namespace RUGC\ProgramacionCatarsisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comentario
@@ -25,6 +26,10 @@ class Comentario
      * @var string
      *
      * @ORM\Column(name="correo", type="string", length=50)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar el correo electrónico."
+     * )
      */
     private $correo;
 
@@ -32,6 +37,10 @@ class Comentario
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=50)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar el nombre."
+     * )     
      */
     private $nombre;
 
@@ -39,6 +48,10 @@ class Comentario
      * @var string
      *
      * @ORM\Column(name="comentario", type="string", length=255)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar el comentario."
+     * )     
      */
     private $comentario;
 
