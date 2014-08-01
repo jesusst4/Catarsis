@@ -222,19 +222,20 @@ class ContenidoController extends Controller {
         $idOpcion = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->consultarHome();
 
         $entity = null;
-        if ($idOpcion != null) {
-            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByOpcionMenu($idOpcion[0]);
+        if ($idOpcion) {
+            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByopcionMenu($idOpcion[0]['id']);
         }
 
 
         if (!$entity) {
             return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
-            'entity' => $entity,
-            'mensaje' => 'No hay contenido disponible'));
+                        'entity' => $entity,
+                        'mensaje' => 'No hay contenido disponible'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
                     'entity' => $entity,
+                    'mensaje' => ''
         ));
     }
 

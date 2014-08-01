@@ -14,9 +14,9 @@ class ComentarioType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('correo')
-                ->add('nombre')
-                ->add('comentario', 'textarea')
+                ->add('correo','text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Correo Electrónico'))
+                ->add('nombre','text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Nombre'))
+                ->add('comentario', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false, 'label' => 'Comentario'))
                 ->add('captcha', 'captcha', array(
                     'width' => 100,
                     'height' => 50,
