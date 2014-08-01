@@ -199,7 +199,16 @@ class OpcionesMenu {
         return $this->nombreOpcion;
     }
 
-    public function getSubOpciones() {
+    public function setChildren($subMenu) {
+        $this->children[] = $subMenu;
+    }
+    
+     /**
+     * Get subMenu
+     *
+     * @return array 
+     */
+    public function getChildren() {
         return $this->children;
     }
 

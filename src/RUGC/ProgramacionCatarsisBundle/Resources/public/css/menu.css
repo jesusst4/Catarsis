@@ -52,7 +52,19 @@ and open the template in the editor.
     display: block;
 }
 
-.menu-horizontal li ul {
+/*.menu-horizontal li ul {
+    display: none;
+    position: absolute;
+    min-width: 100px;
+    border-radius: 10px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    padding-left: -11px;
+        background-image: url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);
+    background-color: #9ac3b5;
+    background:rgba(255,255,255,0.2);
+}*/
+.sub {
     display: none;
     position: absolute;
     min-width: 100px;
@@ -60,12 +72,13 @@ and open the template in the editor.
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
     /*    background-image: url(/bundles/rugcprogramacioncatarsis/images/bg_menu.png);*/
-    background-color: #82A83D;
+    background-color: #9ac3b5;
     /*background:rgba(255,255,255,0.2);*/
 }
 
 .menu-horizontal li ul li {
     width:100%;
+    /*margin-right: -11px;*/
     list-style:none;
     display:block;
     border-radius: 10px;
@@ -77,7 +90,7 @@ and open the template in the editor.
     text-decoration:none;
     color:#ffeacd;
     font-family:Verdana, Geneva, sans-serif;
-    font-size:13px;
+    font-size:10px;
     font-variant:small-caps;
     text-shadow: 1px 1px 1px #000;
     line-height:58px;
@@ -86,4 +99,6 @@ and open the template in the editor.
 
 .menu-horizontal li:hover ul{
     display:block;
+    padding-left: 3px;
+    padding-right: 3px;
 }

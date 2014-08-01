@@ -17,10 +17,6 @@ class OpcionesMenuRepository extends EntityRepository {
         return $this->getEntityManager()->createQuery('SELECT om FROM RUGCProgramacionCatarsisBundle:OpcionesMenu om WHERE om.menuPrincipal = 1 order by om.prioridad ASC')->getResult();
     }
 
-    public function consultarSubMenu() {
-
-        return $this->getEntityManager()->createQuery('SELECT om FROM RUGCProgramacionCatarsisBundle:OpcionesMenu om WHERE om.menuPrincipal IS NOT NULL')->getResult();
-    }
     
     public function consultarHome() {
         return $this->getEntityManager()->createQuery('SELECT c.id FROM RUGCProgramacionCatarsisBundle:OpcionesMenu c where c.prioridad = 1')->getResult();

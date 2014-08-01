@@ -4,7 +4,7 @@
             {%  for opcion in entities %}
                 {% if opcion.nombreOpcion == 'programacion:radio/tv'%}
                     <li class="prin"><a href="" title="Texto">{{opcion.nombreOpcion}}</a>
-                        <ul>        
+                        <ul class="sub">        
                             <li><a href="{{path('programacion')}}"> PROGRAMACION ACTUAL</a></li>
                             <li><a href=""> BUSCAR</a></li>
                                 {% if is_granted('ROLE_ADMIN') %}
@@ -16,15 +16,30 @@
                 {% elseif opcion.nombreOpcion == 'Administrar' %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="prin"><a href="" title="Texto">{{opcion.nombreOpcion}}</a>
-                            <ul>
+                            <ul class="sub">
                                 <li><a href="{{path('contenido_new')}}">AGREGAR CONTENIDO</a></li>
                                 <li><a href="{{path('comentario')}}"> REVISAR COMENTARIOS </a></li>
                             </ul>
                         </li>
                     {% endif %}
                 {% else %}
-                    <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
 
+                    {% if  opcion.children %}
+
+                        <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            <ul class="sub">
+                                {%for subOpcion in opcion.children %}
+                                    <li><a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion}}</a></li>
+                                    {%endfor%}
+
+                            </ul>
+                        </li>
+                    {%else%}
+
+                        <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
+
+
+                    {% endif %}
                 {% endif%}
             {% endfor%}
         </ul>
