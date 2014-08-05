@@ -21,8 +21,8 @@ class ContenidoType extends AbstractType {
                         'data-theme' => 'advanced',
                     ),
                     'required' => true,
-                    'label' => null
-                ));
+                    'label' => "|"
+        ));
     }
 
     /**

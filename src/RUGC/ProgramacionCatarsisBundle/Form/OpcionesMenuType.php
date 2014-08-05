@@ -29,7 +29,7 @@ class OpcionesMenuType extends AbstractType {
                                     ;
             }))
                 ->add('nombreOpcion','text',array( 'required' => false,'attr' => array('class' => 'txt')))
-                ->add('ruta','text',array( 'required' => false,'attr' => array('class' => 'txt')))
+//                ->add('ruta','text',array('read_only' => true, 'required' => false,'attr' => array('class' => 'txt')))
                 ->add('prioridad','text',array( 'required' => false,'attr' => array('class' => 'txt')))    
         ;
     }

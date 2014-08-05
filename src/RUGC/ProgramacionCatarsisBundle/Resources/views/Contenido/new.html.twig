@@ -7,11 +7,12 @@
             {{ form_start(form) }}
             {{ form_errors(form) }}
             {{form_row(form.opcionMenu.nombreOpcion)}}
-            {{form_row(form.opcionMenu.ruta)}} 
+            {#            {{form_row(form.opcionMenu.ruta)}} #}
             {{form_row(form.opcionMenu.prioridad)}}
             {{form_row(form.opcionMenu.menuPrincipal)}}
-
-            {{form_row(form.texto)}}
+            <div class="areaTexto">
+                {{form_row(form.texto)}}
+            </div>
 
             {{ form(form)}}
 

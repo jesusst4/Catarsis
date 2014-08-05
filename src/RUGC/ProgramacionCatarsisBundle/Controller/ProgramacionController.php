@@ -1,5 +1,4 @@
 <?php
-
 namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -169,6 +168,7 @@ class ProgramacionController extends Controller {
                     'delete_form' => $deleteForm->createView(),
                     'path' => $path,
                     'comentario' => $comentario,
+                    'emailError' => "",
                     'form' => $form->createView()
         ));
     }

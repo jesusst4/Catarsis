@@ -48,9 +48,7 @@ class OpcionesMenu {
      *
      * @ORM\Column(name="ruta", type="string", length=255)
      * 
-     * @Assert\NotNull(
-     *      message = "Debe ingresar la ruta."
-     * )
+   
      */
     private $ruta;
 

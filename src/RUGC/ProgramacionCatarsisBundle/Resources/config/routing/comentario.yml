@@ -6,18 +6,18 @@ comentario_show:
     path:     /{id}/show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:show" }
 
-comentario_new:
-    path:     /new
-    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:new" }
+#comentario_new:
+#    path:     /new
+#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:new" }
 
 comentario_create:
     path:     /create
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:create" }
     requirements: { _method: post }
 
-comentario_edit:
-    path:     /{id}/edit
-    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:edit" }
+#comentario_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:edit" }
 
 comentario_update:
     path:     /{id}/update

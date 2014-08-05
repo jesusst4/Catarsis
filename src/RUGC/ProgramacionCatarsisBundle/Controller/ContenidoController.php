@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RUGC\ProgramacionCatarsisBundle\Entity\Contenido;
 use RUGC\ProgramacionCatarsisBundle\Form\ContenidoType;
 use RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenu;
-use RUGC\ProgramacionCatarsisBundle\Form\OpcionesMenuType;
+//use RUGC\ProgramacionCatarsisBundle\Form\OpcionesMenuType;
 
 /**
  * Contenido controller.
@@ -19,15 +19,15 @@ class ContenidoController extends Controller {
      * Lists all Contenido entities.
      *
      */
-    public function indexAction() {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findAll();
-
-        return $this->render('RUGCProgramacionCatarsisBundle:Contenido:index.html.twig', array(
-                    'entities' => $entities,
-        ));
-    }
+//    public function indexAction() {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findAll();
+//
+//        return $this->render('RUGCProgramacionCatarsisBundle:Contenido:index.html.twig', array(
+//                    'entities' => $entities,
+//        ));
+//    }
 
     /**
      * Creates a new Contenido entity.
@@ -40,6 +40,7 @@ class ContenidoController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->getOpcionMenu()->setRuta('contenido_show');
             $em->persist($entity);
             $em->flush();
 
@@ -60,8 +61,6 @@ class ContenidoController extends Controller {
      * @return \Symfony\Component\Form\Form The form
      */
     private function createCreateForm(Contenido $entity) {
-
-
         $form = $this->createForm(new ContenidoType(), $entity);
         $form->add('submit', 'submit', array('label' => 'Guardar', 'attr' => array('class' => 'btnDer')));
         return $form;

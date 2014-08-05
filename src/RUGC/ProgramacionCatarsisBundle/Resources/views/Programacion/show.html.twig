@@ -39,13 +39,20 @@
         <div class="divFormComentario">
             <div class="validaciones">
                 <form action="{{path('comentario_create')}}" method="POST">
-                    <input type="hidden" name="idProgramacion" value="{{entity.id}}"
-                           {{form(form)}}  
+                    <input type="hidden" name="idProgramacion" value="{{entity.id}}" />
+                    {% if emailError != "" %}
+                        <ul>
+                            <li style="margin-left: 125px;">
+                                {{emailError}}
+                            </li>
+                        </ul>
+                    {% endif %}                                             
+                    {{form(form)}}  
                 </form>
             </div>
         </div>
 
-        <h1>Comentarios</h1>
+        <h1>Comentarios</h1> 
         {% for comentario in entity.comentarios if comentario.estado == 1 %}
             <div class="divComentario">
                 <p>Por <label>{{comentario.nombre}}</label> el {{comentario.fecha|date('d-m-Y')}}</p>

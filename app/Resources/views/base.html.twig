@@ -18,6 +18,17 @@
 
     <body>
         <div id="wrapper">
+
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div class="divUser">
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                </div>
+            {% endif %}
+
             <div id="banner">
 
                 {% image '@RUGCProgramacionCatarsisBundle/Resources/public/images/banner.jpg' %}
@@ -52,5 +63,4 @@
             {% endblock %}
         </div>
     </body>
-
 </html>

@@ -1,13 +1,13 @@
 <?php
-
 namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use RUGC\ProgramacionCatarsisBundle\Entity\Programacion;
-use RUGC\ProgramacionCatarsisBundle\Form\ProgramacionType;
+//use RUGC\ProgramacionCatarsisBundle\Entity\Programacion;
+//use RUGC\ProgramacionCatarsisBundle\Form\ProgramacionType;
 use RUGC\ProgramacionCatarsisBundle\Entity\Comentario;
 use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
+use RUGC\ProgramacionCatarsisBundle\Services\ValidarEmail;
 
 /**
  * Comentario controller.
@@ -37,28 +37,36 @@ class ComentarioController extends Controller {
         $comentario = new Comentario();
         $form = $this->createCreateComentarioForm($comentario);
         $form->handleRequest($request);
-
         $em = $this->getDoctrine()->getManager();
+
         $idProgramacion = $request->request->get("idProgramacion");
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->find($idProgramacion);
+
         if ($form->isValid()) {
             $comentario->setProgramacion($entity);
             $comentario->setFecha(new \DateTime("now"));
             $comentario->setEstado(0);
+
+            $validar = new ValidarEmail($comentario->getCorreo());
+            if ($validar->validate() == 0) {
+                return $this->render('RUGCProgramacionCatarsisBundle:Programacion:show.html.twig', array(
+                            'entity' => $entity,
+                            'emailError' => "Correo electrónico inválido",
+                            'comentario' => $comentario,
+                            'form' => $form->createView()
+                ));
+            }
+
             $em->persist($comentario);
             $em->flush();
-
-
             $this->get('enviarNotificacionServices')->enviarEmail();
 
-            return $this->redirect($this->generateUrl('comentario_show', array('id' => $comentario->getId())));
+            return $this->redirect($this->generateUrl('programacion'));
         }
-
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:show.html.twig', array(
                     'entity' => $entity,
-//                    'delete_form' => $deleteForm->createView(),
-//                    'path' => $path,
+                    'emailError' => "",
                     'comentario' => $comentario,
                     'form' => $form->createView()
         ));
@@ -71,14 +79,6 @@ class ComentarioController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-//    private function createCreateForm(Comentario $entity) {
-//        $form = $this->createForm(new ComentarioType(), $entity);
-//
-//        $form->add('submit', 'submit', array('label' => 'Create'));
-//
-//        return $form;
-//    }
-
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
@@ -91,15 +91,15 @@ class ComentarioController extends Controller {
      * Displays a form to create a new Comentario entity.
      *
      */
-    public function newAction() {
-        $entity = new Comentario();
-        $form = $this->createCreateForm($entity);
-
-        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:new.html.twig', array(
-                    'entity' => $entity,
-                    'form' => $form->createView(),
-        ));
-    }
+//    public function newAction() {
+//        $entity = new Comentario();
+//        $form = $this->createCreateForm($entity);
+//
+//        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:new.html.twig', array(
+//                    'entity' => $entity,
+//                    'form' => $form->createView(),
+//        ));
+//    }
 
     /**
      * Finds and displays a Comentario entity.
@@ -126,24 +126,24 @@ class ComentarioController extends Controller {
      * Displays a form to edit an existing Comentario entity.
      *
      */
-    public function editAction($id) {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Comentario entity.');
-        }
-
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:edit.html.twig', array(
-                    'entity' => $entity,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
-        ));
-    }
+//    public function editAction($id) {
+//        $em = $this->getDoctrine()->getManager();
+//
+//        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->find($id);
+//
+//        if (!$entity) {
+//            throw $this->createNotFoundException('Unable to find Comentario entity.');
+//        }
+//
+//        $editForm = $this->createEditForm($entity);
+//        $deleteForm = $this->createDeleteForm($id);
+//
+//        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:edit.html.twig', array(
+//                    'entity' => $entity,
+//                    'edit_form' => $editForm->createView(),
+//                    'delete_form' => $deleteForm->createView(),
+//        ));
+//    }
 
     /**
      * Creates a form to edit a Comentario entity.
@@ -176,15 +176,14 @@ class ComentarioController extends Controller {
             throw $this->createNotFoundException('Unable to find Comentario entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-          
-            $entity->setEstado(1);
-            $em->flush();
 
-            return $this->redirect($this->generateUrl('comentario'));
+        $entity->setEstado(1);
+        $em->flush();
 
+        return $this->redirect($this->generateUrl('comentario'));
     }
 
     /**
@@ -221,7 +220,7 @@ class ComentarioController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'btnIzq')))
+                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'btnIzq')))
                         ->getForm()
         ;
     }
