@@ -74,45 +74,24 @@ stfalcon_tinymce:
     selector: ".tinymce"
     selector: "textarea"
     theme:
-        simple:
-            language: es
-            mode: "textareas"
-            theme: "advanced"
-            theme_advanced_buttons1: "mylistbox,mysplitbutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,undo,redo,link,unlink"
-            theme_advanced_buttons2: ""
-            theme_advanced_buttons3: ""
-            theme_advanced_toolbar_location: "top"
-            theme_advanced_toolbar_align: "left"
-            theme_advanced_statusbar_location: "bottom"
-            plugins: "fullscreen"
-            theme_advanced_buttons1_add: "fullscreen"
         advanced:
                  mode : "textareas"
                  convert_urls : false
                  theme : "advanced"
                  language : "es"
-#                 plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template"
-                 theme_advanced_buttons1 : "|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect"
-                 theme_advanced_buttons2 : "image,cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,cleanup|,insertdate,inserttime,preview,|,forecolor,backcolor"
-                 theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,|,print,|,ltr,rtl,|,fullscreen"
-                 theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,||,cite,abbr,acronym,del,ins,|,visualchars,|,code"
-                 theme_advanced_toolbar_location : "external"
-                 theme_advanced_toolbar_align : "left"
-                 theme_advanced_statusbar_location : "bottom"
-                 theme_advanced_resizing : true
 
 
                  plugins:                               
                      - searchreplace visualblocks code fullscreen
-                     - advlist autolink lists link image charmap print preview anchor
+                     - advlist autolink lists link charmap print anchor
                      - searchreplace visualblocks code fullscreen
-                     - insertdatetime media table contextmenu paste imgsurfer
-                     - advlist autolink lists link image charmap print preview hr anchor pagebreak
+                     - insertdatetime table contextmenu paste imgsurfer
+                     - advlist autolink lists link charmap print preview hr anchor pagebreak
                      - searchreplace wordcount visualblocks visualchars code fullscreen
-                     - insertdatetime media nonbreaking save table contextmenu directionality  
+                     - insertdatetime nonbreaking save table contextmenu directionality  
                      - emoticons template paste textcolor 
                  
-                 toolbar1: "insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+                 toolbar1: "insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent"
                  toolbar2: "print preview media | forecolor backcolor emoticons | stfalcon | example | imgsurfer | fontselect | fontsizeselect "
                  image_advtab: true
                  theme_advanced_buttons1 : "insertfile,insertimage"
@@ -120,33 +99,7 @@ stfalcon_tinymce:
                  templates:
                      - {title: 'Test template 1', content: 'Test 1'}
                      - {title: 'Test template 2', content: 'Test 2'}
-        medium:
-            mode: "textareas"
-            theme: "advanced"
-            plugins: "table,advhr,advlink,paste,xhtmlxtras,spellchecker"
-            theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,forecolor,backcolor,|,hr,removeformat,|,sub,sup,|,spellchecker"
-            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,bullist,numlist,|,undo,redo,|,link,unlink,anchor,cleanup,code,|,tablecontrols"
-            theme_advanced_buttons3: ""
-            theme_advanced_toolbar_location: "top"
-            theme_advanced_toolbar_align: "left"
-            theme_advanced_statusbar_location: ""
-            paste_auto_cleanup_on_paste: true
-            spellchecker_languages: "+English=en,Dutch=nl"
-        bbcode:
-            mode: "none"
-            theme: "advanced"
-            plugins: "bbcode"
-            theme_advanced_buttons1: "bold,italic,underline,undo,redo,link,unlink,image,forecolor,styleselect,removeformat,cleanup,code"
-            theme_advanced_buttons2: ""
-            theme_advanced_buttons3: ""
-            theme_advanced_toolbar_location: "bottom"
-            theme_advanced_toolbar_align: "center"
-            theme_advanced_styles: "Code=codeStyle;Quote=quoteStyle"
-            entity_encoding: "raw"
-            add_unload_trigger: false
-            remove_linebreaks: false
-            inline_styles: false
-            convert_fonts_to_spans: false
+       
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
