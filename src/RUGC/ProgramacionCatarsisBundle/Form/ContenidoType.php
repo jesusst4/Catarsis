@@ -22,7 +22,7 @@ class ContenidoType extends AbstractType {
                     ),
                     'required' => true,
                     'label' => "|"
-                ));
+        ));
     }
 
     /**

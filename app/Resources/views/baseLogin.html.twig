@@ -11,10 +11,41 @@
             {% endstylesheets %}
         {% endblock %}
     </head>
+
     <body>
-         <div class="divContenedor">
-        {% block body %}
-        {% endblock %}
-         </div>
+
+
+        <div id="wrapper">
+            <div id="banner">
+                {% image '@RUGCProgramacionCatarsisBundle/Resources/public/images/banner.jpg' %}
+                <img class="er s banner" src="{{ asset_url }}" alt="banner"/>
+                {% endimage %}
+            </div> <!-- FIN DEL BANNER -->
+
+            <div id="main">        	
+                <div id="info2">
+
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div> <!-- FIN DEL INFO -->
+
+                <div style="clear:both;"></div>
+
+            </div> <!-- FIN DEL MAIN -->
+
+
+            {% block footer %}
+                <div id="footer">
+                    <div id="izq_bar">
+                        &copy; 2014 Grupo Catarsis
+                    </div>
+
+                    <div id="der_bar">
+                        Desarrollado por EPROM
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
     </body>
+
 </html>

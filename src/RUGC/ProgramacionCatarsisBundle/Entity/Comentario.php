@@ -30,6 +30,11 @@ class Comentario
      * @Assert\NotNull(
      *      message = "Debe ingresar el correo electrónico."
      * )
+     * 
+     * @Assert\Email(
+     *     message = "El correo electrónico no es válido.",
+     *     checkMX = true
+     * )
      */
     private $correo;
 

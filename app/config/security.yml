@@ -14,29 +14,38 @@ security:
         main:
             pattern: ^/
             form_login:
+                login_path: /programacion
+                use_forward: true
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-                 # field names for the username and password fields
-                username_parameter: _username
-                password_parameter: _password               
-              
+            
             logout:       
                 path: fos_user_security_logout
                 target: /contenido/home
             anonymous:    true
-
+            access_denied_url: /contenido/home
+            
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: ROLE_ADMIN }
         - { path: ^/resetting, role: IS_AUTHENTICAT}
-#        - { path: ^/reservacion/new, roles:  [ROLE_GENERAL, ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/create, roles:  [ROLE_GENERAL, ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/.*/addActividades, roles:  [ROLE_GENERAL, ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/.*/saveActividades, roles:  [ROLE_GENERAL, ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/.*/servicios, roles:  [ROLE_GENERAL, ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/.*/agregarServicios, roles:  [ROLE_GENERAL, ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/.*/edit, roles: [ROLE_GERENTE, ROLE_ADMIN] }
-#        - { path: ^/reservacion/.*/update, roles: [ROLE_GERENTE, ROLE_ADMIN] }   
-#        - { path: ^/reservacion/.*/delete, role: ROLE_ADMIN }
-#        - { path: ^/reservacion/reporte_reservaciones, role: ROLE_ADMIN }
-#        - { path: ^/reservacion/reporte_ganancias, role: ROLE_ADMIN }
+        
+        
+        - { path: ^/comentario/lista, role: ROLE_ADMIN }
+        - { path: ^/comentario/create, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/comentario/.*/show, role: ROLE_ADMIN }
+        - { path: ^/comentario/.*/update, role: ROLE_ADMIN }
+        - { path: ^/comentario/.*/delete, role: ROLE_ADMIN }
+        
+        - { path: ^/contenido/new, role: ROLE_ADMIN }        
+        - { path: ^/contenido/.*/edit, role: ROLE_ADMIN }
+        - { path: ^/contenido/.*/delete, role: ROLE_ADMIN }
+        
+        - { path: ^/encabezado/.*/edit, role: ROLE_ADMIN }
+        - { path: ^/encabezado/.*/delete, role: ROLE_ADMIN }
+        
+        - { path: ^/programacion/new, role: ROLE_ADMIN }
+        - { path: ^/programacion/.*/edit, role: ROLE_ADMIN }
+        - { path: ^/programacion/.*/delete, role: ROLE_ADMIN }
+        - { path: ^/programacion/selectMonth, role: ROLE_ADMIN }
+        - { path: ^/programacion/.*/delete_imagen, role: ROLE_ADMIN }
