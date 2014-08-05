@@ -7,6 +7,7 @@ use RUGC\ProgramacionCatarsisBundle\Entity\Programacion;
 use RUGC\ProgramacionCatarsisBundle\Form\ProgramacionType;
 use RUGC\ProgramacionCatarsisBundle\Entity\Comentario;
 use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
+use RUGC\ProgramacionCatarsisBundle\Services\FechasServices;
 
 /**
  * Programacion controller.
@@ -23,15 +24,18 @@ class ProgramacionController extends Controller {
 
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
-        setlocale(LC_TIME, "es_ES@euro", "es_ES", "esp");
-        $date = strftime('%B-%Y');
+        
+        $mes = strftime('%m');
+        $objFecha =  new FechasServices();
+        $fecha = $objFecha->obtenerNombreMes($mes);
+        
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionActual();
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
                     'entities' => $listaProgramaciones,
                     'radio' => $encabezadoRadio,
                     'tv' => $encabezadoTV,
-                    'fecha' => $date
+                    'fecha' => $fecha
         ));
     }
 
@@ -42,7 +46,9 @@ class ProgramacionController extends Controller {
     public function createAction(Request $request) {
         $t = $request->request->get("fecha");
         $fecha = split(" ", $request->request->get("fecha"));
-        $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+        
+        $objFecha =  new FechasServices();
+        $fecha1 = $objFecha-> obtenerFechaEnNumeros($fecha[0], $fecha[1]);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -92,14 +98,15 @@ class ProgramacionController extends Controller {
 
         $fechaPost = $request->request->get("fecha");
         $fechaGeneral = NULL;
+        $objFecha =  new FechasServices();
         if ($fechaGet) {
             $fechaGeneral = $fechaGet;
             $fecha = split(" ", $fechaGet);
-            $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+            $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
         } elseif ($fechaPost) {
             $fechaGeneral = $fechaPost;
             $fecha = split(" ", $fechaPost);
-            $fecha1 = $this->obtenerNumeroMes($fecha[0], $fecha[1]);
+            $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
         } else {
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
                         'mensaje' => "Ingrese la fecha"
@@ -120,21 +127,6 @@ class ProgramacionController extends Controller {
                     'programaciones' => $listaProgramaciones,
                     'fecha' => $fechaGeneral
         ));
-    }
-
-    private function obtenerNumeroMes($pMes, $pAnio) {
-        $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
-            'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
-        $fecha = "";
-
-        foreach ($meses as $key => $value) {
-            $mes = $key + 1;
-            if ($value == $pMes) {
-                $fecha = $pAnio . "-" . $mes . "-01";
-                break;
-            }
-        }
-        return $fecha;
     }
 
     private function createCreateComentarioForm(Comentario $entity) {

@@ -1,5 +1,5 @@
 comentario:
-    path:     /
+    path:     /lista
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:index" }
 
 comentario_show:

@@ -15,12 +15,12 @@ class ProgramacionRepository extends EntityRepository {
     public function programacionesXMes($fecha) {
         $mes = date("m", strtotime($fecha));
         $anio = date("Y", strtotime($fecha));
-        $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
+        $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);        
         $fechaActual = $anio . "-" . $mes . "-" . "01";
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
 
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha > :mes AND  p.fecha < :anio order by p.fecha')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio order by p.fecha')
                         ->setParameters(array(
                             'mes' => $fechaActual,
                             'anio' => $fechaFin

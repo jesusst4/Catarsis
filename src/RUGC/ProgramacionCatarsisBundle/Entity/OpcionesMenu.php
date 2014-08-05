@@ -48,7 +48,7 @@ class OpcionesMenu {
      *
      * @ORM\Column(name="ruta", type="string", length=255)
      * 
-   
+
      */
     private $ruta;
 
@@ -59,6 +59,12 @@ class OpcionesMenu {
      * 
      * @Assert\NotNull(
      *      message = "Debe ingresar la prioridad."
+     * )
+     * 
+     * @Assert\Range(
+     *      min = "1",
+     *      minMessage = "La prioridad debe ser mayor o igual a 1.",
+     *      invalidMessage = "Debe ingresar un valor numérico."
      * )
      */
     private $prioridad;
@@ -71,6 +77,7 @@ class OpcionesMenu {
     /**
      * @ORM\ManyToOne(targetEntity="OpcionesMenu",inversedBy="children")
      * @ORM\JoinColumn(name="principal_id", referencedColumnName="id")
+     *      
      */
     private $menuPrincipal;
 
@@ -200,8 +207,8 @@ class OpcionesMenu {
     public function setChildren($subMenu) {
         $this->children[] = $subMenu;
     }
-    
-     /**
+
+    /**
      * Get subMenu
      *
      * @return array 

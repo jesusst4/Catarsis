@@ -4,7 +4,7 @@
     <h1>PROGRAMACIÓN RADIO Y TELEVISION</h1>
 
     <div class="fechaProgramacion">
-        <h1>{{fecha | upper}}</h1>
+        <h2>{{fecha | upper}}</h2>
     </div>
 
     <div class="divEncabezadoRadio">
@@ -33,7 +33,6 @@
             <center>
                 <div class="programacion">
                     <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
-                    &nbsp;
                     <p>
                         <label class="tiulo">{{ entity.titulo }}</label><br>
 
@@ -65,7 +64,6 @@
             <center>
                 <div class="programacion">
                     <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
-                    &nbsp;
                     <p>
                         <label class="tiulo">{{ entity.titulo }}</label><br>
 
