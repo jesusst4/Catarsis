@@ -527,3 +527,13 @@ form{
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
 }
+
+.areaTexto{
+    height: auto;
+}
+.areaTexto div label{
+    /*display: block;*/ 
+    float: left; 
+    height: 20px;
+    width: auto;
+}
