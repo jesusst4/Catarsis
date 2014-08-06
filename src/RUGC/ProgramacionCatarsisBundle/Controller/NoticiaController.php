@@ -23,7 +23,7 @@ class NoticiaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findAll();
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findBy(array('estado'=>'1'), array('fecha' => 'DESC'));
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:index.html.twig', array(
             'entities' => $entities,
@@ -217,7 +217,7 @@ class NoticiaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('noticia_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Delete', 'attr'=>array('class'=>'btnIzq')))
             ->getForm()
         ;
     }
