@@ -31,7 +31,7 @@ class FechasServices {
         return $fecha;
     }
 
-    private function obtenerFechaEnNumeros($pMes, $pAnio) {
+    public function obtenerFechaEnNumeros($pMes, $pAnio) {        
         $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
         $fecha = "";

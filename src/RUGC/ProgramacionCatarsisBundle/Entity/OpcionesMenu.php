@@ -86,6 +86,17 @@ class OpcionesMenu {
      */
     private $children;
 
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="permiso", type="smallint")
+     * 
+     */
+    private $permiso;
+    
+    
+    
     /**
      * Get id
      *
@@ -215,6 +226,28 @@ class OpcionesMenu {
      */
     public function getChildren() {
         return $this->children;
+    }
+    
+    
+    /**
+     * Set permiso
+     *
+     * @param integer $permiso
+     * @return OpcionesMenu
+     */
+    public function setPermiso($permiso) {
+        $this->permiso = $permiso;
+
+        return $this;
+    }
+
+    /**
+     * Get permiso
+     *
+     * @return integer 
+     */
+    public function getPermiso() {
+        return $this->permiso;
     }
 
 }
