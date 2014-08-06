@@ -1,16 +1,20 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Noticia edit</h1>
+    <h1>Editar Noticia</h1>
+    <div class="validaciones">
+        {{ form_start(edit_form) }}
+        {{form_row(edit_form.titulo)}}
+        {{form_row(edit_form.autor)}} 
+        {{form_row(edit_form.estado)}}
+        {{form_row(edit_form.resumen)}}
 
-    {{ form(edit_form) }}
+        <div class="areaTexto">
+            {{form_row(edit_form.contenido)}}
+        </div>
+        {{ form(edit_form)}}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('noticia') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        {{ tinymce_init() }}
+        {{ form_end(edit_form) }}
+    </div>
 {% endblock %}

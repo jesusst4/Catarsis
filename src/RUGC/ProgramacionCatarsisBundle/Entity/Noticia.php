@@ -3,6 +3,7 @@
 namespace RUGC\ProgramacionCatarsisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Noticia
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\NoticiaRepository")
  */
-class Noticia
-{
+class Noticia {
+
     /**
      * @var integer
      *
@@ -25,6 +26,10 @@ class Noticia
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255)
+     * 
+     * @Assert\NotNull(
+     *      message = "Debe ingresar el título."
+     * )
      */
     private $titulo;
 
@@ -39,13 +44,17 @@ class Noticia
      * @var string
      *
      * @ORM\Column(name="contenido", type="text")
+     * 
+     *  @Assert\NotNull(
+     *      message = "Debe ingresar el contenido."
+     * )
      */
     private $contenido;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="autor", type="string", length=50)
+     * @ORM\Column(name="autor", type="string", length=50, nullable=true)
      */
     private $autor;
 
@@ -56,14 +65,23 @@ class Noticia
      */
     private $estado;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumen", type="string", length=255)
+     * 
+     *  @Assert\NotNull(
+     *      message = "Debe ingresar el resumen."
+     * )
+     */
+    private $resumen;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -73,8 +91,7 @@ class Noticia
      * @param string $titulo
      * @return Noticia
      */
-    public function setTitulo($titulo)
-    {
+    public function setTitulo($titulo) {
         $this->titulo = $titulo;
 
         return $this;
@@ -85,8 +102,7 @@ class Noticia
      *
      * @return string 
      */
-    public function getTitulo()
-    {
+    public function getTitulo() {
         return $this->titulo;
     }
 
@@ -96,8 +112,7 @@ class Noticia
      * @param \DateTime $fecha
      * @return Noticia
      */
-    public function setFecha($fecha)
-    {
+    public function setFecha($fecha) {
         $this->fecha = $fecha;
 
         return $this;
@@ -108,8 +123,7 @@ class Noticia
      *
      * @return \DateTime 
      */
-    public function getFecha()
-    {
+    public function getFecha() {
         return $this->fecha;
     }
 
@@ -119,8 +133,7 @@ class Noticia
      * @param string $contenido
      * @return Noticia
      */
-    public function setContenido($contenido)
-    {
+    public function setContenido($contenido) {
         $this->contenido = $contenido;
 
         return $this;
@@ -131,8 +144,7 @@ class Noticia
      *
      * @return string 
      */
-    public function getContenido()
-    {
+    public function getContenido() {
         return $this->contenido;
     }
 
@@ -142,8 +154,7 @@ class Noticia
      * @param string $autor
      * @return Noticia
      */
-    public function setAutor($autor)
-    {
+    public function setAutor($autor) {
         $this->autor = $autor;
 
         return $this;
@@ -154,8 +165,7 @@ class Noticia
      *
      * @return string 
      */
-    public function getAutor()
-    {
+    public function getAutor() {
         return $this->autor;
     }
 
@@ -165,8 +175,7 @@ class Noticia
      * @param integer $estado
      * @return Noticia
      */
-    public function setEstado($estado)
-    {
+    public function setEstado($estado) {
         $this->estado = $estado;
 
         return $this;
@@ -177,8 +186,29 @@ class Noticia
      *
      * @return integer 
      */
-    public function getEstado()
-    {
+    public function getEstado() {
         return $this->estado;
     }
+
+    /**
+     * Set resumen
+     *
+     * @param string $resumen
+     * @return Noticia
+     */
+    public function setResumen($resumen) {
+        $this->resumen = $resumen;
+
+        return $this;
+    }
+
+    /**
+     * Get resumen
+     *
+     * @return string 
+     */
+    public function getResumen() {
+        return $this->resumen;
+    }
+
 }

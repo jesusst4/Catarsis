@@ -41,6 +41,7 @@ class NoticiaController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setFecha(new \DateTime("now"));
             $em->persist($entity);
             $em->flush();
 
@@ -67,7 +68,7 @@ class NoticiaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear','attr'=>array('class'=>'btnDer')));
 
         return $form;
     }
@@ -147,7 +148,7 @@ class NoticiaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btnDer')));
 
         return $form;
     }
@@ -172,7 +173,7 @@ class NoticiaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('noticia_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('noticia'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:edit.html.twig', array(
@@ -217,7 +218,7 @@ class NoticiaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('noticia_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'btnIzq')))
             ->getForm()
         ;
     }

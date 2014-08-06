@@ -1,20 +1,48 @@
 <div id="menubar" class="s">
     <nav>
         <ul class="menu-horizontal">
+
+            <!-- FOR QUE RECORRE TODAS LAS OPCIONES DE MENÚ -->
             {%  for opcion in entities %}
+
+                <!-- SI LA OPCION TIENE SUBMENUS -->
                 {% if  opcion.children %}
+
                     {%if opcion.permiso==0 %}
+                        <li class="prin">
+                            {% if opcion.ruta == 'contenido_show' %}
 
-                        <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                                <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            {%else%}
+                                <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            {% endif %}
+
                             <ul class="sub">
-                                {%for subOpcion in opcion.children %}
-                                    {%if subOpcion.permiso==0 %}
-                                        <li><a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion | upper}}</a></li>
-                                        {% else%}
 
-                                        {%if is_granted('ROLE_ADMIN')%}
-                                            <li><a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion | upper}}</a></li>
+                                {%for subOpcion in opcion.children %}
+
+                                    {%if subOpcion.permiso==0 %}
+                                        <li>
+                                            {% if subOpcion.ruta == 'contenido_show' %}
+                                                <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion | upper}}</a>
+                                            {%else%}
+                                                <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcion | upper}}</a>
                                             {% endif %}
+
+
+                                        </li>
+                                    {% else%}
+                                        {%if is_granted('ROLE_ADMIN')%}
+                                            <li>
+                                                {% if subOpcion.ruta == 'contenido_show' %}
+                                                    <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion | upper}}</a>
+                                                {%else%}
+                                                    <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcion | upper}}</a>
+                                                {% endif %}
+
+
+                                            </li>
+                                        {% endif %}
 
                                     {% endif %}
                                 {%endfor%}
@@ -23,28 +51,56 @@
                         </li>
                     {% else%}
                         {%if is_granted('ROLE_ADMIN')%}
-                            <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            <li class="prin">
+                                {% if opcion.ruta == 'contenido_show' %}
+                                    <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                                {%else%}
+                                    <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                                {% endif %}
+
+
                                 <ul class="sub">
                                     {%for subOpcion in opcion.children %}
-
-                                        <li><a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion | upper}}</a></li>
-                                        {%endfor%}
+                                        <li>
+                                            {% if subOpcion.ruta == 'contenido_show' %}
+                                                <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcion | upper}}</a>
+                                            {%else%}
+                                                <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcion | upper}}</a>
+                                            {% endif %}
+                                        </li>
+                                    {%endfor%}
 
                                 </ul>
                             </li>
                         {%endif%}
                     {% endif %}
+
+                    <!-- SI LA OPCION NO TIENE SUBMENUS -->
                 {%else%}
                     {%if opcion.permiso==0 %}
-                        <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
-                        {%else%}
-                            {%if is_granted('ROLE_ADMIN')%}
-                            <li class="prin"><a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a></li>
+                        <li class="prin">
+                            {% if opcion.ruta == 'contenido_show' %}
+                                <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            {%else%}
+                                <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a>
                             {% endif %}
-                        {% endif%}
 
-                {% endif %}
-            {% endfor%}
+
+                        </li>
+                    {%else%}
+                        {%if is_granted('ROLE_ADMIN')%}
+                            <li class="prin">
+                               {% if opcion.ruta == 'contenido_show' %}
+                                 <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            {%else%}
+                                 <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcion}}</a>
+                            {% endif %}
+                               
+                            </li>
+                        {%endif%}
+                    {%endif%}
+                {% endif %}  <!-- FIN SI LA OPCION TIENE SUBMENUS -->
+            {% endfor%} <!-- FIN FOR QUE RECORRE TODAS LAS OPCIONES DE MENÚ -->
         </ul>
     </nav>
 </div> <!-- FIN DEL MENU -->
