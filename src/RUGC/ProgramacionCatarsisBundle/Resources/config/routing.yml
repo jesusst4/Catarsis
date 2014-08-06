@@ -25,4 +25,8 @@ RUGCProgramacionCatarsisBundle_opcionesmenu:
 RUGCProgramacionCatarsisBundle_comentario:
         resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/comentario.yml"
         prefix:   /comentario
+        
+RUGCProgramacionCatarsisBundle_noticia:
+        resource: "@RUGCProgramacionCatarsisBundle/Resources/config/routing/noticia.yml"
+        prefix:   /noticia        
 
