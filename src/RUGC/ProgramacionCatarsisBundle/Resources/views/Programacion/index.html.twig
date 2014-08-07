@@ -32,7 +32,7 @@
         {% for entity in entities  if entity.tipo== 1%}
             <center>
                 <div class="programacion">
-                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
+                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</h2>
                     <p>
                         <label class="tiulo">{{ entity.titulo }}</label><br>
 
@@ -63,7 +63,7 @@
 
             <center>
                 <div class="programacion">
-                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
+                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</h2>
                     <p>
                         <label class="tiulo">{{ entity.titulo }}</label><br>
 
@@ -86,7 +86,12 @@
 
         {% endfor %}
     </div>
-
-
-
+    <div style="clear: both"></div>
+    <form action="{{path('programacion_secuencial')}}" method="POST" >
+        <div class="divPaginacion">
+        <input type="hidden" name="fecha" value="{{fecha}}"/>
+        <input type="submit" class="enlaceIzq" value="Anterior" name="btnAnterior" />
+        <input type="submit" class="enlaceDer" value="Siguiente" name="btnSiguiente"/>
+        </div>
+    </form>
 {% endblock %}

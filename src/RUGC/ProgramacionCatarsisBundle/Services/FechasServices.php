@@ -31,7 +31,7 @@ class FechasServices {
         return $fecha;
     }
 
-    public function obtenerFechaEnNumeros($pMes, $pAnio) {        
+    public function obtenerFechaEnNumeros($pMes, $pAnio) {
         $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
         $fecha = "";
@@ -44,6 +44,16 @@ class FechasServices {
             }
         }
         return $fecha;
+    }
+
+    public function restarFecha($fecha) {
+        $nuevafecha = strtotime('-1 month', strtotime($fecha));
+        return $nuevafecha = date('Y-m-d', $nuevafecha);
+    }
+
+    public function SumarFecha($fecha) {
+       $nuevafecha = strtotime('+1 month', strtotime($fecha));
+        return $nuevafecha = date('Y-m-d', $nuevafecha);
     }
 
 }

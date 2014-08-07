@@ -1,4 +1,5 @@
 <?php
+
 namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -24,11 +25,11 @@ class ProgramacionController extends Controller {
 
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
-        
+
         $mes = strftime('%m');
-        $objFecha =  new FechasServices();
+        $objFecha = new FechasServices();
         $fecha = $objFecha->obtenerNombreMes($mes);
-        
+
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionActual();
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
@@ -46,9 +47,9 @@ class ProgramacionController extends Controller {
     public function createAction(Request $request) {
         $t = $request->request->get("fecha");
         $fecha = split(" ", $request->request->get("fecha"));
-        
-        $objFecha =  new FechasServices();
-        $fecha1 = $objFecha-> obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+
+        $objFecha = new FechasServices();
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -98,7 +99,7 @@ class ProgramacionController extends Controller {
 
         $fechaPost = $request->request->get("fecha");
         $fechaGeneral = NULL;
-        $objFecha =  new FechasServices();
+        $objFecha = new FechasServices();
         if ($fechaGet) {
             $fechaGeneral = $fechaGet;
             $fecha = split(" ", $fechaGet);
@@ -300,6 +301,33 @@ class ProgramacionController extends Controller {
 //        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig');
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
                     'mensaje' => ""
+        ));
+    }
+
+    public function programacionSecuencialAction(Request $request) {
+        $objFecha = new FechasServices();
+        $fechaPost = $request->request->get("fecha");
+        $fecha = split("-", $fechaPost);
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+        $primerDía = null;
+        if ($request->request->get("btnAnterior")) {
+            $primerDía = $objFecha->restarFecha($fecha1);
+        } else {
+            $primerDía = $objFecha->SumarFecha($fecha1);
+        }
+        $mes=split('-',$primerDía);
+        $fechaNombre = $objFecha->obtenerNombreMes($mes[1]);
+        $em = $this->getDoctrine()->getManager();
+
+        $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
+        $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionMesSecuencial($primerDía);
+
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
+                    'entities' => $listaProgramaciones,
+                    'radio' => $encabezadoRadio,
+                    'tv' => $encabezadoTV,
+                    'fecha' => $fechaNombre
         ));
     }
 

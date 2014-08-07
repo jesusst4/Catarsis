@@ -38,3 +38,8 @@ programacion_delete_imagen:
     path:     /{id}/delete_imagen
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:deleteImagen" }
     requirements: { _method: post|delete|get }
+    
+programacion_secuencial:
+    path:     /secuencial
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:programacionSecuencial" }
+    requirements: { _method: post|put }
