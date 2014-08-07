@@ -56,4 +56,14 @@ class ProgramacionRepository extends EntityRepository {
                         ))->getResult();
     }
 
+    public function programacionXArtista_Titulo($pArtista, $pObra) {
+
+        //r.codigo = :codigo or :codigo is null ) and (h.nombre like :cliente or :cliente is null)
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE (p.titulo like :titulo or :titulo is null) AND (p.obra like :obra or :obra is null ) order by p.fecha')
+                        ->setParameters(array(
+                            'titulo' => $pArtista . "%",
+                            'obra' => $pObra . "%"
+                        ))->getResult();
+    }
+
 }

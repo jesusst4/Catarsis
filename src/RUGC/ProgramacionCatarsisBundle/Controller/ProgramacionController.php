@@ -327,10 +327,27 @@ class ProgramacionController extends Controller {
         ));
     }
 
-    public function searchAction() {
-        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
-                    'mensaje' => ""
-        ));
+    public function searchAction(Request $request) {
+        $mensaje = null;
+        if ($request->request->get("btnBuscar")) {
+            $em = $this->getDoctrine()->getManager();
+            $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionXArtista_Titulo($request->request->get("txtTitulo"), $request->request->get("txtObra"));
+
+            if (count($listaProgramaciones) > 0) {
+                $mensaje = "";
+            } else {
+                $mensaje = "No se encontraron coincidencias";
+            }
+            return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
+                        'mensaje' => $mensaje,
+                        'programaciones' => $listaProgramaciones
+            ));
+        } else {
+            return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
+                        'mensaje' => " ",
+                        'programaciones' => ""
+            ));
+        }
     }
 
     public function programacionSecuencialAction(Request $request) {
@@ -344,7 +361,7 @@ class ProgramacionController extends Controller {
         } else {
             $primerDía = $objFecha->SumarFecha($fecha1);
         }
-        $mes=split('-',$primerDía);
+        $mes = split('-', $primerDía);
         $fechaNombre = $objFecha->obtenerNombreMes($mes[1]);
         $em = $this->getDoctrine()->getManager();
 

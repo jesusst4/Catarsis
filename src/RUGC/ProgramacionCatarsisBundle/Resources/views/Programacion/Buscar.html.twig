@@ -1,5 +1,43 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+    <form method="POST" action="{{path("programacion_search")}}">
+        <label>Título/Artista de Programación: </label>
+        <input class="txt" type="text" name="txtTitulo" />
+        <label>Nombre de la Obra: </label>
+        <input class="txt" type="text" name="txtObra" />
+        <input class="btnDer" type="submit" name="btnBuscar" value="Buscar"/>
+        {% if mensaje == "" %}
+            <table class="records_list table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Título</th>
+                        <th>Obra</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+
+                    {% for programacion in programaciones %}
+                        <tr>
+                            <td>{% if programacion.fecha %}{{ programacion.fecha|date('d-m-Y') }}{% endif %}</td>
+                            <td>{{ programacion.titulo }}</td>
+                            <td>{{ programacion.obra }}</td>
+                            <td>{{ programacion.descripcion }}</td>
+                            <td>
+                                <a href="{{ path('programacion_edit', { 'id': programacion.fecha|date('Y-m-d') }) }}">Ver Programación</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {%else%}
+            <div class="mensaje">
+                <p>{{mensaje}}</p>
+            </div>
+        {% endif%}
+    </form>
 {% endblock %}

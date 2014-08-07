@@ -47,7 +47,6 @@ programacion_searchMonth:
 programacion_search:
     path:     /search
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:search" }
-    requirements: { _method: post }  
     
 programacion_secuencial:
     path:     /secuencial
