@@ -621,7 +621,7 @@ form{
     font-family: sans-serif;
 }*/
 
-.enlaceNoticias{
+.enlaceIzq{
     float: left;
     color:#603813;
     width: auto;
@@ -667,4 +667,26 @@ form{
     margin: auto;
     text-align: center; 
     color: red;
+}
+
+.enlaceDer{
+    float: right;
+    color:#603813;
+    width: auto;
+    margin-top:20px;
+    padding: 2px 7px 2px 7px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: sans-serif;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    text-decoration: none; 
+    border-radius: 5px 5px 5px 5px;
+    background-color: #ffeacd;
+}
+
+.divPaginacion{
+    width: 800px;
+   height: 50px;
+   margin: auto;
 }

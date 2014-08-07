@@ -333,4 +333,31 @@ class ProgramacionController extends Controller {
         ));
     }
 
+    public function programacionSecuencialAction(Request $request) {
+        $objFecha = new FechasServices();
+        $fechaPost = $request->request->get("fecha");
+        $fecha = split("-", $fechaPost);
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+        $primerDía = null;
+        if ($request->request->get("btnAnterior")) {
+            $primerDía = $objFecha->restarFecha($fecha1);
+        } else {
+            $primerDía = $objFecha->SumarFecha($fecha1);
+        }
+        $mes=split('-',$primerDía);
+        $fechaNombre = $objFecha->obtenerNombreMes($mes[1]);
+        $em = $this->getDoctrine()->getManager();
+
+        $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
+        $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionMesSecuencial($primerDía);
+
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
+                    'entities' => $listaProgramaciones,
+                    'radio' => $encabezadoRadio,
+                    'tv' => $encabezadoTV,
+                    'fecha' => $fechaNombre
+        ));
+    }
+
 }
