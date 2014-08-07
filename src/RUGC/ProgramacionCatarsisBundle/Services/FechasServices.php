@@ -31,6 +31,23 @@ class FechasServices {
         return $fecha;
     }
 
+    public function obtenerNombreMesSeleccionado($fecha) {
+        $fechaS = split("-", $fecha);
+        $pMes = $fechaS[1];
+        $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+            'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $fecha = "";
+        $anio = $fechaS[0];
+        foreach ($meses as $key => $value) {
+            $mes = $key + 1;
+            if ($mes == $pMes) {
+                $fecha = $value . "-" . $anio;
+                break;
+            }
+        }
+        return $fecha;
+    }
+
     public function obtenerFechaEnNumeros($pMes, $pAnio) {
         $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
@@ -52,8 +69,12 @@ class FechasServices {
     }
 
     public function SumarFecha($fecha) {
-       $nuevafecha = strtotime('+1 month', strtotime($fecha));
+        $nuevafecha = strtotime('+1 month', strtotime($fecha));
         return $nuevafecha = date('Y-m-d', $nuevafecha);
+    }
+
+    public function obtenerPrimerDia($fecha) {
+        
     }
 
 }

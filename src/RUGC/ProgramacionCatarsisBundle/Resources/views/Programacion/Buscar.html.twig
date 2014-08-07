@@ -1,11 +1,24 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <form method="POST" action="{{path("programacion_search")}}">
-        <label>Título/Artista de Programación: </label>
-        <input class="txt" type="text" name="txtTitulo" />
+    <script type="text/javascript" >
+        function validar() {
+            var titulo = $('#txtTitulo').val();
+            var obra = $('#txtObra').val();
+            if (titulo === "" && obra === "") {
+                $('#error').text("Debe ingresar algún criterio de búsqueda");
+                return  false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+    <form method="POST" action="{{path("programacion_search")}}" onsubmit="return validar()">
+        <label>Título/Artista: </label>
+        <input class="txt" type="text" name="txtTitulo" id="txtTitulo" value="{{titulo}}"/>
         <label>Nombre de la Obra: </label>
-        <input class="txt" type="text" name="txtObra" />
+        <input class="txt" type="text" name="txtObra" id="txtObra" value="{{obra}}" />
         <input class="btnDer" type="submit" name="btnBuscar" value="Buscar"/>
         {% if mensaje == "" %}
             <table class="records_list table">
@@ -28,7 +41,7 @@
                             <td>{{ programacion.obra }}</td>
                             <td>{{ programacion.descripcion }}</td>
                             <td>
-                                <a href="{{ path('programacion_edit', { 'id': programacion.fecha|date('Y-m-d') }) }}">Ver Programación</a>
+                                <a href="{{ path('programacion_seleccionada', { 'fecha': programacion.fecha|date('Y-m-d') }) }}">Ver Programación</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -36,6 +49,9 @@
             </table>
         {%else%}
             <div class="mensaje">
+                <div class="validaciones"> 
+                    <ul><li id="error"></li></ul> 
+                </div>
                 <p>{{mensaje}}</p>
             </div>
         {% endif%}

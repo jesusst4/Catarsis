@@ -52,3 +52,7 @@ programacion_secuencial:
     path:     /secuencial
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:programacionSecuencial" }
     requirements: { _method: post|put }
+
+programacion_seleccionada:
+    path:     /{fecha}/programacionSelect
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:programacionSelect" }

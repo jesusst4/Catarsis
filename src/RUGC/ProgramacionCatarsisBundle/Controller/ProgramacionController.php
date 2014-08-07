@@ -340,11 +340,15 @@ class ProgramacionController extends Controller {
             }
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
                         'mensaje' => $mensaje,
+                        'titulo' => $request->request->get("txtTitulo"),
+                        'obra' => $request->request->get("txtObra"),
                         'programaciones' => $listaProgramaciones
             ));
         } else {
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
                         'mensaje' => " ",
+                        'titulo' => '',
+                        'obra' => '',
                         'programaciones' => ""
             ));
         }
@@ -375,6 +379,46 @@ class ProgramacionController extends Controller {
                     'tv' => $encabezadoTV,
                     'fecha' => $fechaNombre
         ));
+    }
+
+    public function programacionSelectAction(Request $request, $fecha) {
+        $em = $this->getDoctrine()->getManager();
+        $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
+        $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
+
+        $objFecha = new FechasServices();
+        $fechaString = $objFecha->obtenerNombreMesSeleccionado($fecha);
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha);
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
+                    'entities' => $listaProgramaciones,
+                    'radio' => $encabezadoRadio,
+                    'tv' => $encabezadoTV,
+                    'fecha' => $fechaString
+        ));
+
+//        $objFecha = new FechasServices();
+//        $fechaPost = $request->request->get("fecha");
+//        $fecha = split("-", $fechaPost);
+//        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+//        $primerDía = null;
+//        if ($request->request->get("btnAnterior")) {
+//            $primerDía = $objFecha->restarFecha($fecha1);
+//        } else {
+//            $primerDía = $objFecha->SumarFecha($fecha1);
+//        }
+//        $mes = split('-', $primerDía);
+//        $fechaNombre = $objFecha->obtenerNombreMes($mes[1]);
+//
+//        $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
+//        $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
+//        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionMesSecuencial($primerDía);
+//
+//        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
+//                    'entities' => $listaProgramaciones,
+//                    'radio' => $encabezadoRadio,
+//                    'tv' => $encabezadoTV,
+//                    'fecha' => $fechaNombre
+//        ));
     }
 
 }
