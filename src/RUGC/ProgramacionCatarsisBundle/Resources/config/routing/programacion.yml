@@ -38,3 +38,13 @@ programacion_delete_imagen:
     path:     /{id}/delete_imagen
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:deleteImagen" }
     requirements: { _method: post|delete|get }
+
+programacion_searchMonth:
+    path:     /searchMonth
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:searchMonth" }
+    requirements: { _method: post }
+    
+programacion_search:
+    path:     /search
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:search" }
+    requirements: { _method: post }    

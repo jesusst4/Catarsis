@@ -18,6 +18,7 @@ and open the template in the editor.
 }
 
 .btnIzq{
+    cursor: pointer;
     float: right;
     padding: 2px 7px 2px 7px;
     width: auto;
@@ -32,6 +33,7 @@ and open the template in the editor.
 }
 
 .btnDer{
+    cursor: pointer;
     float: right;
     width: auto;
     margin-top:20px;
@@ -613,11 +615,11 @@ form{
     width: 800px;
 }
 
-.divNoticia a{
+/*.divNoticia a{
     float: right;
     font-size: 12px;
     font-family: sans-serif;
-}
+}*/
 
 .enlaceNoticias{
     float: left;
@@ -633,4 +635,36 @@ form{
     text-decoration: none; 
     border-radius: 5px 5px 5px 5px;
     background-color: #ffeacd;
+}
+
+/***********************************
+                        PROGRAMACIÓN
+***********************************/
+
+.divBusqueda{
+    width: 800px;
+    float: right;
+    overflow-y: auto;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.btnBuscar
+{
+    cursor: pointer;
+    background: url(/bundles/rugcprogramacioncatarsis/images/search.gif) no-repeat scroll 0 0 transparent;     
+    float: right;
+    width: auto;
+    padding: 3px 10px 3px 10px;
+    margin-top: 6px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px; 
+    border-radius: 5px 5px 5px 5px;
+}
+
+.mensaje{
+    width: 800px;
+    margin: auto;
+    text-align: center; 
+    color: red;
 }

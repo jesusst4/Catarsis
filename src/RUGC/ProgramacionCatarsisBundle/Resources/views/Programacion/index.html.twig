@@ -1,6 +1,16 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}    
+{% block body -%}  
+
+    <div class="divBusqueda">
+        <form action="{{path('programacion_searchMonth')}}" method="POST" >
+            <input type="submit" name="btnBuscar" class="btnBuscar" value=""/>
+            <div class="validaciones"> 
+                <input type='text' class="txt" id='txtDate' name='fecha' readonly="" placeholder="Buscar programación por mes específico"/>
+            </div>
+        </form>
+    </div>
+
     <h1>PROGRAMACIÓN RADIO Y TELEVISION</h1>
 
     <div class="fechaProgramacion">
@@ -8,15 +18,13 @@
     </div>
 
     <div class="divEncabezadoRadio">
-        <p> {{ radio.texto | raw}}</p>
+        <p> {{ radio.texto | trans | raw}}</p>
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': radio.id }) }}">
                 Editar Contenido Radio
             </a>
         {% endif %}
     </div>
-
-
 
     <div class="divEncabezadoTV">
         <p>{{ tv.texto | raw}}</p>
@@ -28,65 +36,64 @@
     </div>
     <div style="clear: both"></div>
 
-    <div class="divRadio">
-        {% for entity in entities  if entity.tipo== 1%}
-            <center>
-                <div class="programacion">
-                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
-                    <p>
-                        <label class="tiulo">{{ entity.titulo }}</label><br>
+    {% if entities %}
+        <div class="divRadio">
+            {% for entity in entities  if entity.tipo== 1%}
+                <center>
+                    <div class="programacion">
+                        <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
+                        <p>
+                            <label class="tiulo">{{ entity.titulo }}</label><br>
 
-                        {%if entity.obra%}
-                            <label  class="obra" >"{{ entity.obra }}"</label><br>
-                        {% endif %}
-                        <label class="descripcion">
-                            {{ entity.descripcion }}
-                        </label><br>
-                        {%if entity.path %}
-                            <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
-                        {% endif%}
-                        {%if entity.enlace %}
-                            <br> <label class="descripcion"><a href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a></label>
+                            {%if entity.obra%}
+                                <label  class="obra" >"{{ entity.obra }}"</label><br>
                             {% endif %}
-                        <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
+                            <label class="descripcion">
+                                {{ entity.descripcion }}
+                            </label><br>
+                            {%if entity.path %}
+                                <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
+                            {% endif%}
+                            {%if entity.enlace %}
+                                <br> <label class="descripcion"><a href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a></label>
+                                {% endif %}
+                            <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
+                        </p>
+                    </div>
+                </center>
+            {% endfor %}
+        </div>
+        <div class="divTV">
 
+            {% for entity in entities  if entity.tipo== 2%}
+                <center>
+                    <div class="programacion">
+                        <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
+                        <p>
+                            <label class="tiulo">{{ entity.titulo }}</label><br>
 
-                    </p>
-                </div>
-            </center>
-
-        {% endfor %}
-    </div>
-    <div class="divTV">
-
-        {% for entity in entities  if entity.tipo== 2%}
-
-            <center>
-                <div class="programacion">
-                    <h2>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</h2>
-                    <p>
-                        <label class="tiulo">{{ entity.titulo }}</label><br>
-
-                        {%if entity.obra%}
-                            <label  class="obra" >"{{ entity.obra }}"</label><br>
-                        {% endif %}
-                        <label class="descripcion">
-                            {{ entity.descripcion }}
-                        </label><br>
-                        {%if entity.path %}
-                            <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
-                        {% endif%}
-                        {%if entity.enlace %}
-                            <br> <label class="descripcion"> <a href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a></label>
+                            {%if entity.obra%}
+                                <label  class="obra" >"{{ entity.obra }}"</label><br>
                             {% endif %}
-                        <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
-                    </p>
-                </div>
-            </center>
-
-        {% endfor %}
-    </div>
-
-
+                            <label class="descripcion">
+                                {{ entity.descripcion }}
+                            </label><br>
+                            {%if entity.path %}
+                                <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
+                            {% endif%}
+                            {%if entity.enlace %}
+                                <br> <label class="descripcion"> <a href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a></label>
+                                {% endif %}
+                            <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
+                        </p>
+                    </div>
+                </center>
+            {% endfor %}
+        </div>
+    {% else %}                
+        <div class="mensaje">
+            <p>No hay programación disponible para este mes</p>
+        </div>
+    {% endif %}
 
 {% endblock %}

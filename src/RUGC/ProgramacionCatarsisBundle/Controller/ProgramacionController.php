@@ -1,4 +1,5 @@
 <?php
+
 namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -24,11 +25,11 @@ class ProgramacionController extends Controller {
 
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
-        
+
         $mes = strftime('%m');
-        $objFecha =  new FechasServices();
+        $objFecha = new FechasServices();
         $fecha = $objFecha->obtenerNombreMes($mes);
-        
+
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionActual();
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
@@ -46,9 +47,9 @@ class ProgramacionController extends Controller {
     public function createAction(Request $request) {
         $t = $request->request->get("fecha");
         $fecha = split(" ", $request->request->get("fecha"));
-        
-        $objFecha =  new FechasServices();
-        $fecha1 = $objFecha-> obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+
+        $objFecha = new FechasServices();
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -98,7 +99,7 @@ class ProgramacionController extends Controller {
 
         $fechaPost = $request->request->get("fecha");
         $fechaGeneral = NULL;
-        $objFecha =  new FechasServices();
+        $objFecha = new FechasServices();
         if ($fechaGet) {
             $fechaGeneral = $fechaGet;
             $fecha = split(" ", $fechaGet);
@@ -297,7 +298,36 @@ class ProgramacionController extends Controller {
     }
 
     public function selectMonthAction() {
-//        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig');
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
+                    'mensaje' => ""
+        ));
+    }
+
+    public function searchMonthAction(Request $request) {
+        $fecha = split(" ", $request->request->get("fecha"));
+
+        $objFecha = new FechasServices();
+        $fecNumerica = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+        $numMes = split("-", $fecNumerica);
+        $entity = new Programacion();
+        $form = $this->createCreateForm($entity);
+        $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
+        $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecNumerica);
+
+        $nomMes = $objFecha->obtenerNombreMes($numMes[1]);
+        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
+                    'entities' => $listaProgramaciones,
+                    'radio' => $encabezadoRadio,
+                    'tv' => $encabezadoTV,
+                    'fecha' => $nomMes
+        ));
+    }
+
+    public function searchAction() {
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
                     'mensaje' => ""
         ));
