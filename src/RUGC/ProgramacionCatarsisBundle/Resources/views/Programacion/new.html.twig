@@ -1,7 +1,8 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
-    <h1> Crear Programación {{fecha}}</h1>
+    <h1>{{ "form.Titulo.titulo_Crear_Programacion"|trans }} {{fecha}}</h1>
     <form action="{{ path('programacion_create')}}" method="POST" {{form_enctype(form)}}>
 
         <div class="validaciones">
@@ -13,12 +14,12 @@
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Fecha</th>
-                <th>Título</th>
-                <th>Obra</th>
-                <th>Descripción</th>
+                <th>{{'form.Programacion.fecha'|trans}}</th>
+                <th>{{'form.Programacion.titulo'|trans}}</th>
+                <th>{{'form.Programacion.obra'|trans}}</th>
+                <th>{{'form.Programacion.descripcion'|trans}}</th>
 
-                <th>Acciones</th>
+                <th>{{'form.tabla_accion'|trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -29,8 +30,8 @@
                     <td>{{ programacion.obra }}</td>
                     <td>{{ programacion.descripcion }}</td>
                     <td>
-                        <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}">Eliminar</a>
-                        <a href="{{ path('programacion_edit', { 'id': programacion.id }) }}">Editar</a>
+                        <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}">{{'form.submit_eliminar'|trans}}</a>
+                        <a href="{{ path('programacion_edit', { 'id': programacion.id }) }}">{{'form.submit_editar'|trans}}</a>
                     </td>
                 </tr>
             {% endfor %}

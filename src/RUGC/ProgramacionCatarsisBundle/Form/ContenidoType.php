@@ -30,7 +30,8 @@ class ContenidoType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Contenido'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Contenido',
+            'translation_domain' => 'RUGCProgramacionCatarsisBundle'
         ));
     }
 

@@ -14,9 +14,9 @@ class ComentarioType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('correo', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Correo Electrónico'))
-                ->add('nombre', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'Nombre'))
-                ->add('comentario', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false, 'label' => 'Comentario'))
+                ->add('correo', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'form.Comentario.correo'))
+                ->add('nombre', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'form.Comentario.nombre'))
+                ->add('comentario', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false, 'label' => 'form.Comentario.comentario'))
                 ->add('captcha', 'captcha', array(
                     'required' => false,
                     'width' => 100,
@@ -34,7 +34,9 @@ class ComentarioType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Comentario'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Comentario',
+            'translation_domain' => 'RUGCProgramacionCatarsisBundle'
+            
         ));
     }
 

@@ -16,6 +16,7 @@ class OpcionesMenuType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('menuPrincipal', 'entity', array(
+                    'label' => 'form.Menu.menuPrincipal',
                     'required'=>TRUE,
                     'class' => 'RUGCProgramacionCatarsisBundle:OpcionesMenu',
                     'query_builder' =>
@@ -28,9 +29,9 @@ class OpcionesMenuType extends AbstractType {
                                     ->andWhere("om.nombreOpcion != 'Administrar'")
                                     ;
             }))
-                ->add('nombreOpcion','text',array( 'required' => false,'attr' => array('class' => 'txt')))
+                ->add('nombreOpcion','text',array('label' => 'form.Menu.nombreOpcion', 'required' => false,'attr' => array('class' => 'txt')))
 //                ->add('ruta','text',array('read_only' => true, 'required' => false,'attr' => array('class' => 'txt')))
-                ->add('prioridad','text',array( 'required' => false,'attr' => array('class' => 'txt')))    
+                ->add('prioridad','text',array('label' => 'form.Menu.prioridad', 'required' => false,'attr' => array('class' => 'txt')))    
         ;
     }
 
@@ -39,7 +40,8 @@ class OpcionesMenuType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenu'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenu',
+            'translation_domain' => 'RUGCProgramacionCatarsisBundle'
         ));
     }
 

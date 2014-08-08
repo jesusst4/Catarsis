@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+
 {% block body -%}
     <script type="text/javascript" >
         function validar() {
@@ -14,21 +16,24 @@
             }
         }
     </script>
+    
+    <h1>{{ "form.Titulo.titulo_Busqueda_Programacion"|trans }}</h1>
+    
     <form method="POST" action="{{path("programacion_search")}}" onsubmit="return validar()">
-        <label>Título/Artista: </label>
+        <label>{{'form.Programacion.titulo'|trans}} </label>
         <input class="txt" type="text" name="txtTitulo" id="txtTitulo" value="{{titulo}}"/>
-        <label>Nombre de la Obra: </label>
+        <label>{{'form.Programacion.obra'|trans}} </label>
         <input class="txt" type="text" name="txtObra" id="txtObra" value="{{obra}}" />
-        <input class="btnDer" type="submit" name="btnBuscar" value="Buscar"/>
+        <input class="btnDer" type="submit" name="btnBuscar" value="{{'form.submit_buscar'|trans}}"/>
         {% if mensaje == "" %}
             <table class="records_list table">
                 <thead>
                     <tr>
-                        <th>Fecha</th>
-                        <th>Título</th>
-                        <th>Obra</th>
-                        <th>Descripción</th>
-                        <th>Acciones</th>
+                        <th>{{'form.Programacion.fecha'|trans}}</th>
+                        <th>{{'form.Programacion.titulo'|trans}}</th>
+                        <th>{{'form.Programacion.obra'|trans}}</th>
+                        <th>{{'form.Programacion.descripcion'|trans}}</th>
+                        <th>{{'form.tabla_accion'|trans}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +46,7 @@
                             <td>{{ programacion.obra }}</td>
                             <td>{{ programacion.descripcion }}</td>
                             <td>
-                                <a href="{{ path('programacion_seleccionada', { 'fecha': programacion.fecha|date('Y-m-d') }) }}">Ver Programación</a>
+                                <a href="{{ path('programacion_seleccionada', { 'fecha': programacion.fecha|date('Y-m-d') }) }}">{{'form.submit_ver_programacion'|trans}}</a>
                             </td>
                         </tr>
                     {% endfor %}

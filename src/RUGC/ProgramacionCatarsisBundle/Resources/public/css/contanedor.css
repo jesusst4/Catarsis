@@ -120,11 +120,12 @@ form div label{
     display: block; 
     float: left; 
     height: 20px;
-    width: 150px;
+    width: 155px;
     color: grey; 
     font-weight: bold; 
     font-size:14px;
     font-family:sans-serif;
+    margin-left: 5px;
 }
 
 .table{
@@ -310,6 +311,12 @@ form div label{
 .programacion{
     margin-bottom: 20px;
     background-color: #FFF8F0;
+}
+
+.programacion a {
+    margin-left: 300px;
+    font-size: 12px;
+    font-family: sans-serif;
 }
 
 .tiulo{
@@ -642,7 +649,7 @@ form{
 ***********************************/
 
 .divBusqueda{
-    width: 800px;
+    width: 950px;
     float: right;
     overflow-y: auto;
     text-align: right;

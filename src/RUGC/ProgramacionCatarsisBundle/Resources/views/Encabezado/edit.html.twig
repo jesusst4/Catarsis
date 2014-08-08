@@ -1,6 +1,8 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+    <h1>{{ "form.Titulo.titulo_Editar_Contenido"|trans }}</h1>
     {{ form(edit_form) }}
 
     {{ tinymce_init() }}

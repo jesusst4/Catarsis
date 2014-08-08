@@ -78,7 +78,7 @@ stfalcon_tinymce:
                  mode : "textareas"
                  convert_urls : false
                  theme : "advanced"
-                 language : "es"
+                 language : %locale%
 
 
                  plugins:                               

@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
-
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 {% block body -%}
 
     {% if mensaje=='' %}
@@ -17,7 +17,7 @@
 
             {% if mensaje=='' %}
                <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
-                Editar Contenido
+                   {{ 'form.submit_editar_contenido'|trans}}
             </a>
 
             {% endif %}

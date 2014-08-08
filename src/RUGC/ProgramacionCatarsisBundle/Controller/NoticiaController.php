@@ -68,7 +68,7 @@ class NoticiaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Crear','attr'=>array('class'=>'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_crear','translation_domain' => 'RUGCProgramacionCatarsisBundle','attr'=>array('class'=>'btnDer')));
 
         return $form;
     }
@@ -148,7 +148,7 @@ class NoticiaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_guardar_contenido','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr'=>array('class'=>'btnDer')));
 
         return $form;
     }
@@ -218,7 +218,7 @@ class NoticiaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('noticia_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'btnIzq')))
+            ->add('submit', 'submit', array('label' => 'form.submit_eliminar','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr'=>array('class'=>'btnIzq')))
             ->getForm()
         ;
     }

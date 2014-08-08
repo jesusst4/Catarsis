@@ -85,7 +85,7 @@ class ProgramacionController extends Controller {
     private function createCreateForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -133,7 +133,7 @@ class ProgramacionController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle','attr' => array('class' => 'btnDer')));
 
         return $form;
     }

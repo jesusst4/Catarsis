@@ -1,8 +1,9 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
     <form action="{{path('programacion_update',{'id':entity.id})}}" method="POST"  {{ form_enctype(edit_form) }} >
-        <h1>Editar Programación</h1>
+         <h1>{{ "form.Titulo.titulo_Editar_Programacion"|trans }}</h1>
 
         <div class="validaciones">
             {{form_row(edit_form.tipo)}}

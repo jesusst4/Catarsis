@@ -1,8 +1,9 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
-    <h1>Editar contenido de Conozcanos</h1>
-
+    <h1>{{ "form.Titulo.titulo_Editar_Contenido"|trans }}</h1>
+    
     <form action="{{path('contenido_update',{'id':entity.opcionMenu.id})}}" method="POST">
         <div class="validaciones">
             {{ form_start(edit_form) }}

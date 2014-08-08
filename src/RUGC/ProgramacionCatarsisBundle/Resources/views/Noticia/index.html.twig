@@ -1,9 +1,9 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
     <div class="divTodo">
-
-        <h1>Noticias</h1>
+        <h1>{{ "form.Titulo.titulo_Noticia"|trans }}</h1>
 
         {% for entity in entities %}
             <div class="divNoticiaResumen">
@@ -16,7 +16,7 @@
                     {{ entity.resumen }}...
                 </div>
 
-                <a href="{{ path('noticia_show', { 'id': entity.id }) }}">Ver más</a>
+                    <a href="{{ path('noticia_show', { 'id': entity.id }) }}">{{'form.submit_ver_mas'|trans}}</a>
             </div>
         {% endfor %}
     </div>

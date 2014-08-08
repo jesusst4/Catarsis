@@ -1,7 +1,8 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
-    <h1>Editar Noticia</h1>
+    <h1>{{ "form.Titulo.titulo_Editar_Noticia"|trans }}</h1>
     <div class="validaciones">
         {{ form_start(edit_form) }}
         {{form_row(edit_form.titulo)}}

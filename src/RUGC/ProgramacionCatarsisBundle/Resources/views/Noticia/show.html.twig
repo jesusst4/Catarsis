@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
-
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 {% block body -%}
 
     <div class="divNoticia">
@@ -8,10 +8,10 @@
         {{ entity.contenido | raw }}                
 
     </div>
-    <a  href="{{ path('noticia') }}"><input class="enlaceIzq" type="button" value="Ver todas las noticias"/></a>
+    <a  href="{{ path('noticia') }}"><input class="enlaceIzq" type="button" value="{{'form.submit_noticias'|trans}}"/></a>
 
     {%if is_granted('ROLE_ADMIN')%}
-        <a href="{{ path('noticia_edit', { 'id': entity.id }) }}"><input class="btnDer" type="button" value="Editar"/></a>
+        <a href="{{ path('noticia_edit', { 'id': entity.id }) }}"><input class="btnDer" type="button" value="{{'form.submit_editar'|trans}}"/></a>
 
         {{ form(delete_form) }}
     {% endif %}

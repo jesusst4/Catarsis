@@ -1,0 +1,64 @@
+# Form field labels
+form:
+    Comentario:
+        correo: "Email"
+        nombre: "Name"
+        comentario: "Comment"
+        estado: "Condition"
+        fecha: "Date"
+        
+        
+    Noticia:
+        resumen: "Abstract"
+        titulo: "Title"
+        autor: "Author"
+        estado: "Condition"
+    
+    Menu:
+        prioridad: "Priority"
+        menuPrincipal: "Main Menu"
+        nombreOpcion: "Name Opccion"
+        
+    Programacion:
+        fecha: "Date"
+        tipo: "Type Programming"
+        titulo: "Artist or Title"
+        obra: "Title of Play"
+        descripcion: "Description"
+        imagen: "Image"
+        enlace: "Link"
+        
+    Titulo:
+        titulo_Programacion: "Radio and Television Programming"
+        titulo_Busqueda_Programacion: "Programming Search"
+        titulo_Seleccionar_Mes_Programacion: "Select the Month and Year"
+        titulo_Crear_Programacion: "Create Programming to "
+        titulo_Editar_Programacion: "Edit Programming to "
+        
+        titulo_Noticia: "News"
+        titulo_Crear_Noticia: "Create New"
+        titulo_Editar_Noticia: "Edit New"
+        
+        titulo_Listar_Comentario: "List Comments"
+        titulo_Mostrar_Comentario: "Show Comment"
+        
+        titulo_Crear_Contenido: "Create Content"
+        titulo_Editar_Contenido: "Edit Content"
+        
+    tabla_accion: "Actions"
+    submit_editar: "Edit"
+    submit_eliminar: "Delete"
+    submit_crear: "Create"
+    submit_buscar: "Search"
+    submit_publicar: "Publish"
+    submit_anterior: "Previous"
+    submit_siguiente: "Next"
+    submit_noticias: "News List"
+    submit_ver_programacion: "View Programing"
+    submit_ver_comentarios: "View Comments"
+    submit_editar_contenido: "Edit Content"
+    placeholder_buscar: "Programming search specific month"
+    submit_guardar_contenido: "Save"
+    label_mes_anio: "Month and Year"
+    submit_ir: "Go"
+    submit_ver_mas: "View more"

@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+
 {% block body -%}  
     <script type="text/javascript" >
         function validar() {
@@ -20,12 +22,12 @@
             <input type ="submit" name="btnBuscar" class="btnBuscar" value=""/>
             <div class="validaciones"> 
                 <ul><li id="error"></li></ul>
-                <input type='text' class="txt" id='txtDate' name='fecha' readonly="" placeholder="Buscar programación por mes específico"/>
+                <input type='text' class="txt" id='txtDate' name='fecha' readonly="" placeholder="{{'form.placeholder_buscar'|trans}}"/>
             </div>
         </form>
     </div>
 
-    <h1>PROGRAMACIÓN RADIO Y TELEVISION</h1>
+        <h1>{{ "form.Titulo.titulo_Programacion"|trans | upper}}</h1>
 
     <div class="fechaProgramacion">
         <h2>{{fecha | upper}}</h2>
@@ -35,7 +37,7 @@
         <p> {{ radio.texto | trans | raw}}</p>
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': radio.id }) }}">
-                Editar Contenido Radio
+                {{'form.submit_editar_contenido'|trans}}
             </a>
         {% endif %}
     </div>
@@ -44,7 +46,7 @@
         <p>{{ tv.texto | raw}}</p>
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': tv.id }) }}">
-                Editar Contenido TV
+               {{'form.submit_editar_contenido'|trans}}
             </a>
         {% endif %}
     </div>
@@ -71,7 +73,7 @@
                             {%if entity.enlace %}
                                 <br> <label class="descripcion"><a href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a></label>
                                 {% endif %}
-                            <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
+                            <br> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> {{'form.submit_ver_comentarios'|trans}}</a>
                         </p>
                     </div>
                 </center>
@@ -98,7 +100,7 @@
                             {%if entity.enlace %}
                                 <br> <label class="descripcion"> <a href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a></label>
                                 {% endif %}
-                            <br> <label class="descripcion"> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> Ver comentarios</a></label>
+                            <br> <a style="word-wrap: break-word;" href="{{ path('programacion_show', { 'id': entity.id }) }}"> {{'form.submit_ver_comentarios'|trans}}</a>
                         </p>
                     </div>
                 </center>
@@ -114,8 +116,8 @@
     <form action="{{path('programacion_secuencial')}}" method="POST" >
         <div class="divPaginacion">
             <input type="hidden" name="fecha" value="{{fecha}}"/>
-            <input type="submit" class="enlaceIzq" value="Anterior" name="btnAnterior" />
-            <input type="submit" class="enlaceDer" value="Siguiente" name="btnSiguiente"/>
+            <input type="submit" class="enlaceIzq" value="{{'form.submit_anterior'|trans}}" name="btnAnterior" />
+            <input type="submit" class="enlaceDer" value="{{'form.submit_siguiente'|trans}}" name="btnSiguiente"/>
         </div>
     </form>
 {% endblock %}

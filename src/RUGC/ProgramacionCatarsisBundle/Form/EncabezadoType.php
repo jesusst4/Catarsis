@@ -16,6 +16,7 @@ class EncabezadoType extends AbstractType {
         $builder
                 ->add('texto')
                 ->add('texto', 'textarea', array(
+                    'label'=> false,
                     'attr' => array(
                         'class' => 'tinymce textArea',
                         'data-theme' => 'advanced' // Skip it if you want to use default theme
@@ -29,7 +30,8 @@ class EncabezadoType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Encabezado'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Encabezado',
+            'translation_domain' => 'RUGCProgramacionCatarsisBundle'
         ));
     }
 

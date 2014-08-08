@@ -14,7 +14,7 @@ class NoticiaType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('titulo', 'text', array('attr' => array('class' => 'txt'), 'required' => false))
+                ->add('titulo', 'text', array('label'=>'form.Noticia.titulo','attr' => array('class' => 'txt'), 'required' => false))
                 ->add('contenido', 'textarea', array(
                     'attr' => array(
                         'class' => 'tinymce textArea',
@@ -23,11 +23,12 @@ class NoticiaType extends AbstractType {
                     'required' => true,
                     'label' => "|"
                 ))
-                ->add('autor', 'text', array('attr' => array('class' => 'txt'), 'required' => false))
+                ->add('autor', 'text', array('label'=>'form.Noticia.autor','attr' => array('class' => 'txt'), 'required' => false))
                 ->add('estado', 'choice', array(
+                    'label'=>'form.Noticia.estado',
                     'choices' => array('1' => 'Publicar', '0' => 'No publicar'),
                     'attr' => array('class' => 'txt')))
-                ->add('resumen', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false))
+                ->add('resumen', 'textarea', array('label'=>'form.Noticia.resumen', 'attr' => array('class' => 'txtArea'), 'required' => false))
         ;
     }
 
@@ -36,7 +37,8 @@ class NoticiaType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Noticia'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Noticia',
+            'translation_domain' => 'RUGCProgramacionCatarsisBundle'
         ));
     }
 

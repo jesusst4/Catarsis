@@ -1,24 +1,26 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
-    <h1>Comentario</h1>
+    <h1>{{ "form.Titulo.titulo_Mostrar_Comentario"|trans }}</h1>
+    
     <form action="{{ path('comentario_update', { 'id': entity.id }) }}" method="POST">
         <table class="record_properties">
             <tbody>
                 <tr>
-                    <th>Correo</th>
+                    <th>{{'form.Comentario.correo'|trans}}</th>
                     <td>{{ entity.correo }}</td>
                 </tr>
                 <tr>
-                    <th>Nombre</th>
+                    <th>{{'form.Comentario.nombre'|trans}}</th>
                     <td>{{ entity.nombre }}</td>
                 </tr>
                 <tr>
-                    <th>Comentario</th>
+                    <th>{{'form.Comentario.comentario'|trans}}</th>
                     <td>{{ entity.comentario }}</td>
                 </tr>
                 <tr>
-                    <th>Estado</th>
+                    <th>{{'form.Comentario.estado'|trans}}</th>
                     <td>
                         {% if entity.estado == 0%}
                             Sin revisar
@@ -28,7 +30,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Fecha</th>
+                    <th>{{'form.Comentario.fecha'|trans}}</th>
                     <td>{{ entity.fecha|date('d-m-Y H:i:s') }}</td>
                 </tr>
             </tbody>
