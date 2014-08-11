@@ -7,11 +7,11 @@
     <table class="records_list table">
         <thead>
             <tr>
-                <th>Correo</th>
-                <th>Nombre</th>
-                <th>Comentario</th>
-                <th>Fecha</th>
-                <th>Acciones</th>
+                <th>{{'form.Comentario.correo'|trans}}</th>
+                <th>{{'form.Comentario.nombre'|trans}}</th>
+                <th>{{'form.Comentario.comentario'|trans}}</th>
+                <th>{{'form.Comentario.fecha'|trans}}</th>
+                <th>{{'form.tabla_accion'|trans}}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +23,7 @@
                     <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</td>
                     <td>
                       
-                                <a href="{{ path('comentario_show', { 'id': entity.id }) }}">Revisar</a>
+                        <a href="{{ path('comentario_show', { 'id': entity.id }) }}">{{'form.submit_revisar'|trans}}</a>
                           
                           {#  <li>
                                 <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>

@@ -1,10 +1,65 @@
 # Form field labels
 form:
-    group_name: "Nombre de grupo:"
-    username: "Nombre de usuario:"
-    resumen: "Email:"
-    current_password: "Contraseña actual:"
-    password: "Contraseña:"
-    password_confirmation: "Repita la contraseña:"
-    new_password: "Nueva contraseña:"
-    new_password_confirmation: "Repita la contraseña:"
+    Comentario:
+        correo: "Correo"
+        nombre: "Nombre"
+        comentario: "Comentario"
+        estado: "Estado"
+        fecha: "Fecha"
+        
+        
+    Noticia:
+        resumen: "Resumen"
+        titulo: "Título"
+        autor: "Autor"
+        estado: "Estado"
+    
+    Menu:
+        prioridad: "Prioridad"
+        menuPrincipal: "Menú Principal"
+        nombreOpcion: "Nombre Opcción"
+        
+    Programacion:
+        fecha: "Fecha"
+        tipo: "Tipo Programación"
+        titulo: "Artista ó Título"
+        obra: "Título de la Obra"
+        descripcion: "Descripción"
+        imagen: "Imagen"
+        enlace: "Enlace"
+        
+    Titulo:
+        titulo_Programacion: "Programación Radio y Television"
+        titulo_Busqueda_Programacion: "Buscar Programación"
+        titulo_Seleccionar_Mes_Programacion: "Seleccione el Mes y Año"
+        titulo_Crear_Programacion: "Crear Programación de "
+        titulo_Editar_Programacion: "Editar Programación de "
+        
+        titulo_Noticia: "Noticias"
+        titulo_Crear_Noticia: "Crear Noticias"
+        titulo_Editar_Noticia: "Editar Noticias"
+        
+        titulo_Listar_Comentario: "Lista de Comentarios"
+        titulo_Mostrar_Comentario: "Mostar  Comentario"
+        
+        titulo_Crear_Contenido: "Crear Contenido"
+        titulo_Editar_Contenido: "Editar Contenido"
+        
+    tabla_accion: "Actions"
+    submit_editar: "Edit"
+    submit_eliminar: "Delete"
+    submit_crear: "Create"
+    submit_buscar: "Search"
+    submit_publicar: "Publish"
+    submit_anterior: "Previous"
+    submit_siguiente: "Next"
+    submit_noticias: "News List"
+    submit_ver_programacion: "View Programing"
+    submit_ver_comentarios: "View Comments"
+    submit_editar_contenido: "Edit Content"
+    placeholder_buscar: "Programming search specific month"
+    submit_guardar_contenido: "Save"
+    label_mes_anio: "Month and Year"
+    submit_ir: "Go"
+    submit_ver_mas: "View more"
+    submit_revisar: "Check"
