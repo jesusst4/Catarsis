@@ -1,0 +1,38 @@
+enlace:
+    path:     /{_locale}/
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:index" }
+    requirements:
+        _locale: en|es
+
+enlace_show:
+    path:     /{_locale}/{id}/show
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:show" }
+    requirements:
+        _locale: en|es
+
+enlace_new:
+    path:     /{_locale}/new
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:new" }
+    requirements:
+        _locale: en|es
+
+enlace_create:
+    path:     /{_locale}/create
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:create" }
+    requirements: { _method: post , _locale: en|es }
+
+enlace_edit:
+    path:     /{_locale}/{id}/edit
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:edit" }
+    requirements:
+        _locale: en|es
+
+enlace_update:
+    path:     /{_locale}/{id}/update
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:update" }
+    requirements: { _method: post|put, _locale: en|es }
+
+enlace_delete:
+    path:     /{_locale}/{id}/delete
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Enlace:delete" }
+    requirements: { _method: post|delete, _locale: en|es }
