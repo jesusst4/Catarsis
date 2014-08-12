@@ -1,58 +1,72 @@
 programacion:
-    path:     /
+    path:     /{_locale}/
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:index" }
+    requirements:
+        _locale: en|es
 
 programacion_show:
-    path:     /{id}/show
+    path:     /{_locale}/{id}/show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:show" }
 
 programacion_new:
-    path:     /new
+    path:     /{_locale}/new
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:new" }
+    requirements:
+        _locale: en|es
 
 programacion_create:
-    path:     /create
+    path:     /{_locale}/create
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:create" }
-    requirements: { _method: post }
+    requirements: { _method: post, _locale: en|es  }
 
 programacion_edit:
-    path:     /{id}/edit
+    path:     /{_locale}/{id}/edit
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:edit" }
+    requirements:
+        _locale: en|es
 
 programacion_update:
-    path:     /{id}/update
+    path:     /{_locale}/{id}/update
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:update" }
-    requirements: { _method: post|put }
+    requirements: {_method: post|put, _locale: en|es }
 
 programacion_delete:
-    path:     /{id}/delete
+    path:     /{_locale}/{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:delete" }
-    requirements: { _method: post|delete|get }
+    requirements: { _method: post|delete|get, _locale: en|es  }
     
 programacion_selectMonth:
-    path:     /selectMonth
+    path:     /{_locale}/selectMonth
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:selectMonth" }
-    requirements: { _method: post|delete|get }    
+    requirements: { _method: post|delete|get, _locale: en|es  }    
 
 programacion_delete_imagen:
-    path:     /{id}/delete_imagen
+    path:     /{_locale}/{id}/delete_imagen
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:deleteImagen" }
-    requirements: { _method: post|delete|get }
+    requirements: { _method: post|delete|get, _locale: en|es  }
 
 programacion_searchMonth:
-    path:     /searchMonth
+    path:     /{_locale}/searchMonth
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:searchMonth" }
-    requirements: { _method: post }
+    requirements: { _method: post, _locale: en|es  }
     
 programacion_search:
-    path:     /search
+    path:     /{_locale}/search
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:search" }
+    requirements:
+        _locale: en|es
     
 programacion_secuencial:
-    path:     /secuencial
+    path:     /{_locale}/secuencial
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:programacionSecuencial" }
-    requirements: { _method: post|put }
+    requirements: { _method: post|put, _locale: en|es  }
 
 programacion_seleccionada:
-    path:     /{fecha}/programacionSelect
+    path:     /{_locale}/{fecha}/programacionSelect
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:programacionSelect" }
+    requirements:
+        _locale: en|es
+    
+programacion_locale:
+    path: /locale
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:establecerLocale" }

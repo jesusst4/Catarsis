@@ -4,7 +4,7 @@
 {% block body -%}
     <h1>{{ "form.Titulo.titulo_Crear_Programacion"|trans }} {{fecha}}</h1>
     <form action="{{ path('programacion_create')}}" method="POST" {{form_enctype(form)}}>
-
+        <input   type="hidden" id="idioma" value="{{ app.request.locale }}" />
         <div class="validaciones">
             <input type="hidden" name="fecha" value="{{fecha}}"/>
             {{ form(form) }}

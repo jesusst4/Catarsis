@@ -1,0 +1,34 @@
+validaciones:
+    correo:
+        not_null: Enter the email
+        invalid: "Email is invalid."
+    nombre:
+        not_null: Enter the name.
+    comentario:
+        not_null: Enter the comment.
+    captcha:
+        invalid: Enter the code correctly.
+    texto:
+        not_null: Enter the content.
+    titulo:
+        not_null: Enter the title.
+    contenido: 
+        not_null: Enter the content.
+    resumen:
+        not_nul: Enter the abstract.
+    prioridad:
+        not_null: Enter the priority.
+        unique: Already assigned priority.
+        minimo: The priority must be greater than or equal to 1.
+        numeric: Enter a numeric value.
+    nombre_opcion:
+        not_null: Enter option name.
+    tipo: 
+        unique: Already this type of programming was entered for this day.
+        not_null: Select type of programming.
+    fecha:
+        not_null: Enter the date.
+    descripcion:
+        not_null: Enter the description.
+    
+      

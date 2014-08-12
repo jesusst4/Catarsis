@@ -1,0 +1,34 @@
+validaciones:
+    correo:
+        not_null: "Debe ingresar el correo electrónico."
+        invalid: "El correo electrónico no es válido."
+    nombre:
+        not_null: Debe ingresar el nombre.
+    comentario:
+        not_null: Debe ingresar el comentario.
+    captcha:
+        invalid: Ingrese correctamente el código.
+    texto:
+        not_null: Debe ingresar un contenido.
+    titulo:
+        not_null: Debe ingresar el título.
+    contenido: 
+        not_null: Debe ingresar el contenido.
+    resumen:
+        not_nul: Debe ingresar el resumen.
+    prioridad:
+        not_null: Debe ingresar la prioridad.
+        unique: Ya se asignó esta prioridad.
+        minimo: La prioridad debe ser mayor o igual a 1.
+        numeric: Debe ingresar un valor numérico.
+    nombre_opcion:
+        not_null: Debe ingresar el nombre de opción.
+    tipo: 
+        unique: Ya se ingreso este tipo de programación para este día.
+        not_null: Debe seleccionar el tipo de programación.
+    fecha:
+        not_null: Debe ingresar la fecha.
+    descripcion:
+        not_null: Debe ingresar la descripción.
+    
+      

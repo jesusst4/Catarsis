@@ -6,19 +6,24 @@
     <script type="text/javascript" >
         function validar() {
             var mes = $('#txtDate').val();
-             if (mes === "") {
-                 $('#error').text("Ingrese el mes");
+            var idioma=$('#idioma').val();
+            if (mes === "") {
+                if(idioma==='es'){
+                    $('#error').text("Ingrese el mes");
+                }else{
+                    $('#error').text("Enter the date");
+                }
+                
                 return  false;
             }
-            else{
+            else {
                 return true;
             }
-{#            break;#}
-        }
+        {#            break;#}
+            }
     </script>
     <div class="divBusqueda">
         <form action="{{path('programacion_searchMonth')}}" method="POST"    onsubmit="return validar()">
-
             <input type ="submit" name="btnBuscar" class="btnBuscar" value=""/>
             <div class="validaciones"> 
                 <ul><li id="error"></li></ul>
@@ -26,8 +31,8 @@
             </div>
         </form>
     </div>
-
-        <h1>{{ "form.Titulo.titulo_Programacion"|trans | upper}}</h1>
+    <input   type="hidden" id="idioma" value="{{ app.request.locale }}" />
+    <h1>{{ "form.Titulo.titulo_Programacion"|trans | upper}}</h1>
 
     <div class="fechaProgramacion">
         <h2>{{fecha | upper}}</h2>
@@ -46,7 +51,7 @@
         <p>{{ tv.texto | raw}}</p>
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': tv.id }) }}">
-               {{'form.submit_editar_contenido'|trans}}
+                {{'form.submit_editar_contenido'|trans}}
             </a>
         {% endif %}
     </div>
@@ -108,7 +113,7 @@
         </div>
     {% else %}                
         <div class="mensaje">
-            <p>No hay programación disponible para este mes</p>
+            <p>{{'form.programacion.not'|trans}}</p>
         </div>
     {% endif %}
 

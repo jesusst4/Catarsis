@@ -21,12 +21,12 @@ class NoticiaType extends AbstractType {
                         'data-theme' => 'advanced',
                     ),
                     'required' => true,
-                    'label' => "|"
+                    'label' => false
                 ))
                 ->add('autor', 'text', array('label'=>'form.Noticia.autor','attr' => array('class' => 'txt'), 'required' => false))
                 ->add('estado', 'choice', array(
                     'label'=>'form.Noticia.estado',
-                    'choices' => array('1' => 'Publicar', '0' => 'No publicar'),
+                    'choices' => array('1' => 'form.submit_publicar', '0' => 'form.submit_despublicar'),
                     'attr' => array('class' => 'txt')))
                 ->add('resumen', 'textarea', array('label'=>'form.Noticia.resumen', 'attr' => array('class' => 'txtArea'), 'required' => false))
         ;

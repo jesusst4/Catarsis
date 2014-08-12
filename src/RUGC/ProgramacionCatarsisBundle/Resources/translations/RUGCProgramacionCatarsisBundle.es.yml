@@ -6,8 +6,7 @@ form:
         comentario: "Comentario"
         estado: "Estado"
         fecha: "Fecha"
-        
-        
+                
     Noticia:
         resumen: "Resumen"
         titulo: "Título"
@@ -45,21 +44,31 @@ form:
         titulo_Crear_Contenido: "Crear Contenido"
         titulo_Editar_Contenido: "Editar Contenido"
         
-    tabla_accion: "Actions"
-    submit_editar: "Edit"
-    submit_eliminar: "Delete"
-    submit_crear: "Create"
-    submit_buscar: "Search"
-    submit_publicar: "Publish"
-    submit_anterior: "Previous"
-    submit_siguiente: "Next"
-    submit_noticias: "News List"
-    submit_ver_programacion: "View Programing"
-    submit_ver_comentarios: "View Comments"
-    submit_editar_contenido: "Edit Content"
-    placeholder_buscar: "Programming search specific month"
-    submit_guardar_contenido: "Save"
-    label_mes_anio: "Month and Year"
-    submit_ir: "Go"
-    submit_ver_mas: "View more"
-    submit_revisar: "Check"
+        titulo_Comentarios: "Comentarios"
+        
+    tabla_accion: "Acciones"
+    submit_editar: "Editar"
+    submit_eliminar: "Eliminar"
+    submit_crear: "Crear"
+    submit_buscar: "Buscar"
+    submit_publicar: "Publicar"
+    submit_despublicar: "No Publicar"
+    submit_anterior: "Anterior"
+    submit_siguiente: "Siguiente"
+    submit_noticias: "Lista de noticias"
+    submit_ver_programacion: "Ver Programación"
+    submit_ver_comentarios: "Ver Comentarios"
+    submit_editar_contenido: "Editar Contenido"
+    placeholder_buscar: "Buscar programación por mes específico"
+    submit_guardar_contenido: "Guardar"
+    label_mes_anio: "Mes y Año"
+    submit_ir: "Ir"
+    submit_ver_mas: "Ver más"
+    submit_revisar: "Revisar"
+    select_tipo_programacion: "Seleccione el tipo de programación"
+    select_tv: "Televisión"
+    select_radio: "Radio"
+    programacion:
+        not: No hay programación disponible para este mes
+    fecha_nula: Ingrese la fecha
+    no_coincidencias: No se encontraron coincidencias

@@ -16,9 +16,18 @@ namespace RUGC\ProgramacionCatarsisBundle\Services;
 
 class FechasServices {
 
-    public function obtenerNombreMes($pMes) {
-        $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+    public function obtenerNombreMes($pMes, $pIdioma) {
+
+        $mesesEs = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+
+        $mesesIn = array('January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December');
+        $meses = $mesesIn;
+
+        if ($pIdioma == 'es') {
+            $meses = $mesesEs;
+        }
         $fecha = "";
         $anio = strftime('%Y');
         foreach ($meses as $key => $value) {
@@ -31,11 +40,19 @@ class FechasServices {
         return $fecha;
     }
 
-    public function obtenerNombreMesSeleccionado($fecha) {
+    public function obtenerNombreMesSeleccionado($fecha, $pIdioma) {
         $fechaS = split("-", $fecha);
         $pMes = $fechaS[1];
-        $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+        $mesesEs = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+
+        $mesesIn = array('January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December');
+        $meses = $mesesIn;
+
+        if ($pIdioma == 'es') {
+            $meses = $mesesEs;
+        }
         $fecha = "";
         $anio = $fechaS[0];
         foreach ($meses as $key => $value) {
@@ -48,17 +65,27 @@ class FechasServices {
         return $fecha;
     }
 
-    public function obtenerFechaEnNumeros($pMes, $pAnio) {
-        $meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+    public function obtenerFechaEnNumeros($pMes, $pAnio, $pIdioma) {
+        $mesesEs = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+
+        $mesesIn = array('January', 'February', 'March', 'April', 'May', 'June', 'July',
+            'August', 'September', 'October', 'November', 'December');
+        $meses = $mesesIn;
+
+        if ($pIdioma == 'es') {
+            $meses = $mesesEs;
+        }
         $fecha = "";
 
         foreach ($meses as $key => $value) {
             $mes = $key + 1;
+            
             if ($value == $pMes) {
                 $fecha = $pAnio . "-" . $mes . "-01";
                 break;
             }
+            echo ''.$fecha;
         }
         return $fecha;
     }

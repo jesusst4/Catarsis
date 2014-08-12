@@ -14,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenuRepository")
  * @UniqueEntity(fields={"prioridad", "menuPrincipal"},
- *    message="Ya se asignó esta prioridad")
+ *    message="validaciones.prioridad.unique")
  * 
  */
 class OpcionesMenu {
@@ -38,7 +38,7 @@ class OpcionesMenu {
      * @ORM\Column(name="nombreOpcion", type="string", length=100)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el nombre de opción."
+     *      message = "validaciones.nombre_opcion.not_null"
      * )
      */
     private $nombreOpcion;
@@ -58,13 +58,13 @@ class OpcionesMenu {
      * @ORM\Column(name="prioridad", type="smallint")
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar la prioridad."
+     *      message = "validaciones.prioridad.not_null"
      * )
      * 
      * @Assert\Range(
      *      min = "1",
-     *      minMessage = "La prioridad debe ser mayor o igual a 1.",
-     *      invalidMessage = "Debe ingresar un valor numérico."
+     *      minMessage = "validaciones.prioridad.minimo",
+     *      invalidMessage = "validaciones.prioridad.numeric"
      * )
      */
     private $prioridad;

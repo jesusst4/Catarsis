@@ -3,31 +3,40 @@
 #    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:index" }
 
 contenido_show:
-    path:     /{id}/show
+    path:     /{_locale}/{id}/show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:show" }
+    requirements:
+        _locale: en|es
 
 contenido_new:
-    path:     /new
+    path:     /{_locale}/new
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:new" }
+    requirements:
+        _locale: en|es
 
 contenido_create:
-    path:     /create
+    path:     /{_locale}/create
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:create" }
-    requirements: { _method: post }
+    requirements: { _method: post , _locale: en|es }
 
 contenido_edit:
-    path:     /{id}/edit
+    path:     /{_locale}/{id}/edit
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:edit" }
+    requirements:
+        _locale: en|es
 
 contenido_update:
-    path:     /{id}/update
+    path:     /{_locale}/{id}/update
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:update" }
-    requirements: { _method: post|put }
+    requirements: { _method: post|put , _locale: en|es }
 
 contenido_delete:
-    path:     /{id}/delete
+    path:     /{_locale}/{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:delete" }
-    requirements: { _method: post|delete }
+    requirements: { _method: post|delete , _locale: en|es }
+    
 contenido_home:
-    path:     /home
+    path:     /{_locale}/home
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:home" }
+    requirements:
+        _locale: en|es

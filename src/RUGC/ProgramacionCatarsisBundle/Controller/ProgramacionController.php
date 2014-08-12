@@ -28,7 +28,8 @@ class ProgramacionController extends Controller {
 
         $mes = strftime('%m');
         $objFecha = new FechasServices();
-        $fecha = $objFecha->obtenerNombreMes($mes);
+        $idioma = $this->get('session')->get('_locale');
+        $fecha = $objFecha->obtenerNombreMes($mes, $idioma);
 
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionActual();
 
@@ -36,7 +37,7 @@ class ProgramacionController extends Controller {
                     'entities' => $listaProgramaciones,
                     'radio' => $encabezadoRadio,
                     'tv' => $encabezadoTV,
-                    'fecha' => $fecha
+                    'fecha' => $fecha,
         ));
     }
 
@@ -49,7 +50,8 @@ class ProgramacionController extends Controller {
         $fecha = split(" ", $request->request->get("fecha"));
 
         $objFecha = new FechasServices();
-        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+        $idioma = $this->get('session')->get('_locale');
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -60,8 +62,6 @@ class ProgramacionController extends Controller {
             $em->persist($entity);
             $em->flush();
             $entity->upload();
-//            $request = new Request();
-//            $request->request->set('fecha', $t);
             $entity = new Programacion();
             $form = $this->createCreateForm($entity);
             return $this->redirect($this->generateUrl('programacion_new', array('fecha' => $t)));
@@ -103,14 +103,16 @@ class ProgramacionController extends Controller {
         if ($fechaGet) {
             $fechaGeneral = $fechaGet;
             $fecha = split(" ", $fechaGet);
-            $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+            $idioma = $this->get('session')->get('_locale');
+            $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         } elseif ($fechaPost) {
             $fechaGeneral = $fechaPost;
             $fecha = split(" ", $fechaPost);
-            $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+            $idioma = $this->get('session')->get('_locale');
+            $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         } else {
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:create.html.twig', array(
-                        'mensaje' => "Ingrese la fecha"
+                        'mensaje' => "form.fecha_nula"
             ));
         }
         $em = $this->getDoctrine()->getManager();
@@ -133,7 +135,7 @@ class ProgramacionController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle','attr' => array('class' => 'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -307,7 +309,8 @@ class ProgramacionController extends Controller {
         $fecha = split(" ", $request->request->get("fecha"));
 
         $objFecha = new FechasServices();
-        $fecNumerica = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
+        $idioma = $this->get('session')->get('_locale');
+        $fecNumerica = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1],$idioma);
         $numMes = split("-", $fecNumerica);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
@@ -318,7 +321,7 @@ class ProgramacionController extends Controller {
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecNumerica);
 
-        $nomMes = $objFecha->obtenerNombreMes($numMes[1]);
+        $nomMes = $objFecha->obtenerNombreMesSeleccionado($fecNumerica, $idioma);
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
                     'entities' => $listaProgramaciones,
                     'radio' => $encabezadoRadio,
@@ -336,7 +339,7 @@ class ProgramacionController extends Controller {
             if (count($listaProgramaciones) > 0) {
                 $mensaje = "";
             } else {
-                $mensaje = "No se encontraron coincidencias";
+                $mensaje = "form.no_coincidencias";
             }
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
                         'mensaje' => $mensaje,
@@ -358,20 +361,21 @@ class ProgramacionController extends Controller {
         $objFecha = new FechasServices();
         $fechaPost = $request->request->get("fecha");
         $fecha = split("-", $fechaPost);
-        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
-        $primerDía = null;
+        $idioma = $this->get('session')->get('_locale');
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1],$idioma);
+        $primerDia = null;
         if ($request->request->get("btnAnterior")) {
-            $primerDía = $objFecha->restarFecha($fecha1);
+            $primerDia = $objFecha->restarFecha($fecha1);
         } else {
-            $primerDía = $objFecha->SumarFecha($fecha1);
+            $primerDia = $objFecha->SumarFecha($fecha1);
         }
-        $mes = split('-', $primerDía);
-        $fechaNombre = $objFecha->obtenerNombreMes($mes[1]);
+        $mes = split('-', $primerDia);
+        $fechaNombre = $objFecha->obtenerNombreMesSeleccionado($primerDia, $idioma);
         $em = $this->getDoctrine()->getManager();
 
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
-        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionMesSecuencial($primerDía);
+        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionMesSecuencial($primerDia);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
                     'entities' => $listaProgramaciones,
@@ -386,8 +390,9 @@ class ProgramacionController extends Controller {
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
 
-        $objFecha = new FechasServices();
-        $fechaString = $objFecha->obtenerNombreMesSeleccionado($fecha);
+        $objFecha = new FechasServices();        
+        $idioma = $this->get('session')->get('_locale');
+        $fechaString = $objFecha->obtenerNombreMesSeleccionado($fecha, $idioma);
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha);
         return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
                     'entities' => $listaProgramaciones,
@@ -395,30 +400,18 @@ class ProgramacionController extends Controller {
                     'tv' => $encabezadoTV,
                     'fecha' => $fechaString
         ));
+    }
 
-//        $objFecha = new FechasServices();
-//        $fechaPost = $request->request->get("fecha");
-//        $fecha = split("-", $fechaPost);
-//        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1]);
-//        $primerDía = null;
-//        if ($request->request->get("btnAnterior")) {
-//            $primerDía = $objFecha->restarFecha($fecha1);
-//        } else {
-//            $primerDía = $objFecha->SumarFecha($fecha1);
-//        }
-//        $mes = split('-', $primerDía);
-//        $fechaNombre = $objFecha->obtenerNombreMes($mes[1]);
-//
-//        $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
-//        $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
-//        $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionMesSecuencial($primerDía);
-//
-//        return $this->render('RUGCProgramacionCatarsisBundle:Programacion:index.html.twig', array(
-//                    'entities' => $listaProgramaciones,
-//                    'radio' => $encabezadoRadio,
-//                    'tv' => $encabezadoTV,
-//                    'fecha' => $fechaNombre
-//        ));
+    public function establecerLocaleAction(Request $request) {
+        if ($request->request->get('btnIngles') != null) {
+            $this->get('session')->set('_locale', 'en');
+            $request->setLocale('en');
+        }
+        if ($request->request->get('btnEspanol') != null) {
+            $request->setLocale('es');
+            $this->get('session')->set('_locale', 'es');
+        }
+        return $this->redirect($this->generateUrl('programacion', array('_locale' => $request->getLocale())));
     }
 
 }

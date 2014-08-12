@@ -28,7 +28,7 @@ class Noticia {
      * @ORM\Column(name="titulo", type="string", length=255)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el título."
+     *      message = "validaciones.titulo.not_null"
      * )
      */
     private $titulo;
@@ -46,7 +46,7 @@ class Noticia {
      * @ORM\Column(name="contenido", type="text")
      * 
      *  @Assert\NotNull(
-     *      message = "Debe ingresar el contenido."
+     *      message = "validaciones.contenido.not_null"
      * )
      */
     private $contenido;
@@ -71,7 +71,7 @@ class Noticia {
      * @ORM\Column(name="resumen", type="string", length=255)
      * 
      *  @Assert\NotNull(
-     *      message = "Debe ingresar el resumen."
+     *      message = "validaciones.resumen.not_nul"
      * )
      */
     private $resumen;

@@ -18,16 +18,25 @@
 
     <body>
         <div id="wrapper">
+            <div class="divUser">
+                <form action="{{path ('programacion_locale')}}" method="POST">
+                    <input type="submit" name="btnEspanol" style="float: left;" value="." class="btnEsp"/>
+                    
+                </form>
+                     <form action="{{path ('programacion_locale')}}" method="POST">
+                   
+                         <input type="submit" name="btnIngles" style="float: left;" value="." class="btnIng"/>
+                </form>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <div class="divUser">
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                     <a href="{{ path('fos_user_security_logout') }}">
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                     </a>
-                </div>
-            {% endif %}
+
+                {% endif %}
+                
+            </div>
 
             <div id="banner">
 
@@ -37,8 +46,6 @@
             </div> <!-- FIN DEL BANNER -->
 
             {{render_hinclude( controller('RUGCProgramacionCatarsisBundle:OpcionesMenu:index') )}}
-
-
 
             <div id="main">        	
                 <div id="info2">

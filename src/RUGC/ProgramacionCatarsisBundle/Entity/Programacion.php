@@ -15,7 +15,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ProgramacionRepository")
  * @UniqueEntity(fields={"fecha","tipo"},
  *   errorPath="tipo",
- *    message="Ya se ingreso este tipo de programación para este día")
+ *    message="validaciones.tipo.unique")
  */
 class Programacion {
 
@@ -41,7 +41,7 @@ class Programacion {
      * @ORM\Column(name="fecha", type="date")
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar la fecha."
+     *      message = "validaciones.fecha.not_null"
      * )
      */
     private $fecha;
@@ -52,7 +52,7 @@ class Programacion {
      * @ORM\Column(name="titulo", type="string", length=100)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el título."
+     *      message = "validaciones.titulo.not_null"
      * )
      */
     private $titulo;
@@ -71,7 +71,7 @@ class Programacion {
      * @ORM\Column(name="descripcion", type="string", length=255)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar la descripción."
+     *      message = "validaciones.descripcion.not_null"
      * )
      */
     private $descripcion;
@@ -101,7 +101,7 @@ class Programacion {
      *
      * @ORM\Column(name="tipo", type="integer")
      * @Assert\NotNull(
-     *      message = "Debe seleccionar el tipo de programación."
+     *      message = "validaciones.tipo.not_null"
      * )
      */
     

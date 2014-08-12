@@ -41,6 +41,7 @@ class ContenidoController extends Controller {
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->getOpcionMenu()->setRuta('contenido_show');
+            $entity->getOpcionMenu()->setPermiso(0);
             $em->persist($entity);
             $em->flush();
 

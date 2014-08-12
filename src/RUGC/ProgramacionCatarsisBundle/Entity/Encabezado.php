@@ -3,6 +3,8 @@
 namespace RUGC\ProgramacionCatarsisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Encabezado
@@ -25,6 +27,10 @@ class Encabezado
      * @var string
      *
      * @ORM\Column(name="texto", type="text")
+     * 
+     * @Assert\NotNull(
+     *      message = "validaciones.texto.not_null"
+     * )
      */
     private $texto;
 

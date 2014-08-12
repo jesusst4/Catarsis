@@ -1,30 +1,38 @@
 noticia:
-    path:     /
+    path:     /{_locale}/
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:index" }
+    requirements:
+        _locale: en|es
 
 noticia_show:
-    path:     /{id}/show
+    path:     /{_locale}/{id}/show
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:show" }
+    requirements:
+        _locale: en|es
 
 noticia_new:
-    path:     /new
+    path:     /{_locale}/new
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:new" }
+    requirements:
+        _locale: en|es
 
 noticia_create:
-    path:     /create
+    path:     /{_locale}/create
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:create" }
-    requirements: { _method: post }
+    requirements: { _method: post , _locale: en|es }
 
 noticia_edit:
-    path:     /{id}/edit
+    path:     /{_locale}/{id}/edit
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:edit" }
+    requirements:
+        _locale: en|es
 
 noticia_update:
-    path:     /{id}/update
+    path:     /{_locale}/{id}/update
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:update" }
-    requirements: { _method: post|put }
+    requirements: { _method: post|put , _locale: en|es }
 
 noticia_delete:
-    path:     /{id}/delete
+    path:     /{_locale}/{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Noticia:delete" }
-    requirements: { _method: post|delete }
+    requirements: { _method: post|delete , _locale: en|es }

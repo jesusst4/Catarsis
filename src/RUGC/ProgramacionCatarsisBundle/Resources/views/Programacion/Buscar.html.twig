@@ -7,8 +7,15 @@
         function validar() {
             var titulo = $('#txtTitulo').val();
             var obra = $('#txtObra').val();
+            var idioma = $('#idioma').val();
             if (titulo === "" && obra === "") {
-                $('#error').text("Debe ingresar algún criterio de búsqueda");
+                if (idioma === 'es') {
+                       $('#error').text("Debe ingresar algún criterio de búsqueda");
+                }
+                else{
+                    $('#error').text("You must enter a search criterion");
+                }
+             
                 return  false;
             }
             else {
@@ -16,10 +23,11 @@
             }
         }
     </script>
-    
+
     <h1>{{ "form.Titulo.titulo_Busqueda_Programacion"|trans }}</h1>
-    
+
     <form method="POST" action="{{path("programacion_search")}}" onsubmit="return validar()">
+        <input   type="hidden" id="idioma" value="{{ app.request.locale }}" />
         <label>{{'form.Programacion.titulo'|trans}} </label>
         <input class="txt" type="text" name="txtTitulo" id="txtTitulo" value="{{titulo}}"/>
         <label>{{'form.Programacion.obra'|trans}} </label>
@@ -57,7 +65,7 @@
                 <div class="validaciones"> 
                     <ul><li id="error"></li></ul> 
                 </div>
-                <p>{{mensaje}}</p>
+                <p>{{mensaje|trans}}</p>
             </div>
         {% endif%}
     </form>

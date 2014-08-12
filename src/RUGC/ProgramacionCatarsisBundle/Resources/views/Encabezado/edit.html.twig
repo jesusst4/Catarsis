@@ -3,7 +3,9 @@
 
 {% block body -%}
     <h1>{{ "form.Titulo.titulo_Editar_Contenido"|trans }}</h1>
+    <div class="validaciones">
     {{ form(edit_form) }}
 
     {{ tinymce_init() }}
+    </div>
 {% endblock %}

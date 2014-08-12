@@ -25,7 +25,7 @@ class ComentarioType extends AbstractType {
                     'as_url' => true,
                     'reload' => '/generate-captcha/1',
                     'keep_value' => false,
-                    'invalid_message' => 'Ingrese correctamente el código'
+                    'invalid_message' => 'validaciones.captcha.invalid'
         ));
     }
 

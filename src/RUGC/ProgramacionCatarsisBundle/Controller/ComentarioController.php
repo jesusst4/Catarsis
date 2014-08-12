@@ -220,7 +220,7 @@ class ComentarioController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'Eliminar', 'attr' => array('class' => 'btnIzq')))
+                        ->add('submit', 'submit', array('label' => 'form.submit_eliminar','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnIzq')))
                         ->getForm()
         ;
     }

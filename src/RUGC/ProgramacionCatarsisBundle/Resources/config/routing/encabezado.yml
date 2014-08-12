@@ -16,13 +16,15 @@
 #    requirements: { _method: post }
 
 encabezado_edit:
-    path:     /{id}/edit
+    path:     /{_locale}/{id}/edit
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:edit" }
+    requirements:
+        _locale: en|es
 
 encabezado_update:
-    path:     /{id}/update
+    path:     /{_locale}/{id}/update
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:update" }
-    requirements: { _method: post|put }
+    requirements: { _method: post|put , _locale: en|es }
 
 #encabezado_delete:
 #    path:     /{id}/delete

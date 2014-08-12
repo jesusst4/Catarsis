@@ -6,8 +6,7 @@ form:
         comentario: "Comment"
         estado: "Condition"
         fecha: "Date"
-        
-        
+                
     Noticia:
         resumen: "Abstract"
         titulo: "Title"
@@ -45,12 +44,15 @@ form:
         titulo_Crear_Contenido: "Create Content"
         titulo_Editar_Contenido: "Edit Content"
         
+        titulo_Comentarios: "Comments"
+        
     tabla_accion: "Actions"
     submit_editar: "Edit"
     submit_eliminar: "Delete"
     submit_crear: "Create"
     submit_buscar: "Search"
     submit_publicar: "Publish"
+    submit_despublicar: "Unpublish"
     submit_anterior: "Previous"
     submit_siguiente: "Next"
     submit_noticias: "News List"
@@ -63,3 +65,11 @@ form:
     submit_ir: "Go"
     submit_ver_mas: "View more"
     submit_revisar: "Check"
+    select_tipo_programacion: "Select type of programming"
+    select_tv: "Television"
+    select_radio: "Radio"   
+    programacion:
+        not: There is no programming available for this month
+    fecha_nula: Enter the date   
+    no_coincidencias: There are no coincidences
+    

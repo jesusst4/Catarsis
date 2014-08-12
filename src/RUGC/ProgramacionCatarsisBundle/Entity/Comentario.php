@@ -28,11 +28,11 @@ class Comentario
      * @ORM\Column(name="correo", type="string", length=50)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el correo electrónico."
+     *      message = "validaciones.correo.not_null"
      * )
      * 
      * @Assert\Email(
-     *     message = "El correo electrónico no es válido.",
+     *     message = "validaciones.correo.invalid",
      *     checkMX = true
      * )
      */
@@ -44,7 +44,7 @@ class Comentario
      * @ORM\Column(name="nombre", type="string", length=50)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el nombre."
+     *      message = "validaciones.nombre.not_null"
      * )     
      */
     private $nombre;
@@ -55,7 +55,7 @@ class Comentario
      * @ORM\Column(name="comentario", type="string", length=255)
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el comentario."
+     *      message = "validaciones.comentario.not_null"
      * )     
      */
     private $comentario;

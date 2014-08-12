@@ -28,7 +28,7 @@ class Contenido {
      * @ORM\Column(name="texto", type="text")
      * 
      * @Assert\NotNull(
-     *      message = "Debe ingresar el texto."
+     *      message = "validaciones.texto.not_null"
      * )
      */
     private $texto;
