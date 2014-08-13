@@ -19,15 +19,15 @@ class ContenidoController extends Controller {
      * Lists all Contenido entities.
      *
      */
-//    public function indexAction() {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findAll();
-//
-//        return $this->render('RUGCProgramacionCatarsisBundle:Contenido:index.html.twig', array(
-//                    'entities' => $entities,
-//        ));
-//    }
+    public function indexAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->listarOpcionesMenu();
+
+        return $this->render('RUGCProgramacionCatarsisBundle:Contenido:index.html.twig', array(
+                    'entities' => $entities,
+        ));
+    }
 
     /**
      * Creates a new Contenido entity.

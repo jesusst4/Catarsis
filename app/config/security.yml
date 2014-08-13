@@ -49,3 +49,7 @@ security:
         - { path: ^/programacion/.*/delete, role: ROLE_ADMIN }
         - { path: ^/programacion/selectMonth, role: ROLE_ADMIN }
         - { path: ^/programacion/.*/delete_imagen, role: ROLE_ADMIN }
+        
+        - { path: ^/enlace/new, role: ROLE_ADMIN }
+        - { path: ^/enlace/.*/edit, role: ROLE_ADMIN }
+        - { path: ^/enlace/.*/delete, role: ROLE_ADMIN }

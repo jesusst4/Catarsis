@@ -27,12 +27,16 @@ form:
         imagen: "Imagen"
         enlace: "Enlace"
         
+    Enlace:
+        descripcion: "Descripción"
+        enlace: "Enlace"
+        
     Titulo:
         titulo_Programacion: "Programación Radio y Television"
         titulo_Busqueda_Programacion: "Buscar Programación"
         titulo_Seleccionar_Mes_Programacion: "Seleccione el Mes y Año"
         titulo_Crear_Programacion: "Crear Programación de "
-        titulo_Editar_Programacion: "Editar Programación de "
+        titulo_Editar_Programacion: "Editar Programación de "        
         
         titulo_Noticia: "Noticias"
         titulo_Crear_Noticia: "Crear Noticias"
@@ -43,8 +47,11 @@ form:
         
         titulo_Crear_Contenido: "Crear Contenido"
         titulo_Editar_Contenido: "Editar Contenido"
+        titulo_Listar_Opciones_Menu: "Lista de Opciones de Menú"
         
-        titulo_Comentarios: "Comentarios"
+        titulo_Comentarios: "Comentarios"        
+        
+        titulo_Enlaces: "Enlaces Recomendados"
         
     tabla_accion: "Acciones"
     submit_editar: "Editar"

@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContenidoRepository extends EntityRepository {
 
+    public function listarOpcionesMenu() {
+
+//        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $qb = $this->getEntityManager()->createQueryBuilder()
+                ->select('om')
+                ->from('RUGCProgramacionCatarsisBundle:OpcionesMenu', 'om')
+                ->innerJoin(
+                        'RUGCProgramacionCatarsisBundle:Contenido', 'c', \Doctrine\ORM\Query\Expr\Join::WITH, 'c.opcionMenu = om.id'
+                )                
+                ->orderBy('om.prioridad', 'ASC')                
+                ;
+
+        return $qb->getQuery()->getResult();
+    }
+
 }

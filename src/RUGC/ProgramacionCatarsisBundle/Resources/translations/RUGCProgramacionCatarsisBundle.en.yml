@@ -27,6 +27,10 @@ form:
         imagen: "Image"
         enlace: "Link"
         
+    Enlace:
+        descripcion: "Description"
+        enlace: "Link"
+        
     Titulo:
         titulo_Programacion: "Radio and Television Programming"
         titulo_Busqueda_Programacion: "Programming Search"
@@ -43,8 +47,11 @@ form:
         
         titulo_Crear_Contenido: "Create Content"
         titulo_Editar_Contenido: "Edit Content"
+        titulo_Listar_Opciones_Menu: "List Options Menu"
         
         titulo_Comentarios: "Comments"
+        
+        titulo_Enlaces: "Recommended Links"
         
     tabla_accion: "Actions"
     submit_editar: "Edit"

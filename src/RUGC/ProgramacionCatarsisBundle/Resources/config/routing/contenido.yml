@@ -1,6 +1,8 @@
-#contenido:
-#    path:     /
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:index" }
+contenido:
+    path:     /{_locale}/
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:index" }
+    requirements:
+        _locale: en|es
 
 contenido_show:
     path:     /{_locale}/{id}/show

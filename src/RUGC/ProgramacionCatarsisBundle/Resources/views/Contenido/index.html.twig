@@ -1,13 +1,15 @@
 {% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
-    <h1>Contenido list</h1>
+    <h1>{{ "form.Titulo.titulo_Listar_Opciones_Menu"|trans }}</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Texto</th>
+                <th>Opcion de Menú</th>
+                <th>Opcion de Menú</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -15,7 +17,8 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('contenido_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.texto }}</td>
+                <td>{{ entity.nombreOpcion }}</td>
+                <td>{{ entity.prioridad }}</td>
                 <td>
                 <ul>
                     <li>

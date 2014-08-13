@@ -23,7 +23,7 @@ class EnlaceController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->findAll();
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->findBy(array(), array('id' => 'DESC'));
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:index.html.twig', array(
             'entities' => $entities,
