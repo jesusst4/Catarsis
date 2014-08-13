@@ -13,7 +13,7 @@
     {%if is_granted('ROLE_ADMIN')%}
         <a href="{{ path('noticia_edit', { 'id': entity.id }) }}"><input class="btnDer" type="button" value="{{'form.submit_editar'|trans}}"/></a>
 
-        <form action="{{path('noticia_delete',{'id':entity.id})}}" method="POST">
+        {#<form action="{{path('noticia_delete',{'id':entity.id})}}" method="POST">
             <div>
 
                 {% if app.request.locale == 'es' %}
@@ -23,7 +23,7 @@
                 {% endif %}
                
             </div>
-        </form>
+        </form>#}
         {#        {{ form(delete_form) }}#}
 
     {% endif %}

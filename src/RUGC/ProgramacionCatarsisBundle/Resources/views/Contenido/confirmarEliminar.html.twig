@@ -3,7 +3,7 @@
 {% block body -%}
 
     {% if mensaje=='' %}
-        <h1>{{'form.titulo_esta_seguro'|trans}}</h1>
+        <h1>{{'form.Titulo.titulo_esta_seguro'|trans}}</h1>
         {{ entity.contenido.texto | raw}}
 
     {% else %}
@@ -17,7 +17,7 @@
 
 
             {% if mensaje=='' %}
-               <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
+               <a class="link" href="{{ path('contenido_delete', { 'id': entity.id }) }}">
                    {{ 'form.submit_eliminar'|trans}}
             </a>
 

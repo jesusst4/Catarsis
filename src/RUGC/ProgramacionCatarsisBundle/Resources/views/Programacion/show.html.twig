@@ -4,8 +4,8 @@
 {% block body -%}
     <div class="divTodo">
         <div class="divProgramacionComentario">            
-            <table class="record_properties">
-                <tbody>
+            <table style="width: 300px;" class="record_properties">
+                <tbody >
                     {#<tr>
                         <th>Tipo</th>
                         <td>{{ entity.tipo }}</td>
@@ -29,8 +29,8 @@
                 </tr>
                 <tr>
                     {% if entity.enlace %}
-                        <th>Enlace</th>
-                        <td><a href="{{entity.enlace }}">{{ entity.enlace }}</a></td>
+                        <th>{{'form.Programacion.enlace'|trans}}</th>
+                        <td><div style="width:450px;"><a  style="word-wrap: break-word;" href="http://{{entity.enlace }}" target="_blank">{{ entity.enlace }}</a></div></td>
                         {% endif %}
                 </tr>
                 </tbody>

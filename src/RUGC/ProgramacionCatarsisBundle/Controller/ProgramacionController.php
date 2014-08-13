@@ -310,7 +310,7 @@ class ProgramacionController extends Controller {
 
         $objFecha = new FechasServices();
         $idioma = $this->get('session')->get('_locale');
-        $fecNumerica = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1],$idioma);
+        $fecNumerica = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         $numMes = split("-", $fecNumerica);
         $entity = new Programacion();
         $form = $this->createCreateForm($entity);
@@ -362,7 +362,7 @@ class ProgramacionController extends Controller {
         $fechaPost = $request->request->get("fecha");
         $fecha = split("-", $fechaPost);
         $idioma = $this->get('session')->get('_locale');
-        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1],$idioma);
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         $primerDia = null;
         if ($request->request->get("btnAnterior")) {
             $primerDia = $objFecha->restarFecha($fecha1);
@@ -390,7 +390,7 @@ class ProgramacionController extends Controller {
         $encabezadoRadio = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(1);
         $encabezadoTV = $em->getRepository('RUGCProgramacionCatarsisBundle:Encabezado')->find(2);
 
-        $objFecha = new FechasServices();        
+        $objFecha = new FechasServices();
         $idioma = $this->get('session')->get('_locale');
         $fechaString = $objFecha->obtenerNombreMesSeleccionado($fecha, $idioma);
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha);
@@ -405,17 +405,15 @@ class ProgramacionController extends Controller {
     public function establecerLocaleAction(Request $request) {
         if ($request->request->get('btnIngles') != null) {
             $this->get('session')->set('_locale', 'en');
-            $request->setLocale('en');
-        }
-        elseif ($request->request->get('btnEspanol') != null) {
-            $request->setLocale('es');
-            $this->get('session')->set('_locale', 'es');
-        }
-        else{
-            $request->setLocale('es');
-            $this->get('session')->set('_locale', 'es');
-        }
-        return $this->redirect($this->generateUrl('programacion', array('_locale' => $request->getLocale())));
-    }
+            $request->setLocale('en'); elseif ($request->request->get('btnEspanol') != null) {
+                $request->setLocale('es');
+                $this->get('session')->set('_locale', 'es');
+            } else {
 
-}
+                $request->setLocale('es');
+                $this->get('session')->set('_locale', 'es');
+            }
+            return $this->redirect($this->generateUrl('programacion', array('_locale' => $request->getLocale())));
+        }
+    }
+    

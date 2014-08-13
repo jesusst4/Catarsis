@@ -20,7 +20,7 @@ class NoticiaController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findBy(array('estado' => '1'), array('fecha' => 'DESC'));
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findBy(array(), array('fecha' => 'DESC'));
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:index.html.twig', array(
                     'entities' => $entities,

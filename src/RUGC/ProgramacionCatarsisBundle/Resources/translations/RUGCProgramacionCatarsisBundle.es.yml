@@ -90,3 +90,4 @@ form:
         not: No hay programación disponible para este mes
     fecha_nula: Ingrese la fecha
     no_coincidencias: No se encontraron coincidencias
+    sin_publicar: Sin Publicar

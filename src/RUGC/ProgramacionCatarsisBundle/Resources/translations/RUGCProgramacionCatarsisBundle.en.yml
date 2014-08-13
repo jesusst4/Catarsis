@@ -55,6 +55,8 @@ form:
         titulo_Crear_Enlace: "Create Link"
         titulo_Editar_Enlace: "Edit Link"
         
+        titulo_esta_seguro: Are you sure you want to remove this content?
+        
     Enlace:
         descripcion: Description
         enlace: Link
@@ -87,4 +89,5 @@ form:
         not: There is no programming available for this month
     fecha_nula: Enter the date   
     no_coincidencias: There are no coincidences
+    sin_publicar: Unpublish
     
