@@ -35,7 +35,7 @@ contenido_update:
 contenido_delete:
     path:     /{_locale}/{id}/delete
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:delete" }
-    requirements: { _method: post|delete , _locale: en|es }
+    requirements: { _method: post|delete|get , _locale: en|es }
     
 contenido_home:
     path:     /{_locale}/home

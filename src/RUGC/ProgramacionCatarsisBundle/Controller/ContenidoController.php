@@ -178,12 +178,9 @@ class ContenidoController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
+       
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->find($id);
+            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Contenido entity.');
@@ -191,7 +188,7 @@ class ContenidoController extends Controller {
 
             $em->remove($entity);
             $em->flush();
-        }
+        
 
         return $this->redirect($this->generateUrl('contenido'));
     }

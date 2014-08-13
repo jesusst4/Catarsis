@@ -61,6 +61,8 @@ form:
         enlace: Enlace
         
     tabla_accion: "Acciones"
+    tabla_opciones_menu: "Opción de Menú"
+    tabla_prioridad: "Prioridad"
     submit_editar: "Editar"
     submit_eliminar: "Eliminar"
     submit_crear: "Crear"

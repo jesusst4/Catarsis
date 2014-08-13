@@ -44,7 +44,7 @@ class EnlaceController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('enlace_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('enlace'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:new.html.twig', array(
