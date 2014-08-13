@@ -16,7 +16,7 @@ form:
     Menu:
         prioridad: "Priority"
         menuPrincipal: "Main Menu"
-        nombreOpcion: "Name Opccion"
+        nombreOpcion: "Name Option"
         
     Programacion:
         fecha: "Date"
@@ -60,6 +60,8 @@ form:
         enlace: Link
         
     tabla_accion: "Actions"
+    tabla_opciones_menu: "Menu Option"
+    tabla_prioridad: "Priority"
     submit_editar: "Edit"
     submit_eliminar: "Delete"
     submit_crear: "Create"

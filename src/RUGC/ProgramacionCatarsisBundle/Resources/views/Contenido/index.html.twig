@@ -4,41 +4,24 @@
 {% block body -%}
     <h1>{{ "form.Titulo.titulo_Listar_Opciones_Menu"|trans }}</h1>
 
-    <table class="records_list">
+    <table class="records_list table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Opcion de Menú</th>
-                <th>Opcion de Menú</th>
-                <th>Actions</th>
+                <th>{{'form.tabla_opciones_menu'|trans}}</th>
+                <th>{{'form.tabla_prioridad'|trans}}</th>
+                <th>{{'form.tabla_accion'|trans}}</th>
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('contenido_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nombreOpcion }}</td>
-                <td>{{ entity.prioridad }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('contenido_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('contenido_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.nombreOpcion }}</td>
+                    <td>{{ entity.prioridad }}</td>
+                    <td>
+                        <a href="{{ path('contenido_confirmar_delete', { 'id': entity.id }) }}">edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('contenido_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}

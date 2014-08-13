@@ -2,65 +2,22 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <div class="divTodo">
         <h1>{{ "form.Titulo.titulo_Enlaces"|trans }}</h1>
 
         {% for entity in entities %}
             <div class="divEnlacesContenedor">
-
-{#                <div class="divEnlaceCotenenido">#}
-                    <p>
+                <p>
                     {{ entity.descripcion }}
                     <br>
                     <a style="word-wrap: break-word;" href="http://{{entity.enlace}}" target="_blank">{{entity.enlace}}</a>
-                    </p>
-{#                </div>#}
+                </p>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="EnlacesEditar" href="{{ path('enlace_edit', { 'id': entity.id }) }}">{{'form.submit_editar'| trans}}</a>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
 
 {% endblock %}
-
-{#{% extends '::base.html.twig' %}
-
-{% block body -%}
-    <h1>Enlace list</h1>
-
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Descripcion</th>
-                <th>Enlace</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for entity in entities %}
-                <tr>
-                    <td><a href="{{ path('enlace_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.descripcion }}</td>
-                    <td>{{ entity.enlace }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('enlace_show', { 'id': entity.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('enlace_edit', { 'id': entity.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('enlace_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-{% endblock %}#}
