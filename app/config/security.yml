@@ -40,6 +40,7 @@ security:
         - { path: ^/contenido/new, role: ROLE_ADMIN }        
         - { path: ^/contenido/.*/edit, role: ROLE_ADMIN }
         - { path: ^/contenido/.*/delete, role: ROLE_ADMIN }
+        - { path: ^/contenido/.*/confirm, role: ROLE_ADMIN }
         
         - { path: ^/encabezado/.*/edit, role: ROLE_ADMIN }
         - { path: ^/encabezado/.*/delete, role: ROLE_ADMIN }

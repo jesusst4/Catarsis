@@ -6,5 +6,15 @@
     {{ form(edit_form) }}
 
 
-    {{ form(delete_form) }}
+    <form action="{{path('enlace_delete',{'id':entity.id})}}" method="POST">
+            <div>
+
+                {% if app.request.locale == 'es' %}
+                    <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('¿Está usted seguro que desea eliminar este enlace?')"/>
+                {%else%}
+                     <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('Are you sure you want to remove this link?')"/>
+                {% endif %}
+               
+            </div>
+        </form>
 {% endblock %}

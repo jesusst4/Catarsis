@@ -124,12 +124,12 @@ class EnlaceController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -187,10 +187,7 @@ class EnlaceController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
+       
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->find($id);
 
@@ -200,7 +197,7 @@ class EnlaceController extends Controller
 
             $em->remove($entity);
             $em->flush();
-        }
+        
 
         return $this->redirect($this->generateUrl('enlace'));
     }
