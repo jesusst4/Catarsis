@@ -4,7 +4,6 @@ namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use RUGC\ProgramacionCatarsisBundle\Entity\Noticia;
 use RUGC\ProgramacionCatarsisBundle\Form\NoticiaType;
 
@@ -12,29 +11,27 @@ use RUGC\ProgramacionCatarsisBundle\Form\NoticiaType;
  * Noticia controller.
  *
  */
-class NoticiaController extends Controller
-{
+class NoticiaController extends Controller {
 
     /**
      * Lists all Noticia entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findBy(array('estado'=>'1'), array('fecha' => 'DESC'));
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findBy(array('estado' => '1'), array('fecha' => 'DESC'));
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Noticia entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Noticia();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -49,8 +46,8 @@ class NoticiaController extends Controller
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -61,14 +58,13 @@ class NoticiaController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Noticia $entity)
-    {
+    private function createCreateForm(Noticia $entity) {
         $form = $this->createForm(new NoticiaType(), $entity, array(
             'action' => $this->generateUrl('noticia_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'form.submit_crear','translation_domain' => 'RUGCProgramacionCatarsisBundle','attr'=>array('class'=>'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -77,14 +73,13 @@ class NoticiaController extends Controller
      * Displays a form to create a new Noticia entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Noticia();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -92,8 +87,7 @@ class NoticiaController extends Controller
      * Finds and displays a Noticia entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->find($id);
@@ -102,11 +96,11 @@ class NoticiaController extends Controller
             throw $this->createNotFoundException('Unable to find Noticia entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -114,8 +108,7 @@ class NoticiaController extends Controller
      * Displays a form to edit an existing Noticia entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->find($id);
@@ -128,36 +121,35 @@ class NoticiaController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Noticia entity.
-    *
-    * @param Noticia $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Noticia $entity)
-    {
+     * Creates a form to edit a Noticia entity.
+     *
+     * @param Noticia $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Noticia $entity) {
         $form = $this->createForm(new NoticiaType(), $entity, array(
             'action' => $this->generateUrl('noticia_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'form.submit_guardar_contenido','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr'=>array('class'=>'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_guardar_contenido', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
+
     /**
      * Edits an existing Noticia entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->find($id);
@@ -177,31 +169,28 @@ class NoticiaController extends Controller
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Noticia entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+    public function deleteAction(Request $request, $id) {
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->find($id);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Noticia entity.');
-            }
-
-            $em->remove($entity);
-            $em->flush();
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Noticia entity.');
         }
+
+        $em->remove($entity);
+        $em->flush();
+
 
         return $this->redirect($this->generateUrl('noticia'));
     }
@@ -213,13 +202,13 @@ class NoticiaController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('noticia_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'form.submit_eliminar','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr'=>array('class'=>'btnIzq')))
-            ->getForm()
+                        ->setAction($this->generateUrl('noticia_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'form.submit_eliminar', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnIzq')))
+                        ->getForm()
         ;
     }
+
 }

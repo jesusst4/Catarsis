@@ -42,3 +42,9 @@ contenido_home:
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:home" }
     requirements:
         _locale: en|es
+        
+contenido_confirmar_delete:
+    path:     /{_locale}/confirm
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Contenido:confirm" }
+    requirements: { _method: post|delete|get , _locale: en|es } 
+        

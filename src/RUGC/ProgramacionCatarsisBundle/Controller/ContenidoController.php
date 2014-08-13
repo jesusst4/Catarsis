@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RUGC\ProgramacionCatarsisBundle\Entity\Contenido;
 use RUGC\ProgramacionCatarsisBundle\Form\ContenidoType;
 use RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenu;
+
 //use RUGC\ProgramacionCatarsisBundle\Form\OpcionesMenuType;
 
 /**
@@ -231,6 +232,16 @@ class ContenidoController extends Controller {
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
+                    'entity' => $entity,
+                    'mensaje' => ''
+        ));
+    }
+
+    public function confirmAction(Request $request, $id) {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->find($id);
+
+       return $this->render('RUGCProgramacionCatarsisBundle:Contenido:confirmarEliminar.html.twig', array(
                     'entity' => $entity,
                     'mensaje' => ''
         ));

@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+{% block body -%}
+
+    {% if mensaje=='' %}
+        <h1>{{'form.titulo_esta_seguro'|trans}}</h1>
+        {{ entity.contenido.texto | raw}}
+
+    {% else %}
+        {{mensaje}}
+
+    {% endif %}
+
+    <ul class="record_actions">
+
+        {% if is_granted('ROLE_ADMIN') %}
+
+
+            {% if mensaje=='' %}
+               <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
+                   {{ 'form.submit_eliminar'|trans}}
+            </a>
+
+            {% endif %}
+        {% endif %}
+
+    </ul>
+{% endblock %}
