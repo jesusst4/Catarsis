@@ -3,41 +3,50 @@
 // License: Public Domain... You're welcome.
 
 // default settins - this structure can be moved in separate file in multilangual applications
-$(document).ready(function() {
-var idioma = $('#idioma').val();
-    if (idioma === 'es') {
-    var A_TCALCONF = {
-        'cssprefix': 'tcal',
-        'months': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Deciembre'],
-        'weekdays': ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-        'longwdays': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        'yearscroll': true, // show year scroller
-        'weekstart': 0, // first day of week: 0-Su or 1-Mo
-        'prevyear': 'Annio anterior',
-        'nextyear': 'Annio siguiente',
-        'prevmonth': 'Mes anterior',
-        'nextmonth': 'Mes siguiente',
-        'format': 'd-m-Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
-    };
-} else {
+  
+   var A_TCALCONF={
+            'cssprefix': 'tcal',
+            'months': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+            'weekdays': ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+            'longwdays': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            'yearscroll': true, // show year scroller
+            'weekstart': 0, // first day of week: 0-Su or 1-Mo
+            'prevyear': 'Annio anterior',
+            'nextyear': 'Annio siguiente',
+            'prevmonth': 'Mes anterior',
+            'nextmonth': 'Mes siguiente',
+            'format': 'd-m-Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
+        };
+        var A_TCALCONFEs = {
+            'cssprefix': 'tcal',
+            'months': ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+            'weekdays': ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+            'longwdays': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            'yearscroll': true, // show year scroller
+            'weekstart': 0, // first day of week: 0-Su or 1-Mo
+            'prevyear': 'Annio anterior',
+            'nextyear': 'Annio siguiente',
+            'prevmonth': 'Mes anterior',
+            'nextmonth': 'Mes siguiente',
+            'format': 'd-m-Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
+        };
 
 
-    var A_TCALCONF = {
-        'cssprefix': 'tcal',
-        'months': ['January', 'February', 'March', 'April', 'May', 'June',
-                    'July', 'August', 'September', 'October', 'November', 'December'],
-        'weekdays': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        'longwdays': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        'yearscroll': true, // show year scroller
-        'weekstart': 0, // first day of week: 0-Su or 1-Mo
-        'prevyear': 'Annio anterior',
-        'nextyear': 'Annio siguiente',
-        'prevmonth': 'Mes anterior',
-        'nextmonth': 'Mes siguiente',
-        'format': 'd-m-Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
-    };
-}
-
+        var A_TCALCONFIn = {
+            'cssprefix': 'tcal',
+            'months': ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'],
+            'weekdays': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            'longwdays': ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            'yearscroll': true, // show year scroller
+            'weekstart': 0, // first day of week: 0-Su or 1-Mo
+            'prevyear': 'Annio anterior',
+            'nextyear': 'Annio siguiente',
+            'prevmonth': 'Mes anterior',
+            'nextmonth': 'Mes siguiente',
+            'format': 'd-m-Y' // 'd-m-Y', Y-m-d', 'l, F jS Y'
+        };
+        
 
 
 var A_TCALTOKENS = [
@@ -395,6 +404,12 @@ function f_tcalInit() {
     if (!document.getElementsByTagName)
         return;
 
+  var idioma = $('#idioma').val();
+    if (idioma === 'es') {
+        A_TCALCONF = A_TCALCONFEs;
+    }else{
+        A_TCALCONF = A_TCALCONFIn;
+    }
     var e_input, a_inputs = f_tcalGetInputs();
     for (var n = 0; n < a_inputs.length; n++) {
         e_input = a_inputs[n];
@@ -429,4 +444,3 @@ function f_tcalAddOnload(f_func) {
 }
 
 f_tcalAddOnload(f_tcalInit);
-});

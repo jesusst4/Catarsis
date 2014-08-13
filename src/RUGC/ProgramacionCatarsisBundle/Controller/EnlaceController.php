@@ -172,7 +172,7 @@ class EnlaceController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('enlace_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('enlace'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:edit.html.twig', array(
