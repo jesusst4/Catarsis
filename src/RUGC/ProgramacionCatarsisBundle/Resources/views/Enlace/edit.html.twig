@@ -1,16 +1,10 @@
 {% extends '::base.html.twig' %}
-
+{% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 {% block body -%}
-    <h1>Enlace edit</h1>
+    <h1>{{ "form.Titulo.titulo_Editar_Enlace"|trans }}</h1>
 
     {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('enlace') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+    {{ form(delete_form) }}
 {% endblock %}

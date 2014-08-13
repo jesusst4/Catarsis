@@ -50,8 +50,14 @@ form:
         titulo_Listar_Opciones_Menu: "List Options Menu"
         
         titulo_Comentarios: "Comments"
-        
+
         titulo_Enlaces: "Recommended Links"
+        titulo_Crear_Enlace: "Create Link"
+        titulo_Editar_Enlace: "Edit Link"
+        
+    Enlace:
+        descripcion: Description
+        enlace: Link
         
     tabla_accion: "Actions"
     submit_editar: "Edit"
