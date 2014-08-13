@@ -15,8 +15,8 @@ class EnlaceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descripcion')
-            ->add('enlace')
+            ->add('descripcion', 'textarea', array('attr'=>array('class'=>'txtArea'), 'label'=>'form.Enlace.descripcion'))
+            ->add('enlace', 'text', array('attr'=>array('class'=>'txt'), 'label'=>'form.Enlace.enlace'))
         ;
     }
     
@@ -26,7 +26,8 @@ class EnlaceType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Enlace'
+            'data_class' => 'RUGC\ProgramacionCatarsisBundle\Entity\Enlace',
+            'translation_domain' => 'RUGCProgramacionCatarsisBundle'
         ));
     }
 

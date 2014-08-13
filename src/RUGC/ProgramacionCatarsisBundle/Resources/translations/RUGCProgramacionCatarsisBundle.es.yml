@@ -46,6 +46,13 @@ form:
         
         titulo_Comentarios: "Comentarios"
         
+        titulo_Crear_Enlace: "Crear Enlace"
+        titulo_Editar_Enlace: "Editar Enlace"
+        
+    Enlace:
+        descripcion: Descripción
+        enlace: Enlace
+        
     tabla_accion: "Acciones"
     submit_editar: "Editar"
     submit_eliminar: "Eliminar"

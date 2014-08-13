@@ -201,7 +201,7 @@ class ProgramacionController extends Controller {
     private function createEditForm(Programacion $entity) {
         $form = $this->createForm(new ProgramacionType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr' => array('class' => 'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_guardar_contenido', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
