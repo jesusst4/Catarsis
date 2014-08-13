@@ -407,7 +407,11 @@ class ProgramacionController extends Controller {
             $this->get('session')->set('_locale', 'en');
             $request->setLocale('en');
         }
-        if ($request->request->get('btnEspanol') != null) {
+        elseif ($request->request->get('btnEspanol') != null) {
+            $request->setLocale('es');
+            $this->get('session')->set('_locale', 'es');
+        }
+        else{
             $request->setLocale('es');
             $this->get('session')->set('_locale', 'es');
         }

@@ -36,7 +36,7 @@ form:
         titulo_Busqueda_Programacion: "Buscar Programación"
         titulo_Seleccionar_Mes_Programacion: "Seleccione el Mes y Año"
         titulo_Crear_Programacion: "Crear Programación de "
-        titulo_Editar_Programacion: "Editar Programación de "        
+        titulo_Editar_Programacion: "Editar Programación"        
         
         titulo_Noticia: "Noticias"
         titulo_Crear_Noticia: "Crear Noticias"
