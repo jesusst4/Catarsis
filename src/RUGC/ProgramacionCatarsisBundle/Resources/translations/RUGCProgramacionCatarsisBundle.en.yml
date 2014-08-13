@@ -89,4 +89,5 @@ form:
         not: There is no programming available for this month
     fecha_nula: Enter the date   
     no_coincidencias: There are no coincidences
+    sin_publicar: Unpublish
     
