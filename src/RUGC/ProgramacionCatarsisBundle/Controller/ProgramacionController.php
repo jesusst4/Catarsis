@@ -405,7 +405,8 @@ class ProgramacionController extends Controller {
     public function establecerLocaleAction(Request $request) {
         if ($request->request->get('btnIngles') != null) {
             $this->get('session')->set('_locale', 'en');
-            $request->setLocale('en'); elseif ($request->request->get('btnEspanol') != null) {
+            $request->setLocale('en'); 
+        }elseif ($request->request->get('btnEspanol') != null) {
                 $request->setLocale('es');
                 $this->get('session')->set('_locale', 'es');
             } else {

@@ -26,7 +26,7 @@ class Captcha {
         $fundo = ImageColorAllocate($img, 87, 156, 132);
         $texto = ImageColorAllocate($img, 255, 255, 255);
         ImageString($img, 7, 23, 6, $key, $texto);
-        ImageJpeg($img, __DIR__ . "/../Resources/public/images/captcha.jpg");
+        ImageJpeg($img, __DIR__ . "\..\..\..\..\web\captcha.jpg");
         return $key;
     }
     function key($t) {
