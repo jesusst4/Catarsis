@@ -3,9 +3,22 @@
 
 {% block body -%}
     <h1>{{ "form.Titulo.titulo_Editar_Contenido"|trans }}</h1>
-    <div class="validaciones">
-    {{ form(edit_form) }}
 
-    {{ tinymce_init() }}
-    </div>
+    <form action="{{path('encabezado_update',{'id':entity.id})}}" method="POST">
+        <div class="validaciones">
+            {{ form_start(edit_form) }}
+            {{ form_errors(edit_form) }}
+
+            <div><label>{{'form.contenido_es'|trans}}</label></div>
+            <div class="areaTexto">
+                {{ form(edit_form.textoes) }}
+            </div>
+
+            <div style="margin-bottom: 15px;"><label>{{'form.contenido_en'|trans}}</label></div>
+
+            {{ form_rest(edit_form)}}
+            {{ tinymce_init() }}
+            {{ form_end(edit_form) }}
+        </div>
+    </form>
 {% endblock %}

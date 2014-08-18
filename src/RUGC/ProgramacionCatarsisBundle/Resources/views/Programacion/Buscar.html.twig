@@ -52,7 +52,13 @@
                             <td>{% if programacion.fecha %}{{ programacion.fecha|date('d-m-Y') }}{% endif %}</td>
                             <td>{{ programacion.titulo }}</td>
                             <td>{{ programacion.obra }}</td>
-                            <td>{{ programacion.descripcion }}</td>
+                            
+                            
+                            {% if  app.request.locale == 'es' %}            
+                                <td>{{ programacion.descripciones }}</td>
+                            {% else %}
+                                <td>{{ programacion.descripcionen }}</td>
+                            {% endif%}  
                             <td>
                                 <a href="{{ path('programacion_seleccionada', { 'fecha': programacion.fecha|date('Y-m-d') }) }}">{{'form.submit_ver_programacion'|trans}}</a>
                             </td>

@@ -6,14 +6,14 @@
     <script type="text/javascript" >
         function validar() {
             var mes = $('#txtDate').val();
-            var idioma=$('#idioma').val();
+            var idioma = $('#idioma').val();
             if (mes === "") {
-                if(idioma==='es'){
+                if (idioma === 'es') {
                     $('#error').text("Ingrese el mes");
-                }else{
+                } else {
                     $('#error').text("Enter the date");
                 }
-                
+
                 return  false;
             }
             else {
@@ -39,7 +39,12 @@
     </div>
 
     <div class="divEncabezadoRadio">
-        <p> {{ radio.texto | trans | raw}}</p>
+        {% if  app.request.locale == 'es' %} 
+            <p> {{ radio.textoes | trans | raw}}</p>
+        {% else %}
+            <p> {{ radio.textoen | trans | raw}}</p>
+        {% endif%}
+
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': radio.id }) }}">
                 {{'form.submit_editar_contenido'|trans}}
@@ -48,7 +53,13 @@
     </div>
 
     <div class="divEncabezadoTV">
-        <p>{{ tv.texto | raw}}</p>
+
+        {% if  app.request.locale == 'es' %} 
+            <p> {{ tv.textoes | trans | raw}}</p>
+        {% else %}
+            <p> {{ tv.textoen | trans | raw}}</p>
+        {% endif%}
+        
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': tv.id }) }}">
                 {{'form.submit_editar_contenido'|trans}}
@@ -70,7 +81,11 @@
                                 <label  class="obra" >"{{ entity.obra }}"</label><br>
                             {% endif %}
                             <label class="descripcion">
-                                {{ entity.descripcion }}
+                                {% if  app.request.locale == 'es' %}            
+                                    {{ entity.descripciones }}
+                                {% else %}
+                                    {{ entity.descripcionen }}
+                                {% endif%}
                             </label><br>
                             {%if entity.path %}
                                 <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>
@@ -97,7 +112,11 @@
                                 <label  class="obra" >"{{ entity.obra }}"</label><br>
                             {% endif %}
                             <label class="descripcion">
-                                {{ entity.descripcion }}
+                                {% if  app.request.locale == 'es' %}            
+                                    {{ entity.descripciones }}
+                                {% else %}
+                                    {{ entity.descripcionen }}
+                                {% endif%}
                             </label><br>
                             {%if entity.path %}
                                 <img style="margin-top: 10px;" src="{{asset('uploads/documents/'~entity.path)}}" width="100" height="100"/>

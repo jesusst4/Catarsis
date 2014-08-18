@@ -25,11 +25,12 @@ class OpcionesMenuType extends AbstractType {
                                     ->orderBy('om.prioridad', 'ASC')
                                     ->where('om.menuPrincipal = 1')
                                     ->orWhere('om.menuPrincipal is null')
-                                    ->andWhere("om.nombreOpcion != 'programacion:radio/tv'")
-                                    ->andWhere("om.nombreOpcion != 'Administrar'")
+                                    ->andWhere("om.nombreOpcionEs != 'programacion:radio/tv'")
+                                    ->andWhere("om.nombreOpcionEs != 'Administrar'")
                                     ;
             }))
-                ->add('nombreOpcion','text',array('label' => 'form.Menu.nombreOpcion', 'required' => false,'attr' => array('class' => 'txt')))
+                ->add('nombreOpcionEs','text',array('label' => 'form.Menu.nombreOpcionEs', 'required' => false,'attr' => array('class' => 'txt')))
+                    ->add('nombreOpcionEn','text',array('label' => 'form.Menu.nombreOpcionEn', 'required' => false,'attr' => array('class' => 'txt')))
 //                ->add('ruta','text',array('read_only' => true, 'required' => false,'attr' => array('class' => 'txt')))
                 ->add('prioridad','text',array('label' => 'form.Menu.prioridad', 'required' => false,'attr' => array('class' => 'txt')))    
         ;

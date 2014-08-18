@@ -25,13 +25,18 @@
                 </tr>
                 <tr>
                     <th>{{'form.Programacion.descripcion'|trans}}</th>
-                    <td>{{ entity.descripcion }}</td>
+                        {% if  app.request.locale == 'es' %}                                  
+                        <td>{{ entity.descripciones }}</td>
+                    {% else %}                      
+                        <td>{{ entity.descripcionen }}</td>
+                    {% endif%}
+
                 </tr>
                 <tr>
                     {% if entity.enlace %}
                         <th>{{'form.Programacion.enlace'|trans}}</th>
                         <td><div style="width:450px;"><a  style="word-wrap: break-word;" href="http://{{entity.enlace }}" target="_blank">{{ entity.enlace }}</a></div></td>
-                        {% endif %}
+                            {% endif %}
                 </tr>
                 </tbody>
             </table>

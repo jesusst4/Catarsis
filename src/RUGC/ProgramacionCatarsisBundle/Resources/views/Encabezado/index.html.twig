@@ -12,30 +12,37 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('encabezado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.texto }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('encabezado_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('encabezado_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('encabezado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+
+                    {% if  app.request.locale == 'es' %}            
+                         <td>{{ entity.textoes }}</td>
+                    {% else %}
+                         <td>{{ entity.textoen }}</td>
+                    {% endif%}
+
+                   
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('encabezado_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('encabezado_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-        <ul>
+    <ul>
         <li>
             <a href="{{ path('encabezado_new') }}">
                 Create a new entry
             </a>
         </li>
     </ul>
-    {% endblock %}
+{% endblock %}

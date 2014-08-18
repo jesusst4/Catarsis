@@ -7,7 +7,7 @@
         <input   type="hidden" id="idioma" value="{{ app.request.locale }}" />
         <div class="validaciones">
             <input type="hidden" name="fecha" value="{{fecha}}"/>
-            {{ form(form) }}
+            {{ form(form) }} 
         </div>
     </form>
 
@@ -17,7 +17,14 @@
                 <th>{{'form.Programacion.fecha'|trans}}</th>
                 <th>{{'form.Programacion.titulo'|trans}}</th>
                 <th>{{'form.Programacion.obra'|trans}}</th>
-                <th>{{'form.Programacion.descripcion'|trans}}</th>
+
+
+                {% if  app.request.locale == 'es' %}            
+                    <th>{{'form.Programacion.descripciones'|trans}}</th>
+                    {% else %}
+                    <th>{{'form.Programacion.descripcionen'|trans}}</th>
+                    {% endif%}
+
 
                 <th>{{'form.tabla_accion'|trans}}</th>
             </tr>
@@ -28,14 +35,19 @@
                     <td>{% if programacion.fecha %}{{ programacion.fecha|date('d-m-Y') }}{% endif %}</td>
                     <td>{{ programacion.titulo }}</td>
                     <td>{{ programacion.obra }}</td>
-                    <td>{{ programacion.descripcion }}</td>
+                    {% if  app.request.locale == 'es' %}            
+                        <td>{{ programacion.descripciones }}</td>
+                    {% else %}
+                        <td>{{ programacion.descripcionen }}</td>
+                    {% endif%}
+
                     <td>
                         {% if app.request.locale == 'es' %}
-                                           <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}" onclick=" return confirm('¿Está usted seguro que desea eliminar esta programación?  Fecha Programación: {{ programacion.fecha|date('d-m-Y') }}')">{{'form.submit_eliminar'|trans}}</a>
+                            <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}" onclick=" return confirm('¿Está usted seguro que desea eliminar esta programación?  Fecha Programación: {{ programacion.fecha|date('d-m-Y') }}')">{{'form.submit_eliminar'|trans}}</a>
                         {%else%}
-                                           <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}" onclick=" return confirm('Are you sure you want to remove this schedule?                        Date Programming: {{ programacion.fecha|date('d-m-Y') }}')">{{'form.submit_eliminar'|trans}}</a>
+                            <a style="margin-right: 20px;" href="{{ path('programacion_delete', { 'id': programacion.id }) }}" onclick=" return confirm('Are you sure you want to remove this schedule?                        Date Programming: {{ programacion.fecha|date('d-m-Y') }}')">{{'form.submit_eliminar'|trans}}</a>
                         {% endif %}
-         
+
                         <a href="{{ path('programacion_edit', { 'id': programacion.id }) }}">{{'form.submit_editar'|trans}}</a>
                     </td>
                 </tr>

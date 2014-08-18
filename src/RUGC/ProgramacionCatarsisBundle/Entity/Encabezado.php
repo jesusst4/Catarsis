@@ -26,13 +26,24 @@ class Encabezado
     /**
      * @var string
      *
-     * @ORM\Column(name="texto", type="text")
+     * @ORM\Column(name="textoes", type="text")
      * 
      * @Assert\NotNull(
      *      message = "validaciones.texto.not_null"
      * )
      */
-    private $texto;
+    private $textoes;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="textoen", type="text")
+     * 
+     * @Assert\NotNull(
+     *      message = "validaciones.texto.not_null"
+     * )
+     */
+    private $textoen;
 
     /**
      * Get id
@@ -45,25 +56,48 @@ class Encabezado
     }
 
     /**
-     * Set texto
+     * Set textoes
      *
-     * @param string $texto
+     * @param string $textoes
      * @return Encabezado
      */
-    public function setTexto($texto)
+    public function setTextoes($textoes)
     {
-        $this->texto = $texto;
+        $this->textoes = $textoes;
 
         return $this;
     }
 
     /**
-     * Get texto
+     * Get textoes
      *
      * @return string 
      */
-    public function getTexto()
+    public function getTextoes()
     {
-        return $this->texto;
+        return $this->textoes;
+    }
+    
+    /**
+     * Set textoen
+     *
+     * @param string $textoen
+     * @return Encabezado
+     */
+    public function setTextoen($textoen)
+    {
+        $this->textoen = $textoen;
+
+        return $this;
+    }
+
+    /**
+     * Get textoen
+     *
+     * @return string 
+     */
+    public function getTextoen()
+    {
+        return $this->textoen;
     }
 }

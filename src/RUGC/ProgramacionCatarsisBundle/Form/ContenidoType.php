@@ -15,14 +15,23 @@ class ContenidoType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('opcionMenu', new OpcionesMenuType())
-                ->add('texto', 'textarea', array(
+                ->add('textoes', 'textarea', array(
                     'attr' => array(
                         'class' => 'tinymce textArea',
                         'data-theme' => 'advanced',
                     ),
                     'required' => true,
                     'label' => false
-        ));
+                ))
+                ->add('textoen', 'textarea', array(
+                    'attr' => array(
+                        'class' => 'tinymce textArea',
+                        'data-theme' => 'advanced',
+                    ),
+                    'required' => true,
+                    'label' => false
+                ))
+        ;
     }
 
     /**

@@ -1,9 +1,11 @@
 <?php
+
 namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 //use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RUGC\ProgramacionCatarsisBundle\Entity\OpcionesMenu;
+
 //use RUGC\ProgramacionCatarsisBundle\Form\OpcionesMenuType;
 //use Symfony\Component\HttpFoundation\Response;
 //use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -22,12 +24,18 @@ class OpcionesMenuController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->consultarMenuPrincipal();   
-              
-        return $this->render('RUGCProgramacionCatarsisBundle:Default:index.html.twig', array(
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->consultarMenuPrincipal();
+        $idioma = $this->get('session')->get('_locale');
+        if($idioma==='es') {
+            return $this->render('RUGCProgramacionCatarsisBundle:Default:index.html.twig', array(
                     'entities' => $entities,
         ));
-
+        } else {
+            return $this->render('RUGCProgramacionCatarsisBundle:Default:indexEn.html.twig', array(
+                    'entities' => $entities,
+        ));
+        }
+        
     }
 
     /**
@@ -215,5 +223,4 @@ class OpcionesMenuController extends Controller {
 //                        ->getForm()
 //        ;
 //    }
-
 }
