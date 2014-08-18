@@ -1,7 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    {{ entity.texto | raw}}
+
+    {% if  app.request.locale == 'es' %}            
+        {{ entity.textoes | raw}}
+    {% else %}
+        {{ entity.textoen | raw}}
+    {% endif%}
+
 
     {#    {% if is_granted('ROLE_ADMIN') %}#}    
     <ul class="record_actions">

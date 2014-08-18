@@ -140,10 +140,7 @@ class EncabezadoController extends Controller
     */
     private function createEditForm(Encabezado $entity)
     {
-        $form = $this->createForm(new EncabezadoType(), $entity, array(
-            'action' => $this->generateUrl('encabezado_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(new EncabezadoType(), $entity);
 
         $form->add('submit', 'submit', array('label' => 'form.submit_guardar_contenido','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr'=>array('class'=>'btnDer')));
 

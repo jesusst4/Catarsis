@@ -3,8 +3,16 @@
 {% block body -%}
 
     {% if mensaje=='' %}
-        <h1>{{'form.Titulo.titulo_esta_seguro'|trans}}</h1>
-        {{ entity.contenido.texto | raw}}
+        <h1 style="color: red;">{{'form.Titulo.titulo_esta_seguro'|trans}}</h1>
+        
+        {% if  app.request.locale == 'es' %}            
+            {{ entity.contenido.textoes | raw}}
+        {% else %}
+            {{ entity.contenido.textoen | raw}}
+        {% endif%}
+        
+        
+        
 
     {% else %}
         {{mensaje}}

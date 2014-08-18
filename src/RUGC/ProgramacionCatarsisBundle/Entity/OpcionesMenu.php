@@ -35,13 +35,21 @@ class OpcionesMenu {
     /**
      * @var string
      *
-     * @ORM\Column(name="nombreOpcion", type="string", length=100)
+     * @ORM\Column(name="nombreOpcion_es", type="string", length=100)
      * 
      * @Assert\NotNull(
      *      message = "validaciones.nombre_opcion.not_null"
      * )
      */
-    private $nombreOpcion;
+    private $nombreOpcionEs;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreOpcion_en", type="string", length=100)
+     * 
+     */
+    private $nombreOpcionEn;
 
     /**
      * @var string
@@ -107,24 +115,45 @@ class OpcionesMenu {
     }
 
     /**
-     * Set nombreOpcion
+     * Set nombreOpcionEs
      *
-     * @param string $nombreOpcion
+     * @param string $nombreOpcionEs
      * @return OpcionesMenu
      */
-    public function setNombreOpcion($nombreOpcion) {
-        $this->nombreOpcion = $nombreOpcion;
+    public function setNombreOpcionEs($nombreOpcionEs) {
+        $this->nombreOpcionEs = $nombreOpcionEs;
 
         return $this;
     }
 
     /**
-     * Get nombreOpcion
+     * Get nombreOpcionEs
      *
      * @return string 
      */
-    public function getNombreOpcion() {
-        return $this->nombreOpcion;
+    public function getNombreOpcionEs() {
+        return $this->nombreOpcionEs;
+    }
+    
+     /**
+     * Set nombreOpcionEn
+     *
+     * @param string $nombreOpcionEn
+     * @return OpcionesMenu
+     */
+    public function setNombreOpcionEn($nombreOpcionEn) {
+        $this->nombreOpcionEn = $nombreOpcionEn;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreOpcionEn
+     *
+     * @return string 
+     */
+    public function getNombreOpcionEn() {
+        return $this->nombreOpcionEn;
     }
 
     /**
@@ -212,7 +241,7 @@ class OpcionesMenu {
     }
 
     public function __toString() {
-        return $this->nombreOpcion;
+        return $this->nombreOpcionEs.' - '.  $this->nombreOpcionEn;
     }
 
     public function setChildren($subMenu) {
@@ -249,5 +278,9 @@ class OpcionesMenu {
     public function getPermiso() {
         return $this->permiso;
     }
+    
+//    public function toString() {
+//        return $this->nombreOpcion_es;
+//    }
 
 }

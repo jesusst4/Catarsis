@@ -15,10 +15,10 @@
         <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td>{{ entity.nombreOpcion }}</td>
+                    <td>{{ entity.nombreOpcionEs }}</td>
                     <td>{{ entity.prioridad }}</td>
                     <td>
-                        <a href="{{ path('contenido_confirmar_delete', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('contenido_confirmar_delete', { 'id': entity.id }) }}">{{'form.submit_editar'|trans}}</a>
                     </td>
                 </tr>
             {% endfor %}

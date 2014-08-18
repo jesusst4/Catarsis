@@ -3,8 +3,11 @@
 {% block body -%}
 
     {% if mensaje=='' %}
-        {{ entity.texto | raw}}
-
+        {% if  app.request.locale == 'es' %}            
+            {{ entity.textoes | raw}}
+        {% else %}
+            {{ entity.textoen | raw}}
+        {% endif%}
     {% else %}
         {{mensaje}}
 
@@ -14,11 +17,10 @@
 
         {% if is_granted('ROLE_ADMIN') %}
 
-
             {% if mensaje=='' %}
-               <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
-                   {{ 'form.submit_editar_contenido'|trans}}
-            </a>
+                <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
+                    {{ 'form.submit_editar_contenido'|trans}}
+                </a>
 
             {% endif %}
         {% endif %}

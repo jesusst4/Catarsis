@@ -16,13 +16,16 @@ form:
     Menu:
         prioridad: "Prioridad"
         menuPrincipal: "Menú Principal"
-        nombreOpcion: "Nombre Opcción"
+        nombreOpcionEs: "Nombre Opción Español"
+        nombreOpcionEn: "Nombre Opción Inglés"
         
     Programacion:
         fecha: "Fecha"
         tipo: "Tipo Programación"
         titulo: "Artista ó Título"
         obra: "Título de la Obra"
+        descripciones: "Descripción Español"
+        descripcionen: "Descripción Inglés"
         descripcion: "Descripción"
         imagen: "Imagen"
         enlace: "Enlace"
@@ -91,3 +94,5 @@ form:
     fecha_nula: Ingrese la fecha
     no_coincidencias: No se encontraron coincidencias
     sin_publicar: Sin Publicar
+    contenido_es: Contenido Español
+    contenido_en: Contenido Inglés

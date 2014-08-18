@@ -16,13 +16,16 @@ form:
     Menu:
         prioridad: "Priority"
         menuPrincipal: "Main Menu"
-        nombreOpcion: "Name Option"
+        nombreOpcionEs: "Name Option Spanish"
+        nombreOpcionEn: "Name Option English"
         
     Programacion:
         fecha: "Date"
         tipo: "Type Programming"
         titulo: "Artist or Title"
         obra: "Title of Play"
+        descripciones: "Description Spanish"
+        descripcionen: "Description English"
         descripcion: "Description"
         imagen: "Image"
         enlace: "Link"
@@ -90,4 +93,6 @@ form:
     fecha_nula: Enter the date   
     no_coincidencias: There are no coincidences
     sin_publicar: Unpublish
+    contenido_es: Content Spanish
+    contenido_en: Content English
     

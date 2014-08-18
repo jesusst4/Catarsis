@@ -7,13 +7,19 @@
         <form action="{{path('contenido_create')}}" method="POST">
             {{ form_start(form) }}
             {{ form_errors(form) }}
-            {{form_row(form.opcionMenu.nombreOpcion)}}
+            {{form_row(form.opcionMenu.nombreOpcionEs)}}
+            {{form_row(form.opcionMenu.nombreOpcionEn)}}
             {#            {{form_row(form.opcionMenu.ruta)}} #}
             {{form_row(form.opcionMenu.prioridad)}}
             {{form_row(form.opcionMenu.menuPrincipal)}}
 
+            <div> <label>{{'form.contenido_es'|trans}}</label></div>
             <div class="areaTexto">
-                {{form_row(form.texto)}}
+                {{form_row(form.textoes)}}
+            </div>
+            <div><label>{{'form.contenido_en'|trans}}</label></div>
+            <div class="areaTexto">
+                {{form_row(form.textoen)}}
             </div>
             {{ form(form)}}
 

@@ -68,13 +68,21 @@ class Programacion {
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=255)
+     * @ORM\Column(name="descripciones", type="string", length=255)
      * 
      * @Assert\NotNull(
      *      message = "validaciones.descripcion.not_null"
      * )
      */
-    private $descripcion;
+    private $descripciones;
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcionen", type="string", length=255)
+     * 
+     */
+    private $descripcionen;
 
     /**
      * @var string
@@ -190,24 +198,45 @@ class Programacion {
     }
 
     /**
-     * Set descripcion
+     * Set descripciones
      *
-     * @param string $descripcion
+     * @param string $descripciones
      * @return Programacion
      */
-    public function setDescripcion($descripcion) {
-        $this->descripcion = $descripcion;
+    public function setDescripciones($descripciones) {
+        $this->descripciones = $descripciones;
 
         return $this;
     }
 
     /**
-     * Get descripcion
+     * Get descripciones
      *
      * @return string 
      */
-    public function getDescripcion() {
-        return $this->descripcion;
+    public function getDescripciones() {
+        return $this->descripciones;
+    }
+    
+    /**
+     * Set descripcionen
+     *
+     * @param string $descripcionen
+     * @return Programacion
+     */
+    public function setDescripcionen($descripcionen) {
+        $this->descripcionen = $descripcionen;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcionen
+     *
+     * @return string 
+     */
+    public function getDescripcionen() {
+        return $this->descripcionen;
     }
 
     /**

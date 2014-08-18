@@ -25,13 +25,21 @@ class Contenido {
     /**
      * @var string
      *
-     * @ORM\Column(name="texto", type="text")
+     * @ORM\Column(name="textoes", type="text")
      * 
      * @Assert\NotNull(
      *      message = "validaciones.texto.not_null"
      * )
      */
-    private $texto;
+    private $textoes;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="textoen", type="text")
+     * 
+     */
+    private $textoen;
 
     /**
      * @ORM\OneToOne(targetEntity="OpcionesMenu", inversedBy="contenido", cascade={"all"})
@@ -51,24 +59,45 @@ class Contenido {
     }
 
     /**
-     * Set texto
+     * Set textoes
      *
-     * @param string $texto
+     * @param string $textoes
      * @return Contenido
      */
-    public function setTexto($texto) {
-        $this->texto = $texto;
+    public function setTextoes($textoes) {
+        $this->textoes = $textoes;
 
         return $this;
     }
 
     /**
-     * Get texto
+     * Get textoes
      *
      * @return string 
      */
-    public function getTexto() {
-        return $this->texto;
+    public function getTextoes() {
+        return $this->textoes;
+    }
+    
+    /**
+     * Set textoen
+     *
+     * @param string $textoen
+     * @return Contenido
+     */
+    public function setTextoen($textoen) {
+        $this->textoen = $textoen;
+
+        return $this;
+    }
+
+    /**
+     * Get textoen
+     *
+     * @return string 
+     */
+    public function getTextoen() {
+        return $this->textoen;
     }
 
     /**

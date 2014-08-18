@@ -18,7 +18,8 @@ class ProgramacionType extends AbstractType {
                 ->add('fecha', 'date', array('attr' => array('class' => 'tcal txt'), 'label' => 'form.Programacion.fecha', 'input' => 'datetime', 'widget' => 'single_text', 'format' => 'dd-MM-yyyy', 'read_only' => 'true'), array('required' => false))
                 ->add('titulo', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'form.Programacion.titulo'))
                 ->add('obra', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'form.Programacion.obra'))
-                ->add('descripcion', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false, 'label' => 'form.Programacion.descripcion'))
+                ->add('descripciones', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false, 'label' => 'form.Programacion.descripciones'))
+                ->add('descripcionen', 'textarea', array('attr' => array('class' => 'txtArea'), 'required' => false, 'label' => 'form.Programacion.descripcionen'))
                 ->add('imagen', 'file', array('required' => false, 'label' => 'form.Programacion.imagen'))
                 ->add('enlace', 'text', array('attr' => array('class' => 'txt'), 'required' => false, 'label' => 'form.Programacion.enlace'))
         ;

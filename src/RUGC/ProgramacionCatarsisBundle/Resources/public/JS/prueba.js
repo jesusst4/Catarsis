@@ -20,7 +20,7 @@ $(document).ready(function() {
     }
     else {
         jQuery(function($) {
-            $.datepicker.regional['en-GB'] = {
+            $.datepicker.regional['en'] = {
                 changeMonth: true,
                 changeYear: true,
                 closeText: 'Done',
@@ -32,7 +32,7 @@ $(document).ready(function() {
                 monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 dateFormat: 'MM yy', };
-            $.datepicker.setDefaults($.datepicker.regional['en-GB']);
+            $.datepicker.setDefaults($.datepicker.regional['en']);
         });
 
     }

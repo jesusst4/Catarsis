@@ -1,3 +1,4 @@
+{# empty Twig template #}
 <div id="menubar" class="s">
     <nav>
         <ul class="menu-horizontal">
@@ -12,9 +13,9 @@
                         <li class="prin">
                             {% if opcion.ruta == 'contenido_show' %}
 
-                                <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {%else%}
-                                <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {% endif %}
 
                             <ul class="sub">
@@ -24,9 +25,9 @@
                                     {%if subOpcion.permiso==0 %}
                                         <li>
                                             {% if subOpcion.ruta == 'contenido_show' %}
-                                                <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcionEs | upper}}</a>
+                                                <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                             {%else%}
-                                                <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEs | upper}}</a>
+                                                <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                             {% endif %}
 
 
@@ -35,9 +36,9 @@
                                         {%if is_granted('ROLE_ADMIN')%}
                                             <li>
                                                 {% if subOpcion.ruta == 'contenido_show' %}
-                                                    <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcionEs | upper}}</a>
+                                                    <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                                 {%else%}
-                                                    <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEs | upper}}</a>
+                                                    <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                                 {% endif %}
 
 
@@ -53,9 +54,9 @@
                         {%if is_granted('ROLE_ADMIN')%}
                             <li class="prin">
                                 {% if opcion.ruta == 'contenido_show' %}
-                                    <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                    <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                                 {%else%}
-                                    <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                    <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                                 {% endif %}
 
 
@@ -63,9 +64,9 @@
                                     {%for subOpcion in opcion.children %}
                                         <li>
                                             {% if subOpcion.ruta == 'contenido_show' %}
-                                                <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcionEs | upper}}</a>
+                                                <a href="{{path(subOpcion.ruta, {'id':subOpcion.id})}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                             {%else%}
-                                                <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEs | upper}}</a>
+                                                <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                             {% endif %}
                                         </li>
                                     {%endfor%}
@@ -80,9 +81,9 @@
                     {%if opcion.permiso==0 %}
                         <li class="prin">
                             {% if opcion.ruta == 'contenido_show' %}
-                                <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {%else%}
-                                <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {% endif %}
 
 
@@ -91,9 +92,9 @@
                         {%if is_granted('ROLE_ADMIN')%}
                             <li class="prin">
                                {% if opcion.ruta == 'contenido_show' %}
-                                 <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                 <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {%else%}
-                                 <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEs}}</a>
+                                 <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {% endif %}
                                
                             </li>
