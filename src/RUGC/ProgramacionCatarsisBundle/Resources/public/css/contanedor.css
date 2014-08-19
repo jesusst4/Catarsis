@@ -782,3 +782,48 @@ form{
     font-size: 12px;
     font-family: sans-serif;
 }
+
+.paginacion{
+    font-family: sans-serif;
+    text-align: center;
+    color: #579c84;
+}
+
+.previous a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/prev_mon.gif') 100% 50% no-repeat; 
+}
+.first a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/prev_year.gif') 100% 50% no-repeat; 
+}
+
+.next a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/next_mon.gif') 100% 50% no-repeat; 
+}
+
+.last a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/next_year.gif') 100% 50% no-repeat; 
+}
+
+.page a{
+    font-size: 14px;
+    text-decoration: none;
+    font-family: sans-serif;
+     color: #579c84;
+}
+
+.current{
+    font-size: 16px;
+    font-family: sans-serif;
+}

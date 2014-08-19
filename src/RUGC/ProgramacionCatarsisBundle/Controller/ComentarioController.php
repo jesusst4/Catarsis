@@ -22,10 +22,15 @@ class ComentarioController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findAll();
+        $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findBy(array('estado' => '0'), array('fecha' => 'DESC'));
+        
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $entities, $this->get('request')->query->get('page', 1), 10
+        );
 
         return $this->render('RUGCProgramacionCatarsisBundle:Comentario:index.html.twig', array(
-                    'entities' => $entities,
+                    'entities' => $pagination,
         ));
     }
 

@@ -38,6 +38,10 @@
             {% endif %}
         {% endfor %}
 
+        <div class="paginacion">
+            {{ knp_pagination_render(entities) }}
+        </div>
+
     </div>
 
 {% endblock %}

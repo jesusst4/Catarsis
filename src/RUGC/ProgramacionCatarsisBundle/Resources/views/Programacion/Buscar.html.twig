@@ -10,12 +10,12 @@
             var idioma = $('#idioma').val();
             if (titulo === "" && obra === "") {
                 if (idioma === 'es') {
-                       $('#error').text("Debe ingresar algún criterio de búsqueda");
+                    $('#error').text("Debe ingresar algún criterio de búsqueda");
                 }
-                else{
+                else {
                     $('#error').text("You must enter a search criterion");
                 }
-             
+
                 return  false;
             }
             else {
@@ -52,8 +52,8 @@
                             <td>{% if programacion.fecha %}{{ programacion.fecha|date('d-m-Y') }}{% endif %}</td>
                             <td>{{ programacion.titulo }}</td>
                             <td>{{ programacion.obra }}</td>
-                            
-                            
+
+
                             {% if  app.request.locale == 'es' %}            
                                 <td>{{ programacion.descripciones }}</td>
                             {% else %}
@@ -66,6 +66,10 @@
                     {% endfor %}
                 </tbody>
             </table>
+                <div style=" width: 800px; height: 2px; margin: auto;"></div>
+            <div class="paginacion">
+                {{ knp_pagination_render(programaciones) }}
+            </div>
         {%else%}
             <div class="mensaje">
                 <div class="validaciones"> 
@@ -75,4 +79,6 @@
             </div>
         {% endif%}
     </form>
+
+
 {% endblock %}

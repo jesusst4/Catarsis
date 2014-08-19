@@ -151,6 +151,15 @@ class ProgramacionController extends Controller {
 
         $comentario = new Comentario();
         $comentario->setProgramacion($entity);
+
+        $listaComentarios = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findBy(array('estado' => '1', 'programacion' => $id), array('fecha' => 'DESC'));
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $listaComentarios, $this->get('request')->query->get('page', 1), 5
+        );
+
+
         $form = $this->createCreateComentarioForm($comentario);
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Programacion entity.');
@@ -164,7 +173,8 @@ class ProgramacionController extends Controller {
                     'path' => $path,
                     'comentario' => $comentario,
                     'emailError' => "",
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'listaComentarios' => $pagination
         ));
     }
 
@@ -336,6 +346,11 @@ class ProgramacionController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionXArtista_Titulo($request->request->get("txtTitulo"), $request->request->get("txtObra"));
 
+            $paginator = $this->get('knp_paginator');
+            $pagination = $paginator->paginate(
+                    $listaProgramaciones, $this->get('request')->query->get('page', 1), 2
+            );
+
             if (count($listaProgramaciones) > 0) {
                 $mensaje = "";
             } else {
@@ -345,7 +360,7 @@ class ProgramacionController extends Controller {
                         'mensaje' => $mensaje,
                         'titulo' => $request->request->get("txtTitulo"),
                         'obra' => $request->request->get("txtObra"),
-                        'programaciones' => $listaProgramaciones
+                        'programaciones' => $pagination
             ));
         } else {
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
@@ -405,16 +420,16 @@ class ProgramacionController extends Controller {
     public function establecerLocaleAction(Request $request) {
         if ($request->request->get('btnIngles') != null) {
             $this->get('session')->set('_locale', 'en');
-            $request->setLocale('en'); 
-        }elseif ($request->request->get('btnEspanol') != null) {
-                $request->setLocale('es');
-                $this->get('session')->set('_locale', 'es');
-            } else {
+            $request->setLocale('en');
+        } elseif ($request->request->get('btnEspanol') != null) {
+            $request->setLocale('es');
+            $this->get('session')->set('_locale', 'es');
+        } else {
 
-                $request->setLocale('es');
-                $this->get('session')->set('_locale', 'es');
-            }
-            return $this->redirect($this->generateUrl('programacion', array('_locale' => $request->getLocale())));
+            $request->setLocale('es');
+            $this->get('session')->set('_locale', 'es');
         }
+        return $this->redirect($this->generateUrl('programacion', array('_locale' => $request->getLocale())));
     }
-    
+
+}

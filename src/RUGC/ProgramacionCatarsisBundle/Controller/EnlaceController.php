@@ -25,8 +25,13 @@ class EnlaceController extends Controller
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->findBy(array(), array('id' => 'DESC'));
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $entities, $this->get('request')->query->get('page', 1), 10
+        );
+        
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:index.html.twig', array(
-            'entities' => $entities,
+            'entities' => $pagination,
         ));
     }
     /**

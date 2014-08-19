@@ -120,7 +120,7 @@ class Programacion {
     /**
      * @var type 
      * 
-     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="programacion")
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="programacion", cascade={"all"})
      */
     private  $comentarios;
 
