@@ -8,6 +8,7 @@ app/logs/
 web/bundles/*
 web/css/*
 web/js/*
+vendor/*
 web/uploads/*
 src/CSE/ReservacionesBundle/Services/documentos/*
 
