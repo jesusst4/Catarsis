@@ -24,9 +24,14 @@ class ContenidoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->listarOpcionesMenu();
+        
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $entities, $this->get('request')->query->get('page', 1), 10
+        );
 
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:index.html.twig', array(
-                    'entities' => $entities,
+                    'entities' => $pagination,
         ));
     }
 

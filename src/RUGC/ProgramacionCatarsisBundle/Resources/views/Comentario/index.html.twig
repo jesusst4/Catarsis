@@ -22,15 +22,19 @@
                     <td>{{ entity.comentario }}</td>
                     <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</td>
                     <td>
-                      
+
                         <a href="{{ path('comentario_show', { 'id': entity.id }) }}">{{'form.submit_revisar'|trans}}</a>
-                          
-                          {#  <li>
-                                <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>
-                            </li>#}
+
+                        {#  <li>
+                              <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>
+                          </li>#}
                     </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <div class="paginacion">
+        {{ knp_pagination_render(entities) }}
+    </div>
 {% endblock %}

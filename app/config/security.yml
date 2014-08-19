@@ -21,7 +21,7 @@ security:
             
             logout:       
                 path: fos_user_security_logout
-                target: /programacion/locale
+                target: /contenido/es/home
             anonymous:    true
             access_denied_url: /contenido/home
             

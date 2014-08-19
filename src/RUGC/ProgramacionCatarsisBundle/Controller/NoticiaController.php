@@ -22,8 +22,13 @@ class NoticiaController extends Controller {
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->findBy(array(), array('fecha' => 'DESC'));
 
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $entities, $this->get('request')->query->get('page', 1), 5
+        );
+
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:index.html.twig', array(
-                    'entities' => $entities,
+                    'entities' => $pagination,
         ));
     }
 
