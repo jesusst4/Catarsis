@@ -167,7 +167,7 @@ class EncabezadoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('programacion', array('id' => $id)));
+            return $this->redirect($this->generateUrl('programacion'));
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Encabezado:edit.html.twig', array(

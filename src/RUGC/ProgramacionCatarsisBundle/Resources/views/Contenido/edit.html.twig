@@ -8,11 +8,20 @@
         <div class="validaciones">
             {{ form_start(edit_form) }}
             {{ form_errors(edit_form) }}
-            {{form_row(edit_form.opcionMenu.nombreOpcionEs)}}
-            {{form_row(edit_form.opcionMenu.nombreOpcionEn)}}
-            {#            {{form_row(edit_form.opcionMenu.ruta)}} #}
-            {{form_row(edit_form.opcionMenu.prioridad)}}
-            {{form_row(edit_form.opcionMenu.menuPrincipal)}}
+            <div class="lblGrande">
+                {{form_row(edit_form.opcionMenu.nombreOpcionEs)}}
+            </div>
+            <div class="lblGrande">
+                {{form_row(edit_form.opcionMenu.nombreOpcionEn)}}
+                {#            {{form_row(edit_form.opcionMenu.ruta)}} #}
+            </div>
+            <div class="lblGrande">
+                {{form_row(edit_form.opcionMenu.prioridad)}}
+            </div>
+            <div class="lblGrande">
+                {{form_row(edit_form.opcionMenu.menuPrincipal)}}
+            </div>
+
             <div> <label>{{'form.contenido_es'|trans}}</label></div>
             <div class="areaTexto">
                 {{form_row(edit_form.textoes)}}

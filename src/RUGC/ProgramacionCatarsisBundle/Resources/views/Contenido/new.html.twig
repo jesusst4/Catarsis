@@ -3,16 +3,24 @@
 
 {% block body -%}
     <h1>{{ "form.Titulo.titulo_Crear_Contenido"|trans }}</h1>
-    <div class="validaciones">
-        <form action="{{path('contenido_create')}}" method="POST">
+
+    <form action="{{path('contenido_create')}}" method="POST">
+        <div class="validaciones">
             {{ form_start(form) }}
             {{ form_errors(form) }}
-            {{form_row(form.opcionMenu.nombreOpcionEs)}}
-            {{form_row(form.opcionMenu.nombreOpcionEn)}}
-            {#            {{form_row(form.opcionMenu.ruta)}} #}
-            {{form_row(form.opcionMenu.prioridad)}}
-            {{form_row(form.opcionMenu.menuPrincipal)}}
-
+            <div class="lblGrande">
+                {{form_row(form.opcionMenu.nombreOpcionEs)}}
+            </div>
+            <div class="lblGrande">
+                {{form_row(form.opcionMenu.nombreOpcionEn)}}
+            </div>
+            <div class="lblGrande">
+                {#            {{form_row(form.opcionMenu.ruta)}} #}
+                {{form_row(form.opcionMenu.prioridad)}}
+            </div>
+            <div class="lblGrande">
+                {{form_row(form.opcionMenu.menuPrincipal)}}
+            </div>
             <div> <label>{{'form.contenido_es'|trans}}</label></div>
             <div class="areaTexto">
                 {{form_row(form.textoes)}}
@@ -25,6 +33,7 @@
 
             {{ tinymce_init() }}
             {{ form_end(form) }}
-        </form>
-    </div>
+        </div>
+    </form>
+
 {% endblock %}

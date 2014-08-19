@@ -102,12 +102,12 @@ class ProgramacionController extends Controller {
         $objFecha = new FechasServices();
         if ($fechaGet) {
             $fechaGeneral = $fechaGet;
-            $fecha = split(" ", $fechaGet);
+            $fecha = preg_split("/ /", $fechaGet);
             $idioma = $this->get('session')->get('_locale');
             $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         } elseif ($fechaPost) {
             $fechaGeneral = $fechaPost;
-            $fecha = split(" ", $fechaPost);
+            $fecha = preg_split("/ /", $fechaPost);
             $idioma = $this->get('session')->get('_locale');
             $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         } else {
