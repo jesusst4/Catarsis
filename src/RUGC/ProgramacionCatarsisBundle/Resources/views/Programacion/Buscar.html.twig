@@ -66,10 +66,35 @@
                     {% endfor %}
                 </tbody>
             </table>
-                <div style=" width: 800px; height: 2px; margin: auto;"></div>
-            <div class="paginacion">
-                {{ knp_pagination_render(programaciones) }}
-            </div>
+            <div style=" width: 800px; height: 2px; margin: auto;"></div>
+            
+                {% if last_page > 1 %}
+                    <div class="paginacion">
+                        <a href="{{ path('programacion_search', { 'titulo':titulo, 'obra':obra, 'page': 1 }) }}">
+                            <img src="{{ asset('bundles/rugcprogramacioncatarsis/images/first1.png') }}" alt="First page" title="First page" />
+                        </a>
+
+                        <a href="{{ path('programacion_search', { 'titulo':titulo, 'obra':obra, 'page': previous_page }) }}">
+                            <img src="{{ asset('bundles/rugcprogramacioncatarsis/images/previous1.png') }}" alt="Previous page" title="Previous page" />
+                        </a>
+
+                        {% for page in 1..last_page %}
+                            {% if page == current_page %}
+                                {{ page }}
+                            {% else %}
+                                <a href="{{ path('programacion_search', { 'titulo':titulo, 'obra':obra, 'page': page }) }}">{{ page }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        <a href="{{ path('programacion_search', { 'titulo':titulo, 'obra':obra, 'page': next_page }) }}">
+                            <img src="{{ asset('bundles/rugcprogramacioncatarsis/images/next1.png') }}" alt="Next page" title="Next page" />
+                        </a>
+
+                            <a href="{{ path('programacion_search', { 'titulo':titulo, 'obra':obra, 'page': last_page }) }}">
+                            <img src="{{ asset('bundles/rugcprogramacioncatarsis/images/last1.png') }}" alt="Last page" title="Last page" />
+                        </a>
+                    </div>
+                {% endif %}
         {%else%}
             <div class="mensaje">
                 <div class="validaciones"> 

@@ -145,8 +145,8 @@ form div label{
     font-size:14px;
     font-family:sans-serif;
     margin-left: 5px;
-/*    text-align: right;
-    padding-right: 10px;*/
+    /*    text-align: right;
+        padding-right: 10px;*/
 }
 
 form div .lblGrande label{
@@ -161,7 +161,7 @@ form div .lblGrande label{
     margin-left: 5px;
 }
 .lblGrande{
-   
+
 }
 
 
@@ -784,43 +784,52 @@ form{
 }
 
 .paginacion{
+    margin-top: 10px;
     font-family: sans-serif;
     text-align: center;
     color: #579c84;
 }
 
-.previous a{
-    list-style: none;
+.paginacion a{
     text-decoration: none;
-    color: white;
-    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/prev_mon.gif') 100% 50% no-repeat; 
+}
+
+.previous a{
+    width: 15px;
+    height: 15px;
+    text-decoration: none;
+    color: transparent;
+    background: url('/bundles/rugcprogramacioncatarsis/images/previous1.png') 100% 50% no-repeat; 
 }
 .first a{
-    list-style: none;
+    width: 15px;
+    height: 15px;
     text-decoration: none;
-    color: white;
-    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/prev_year.gif') 100% 50% no-repeat; 
+    color: transparent;
+    background: url('/bundles/rugcprogramacioncatarsis/images/first1.png') 100% 50% no-repeat; 
 }
 
 .next a{
-    list-style: none;
+    width: 15px;
+    height: 15px;
     text-decoration: none;
-    color: white;
-    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/next_mon.gif') 100% 50% no-repeat; 
+    color: transparent;
+    background: url('/bundles/rugcprogramacioncatarsis/images/next1.png') 100% 50% no-repeat; 
 }
 
 .last a{
-    list-style: none;
+    width: 15px;
+    height: 15px;
     text-decoration: none;
-    color: white;
-    background: url('/bundles/rugcprogramacioncatarsis/img_calendario/next_year.gif') 100% 50% no-repeat; 
+    color: transparent;
+    background: url('/bundles/rugcprogramacioncatarsis/images/last1.png') 100% 50% no-repeat; 
 }
 
 .page a{
     font-size: 14px;
     text-decoration: none;
     font-family: sans-serif;
-     color: #579c84;
+    color: #579c84;
 }
 
 .current{
