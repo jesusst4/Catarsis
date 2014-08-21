@@ -319,6 +319,10 @@ class Programacion {
         
     }
     
+    public function getPath() {
+        return $this->path;  
+    }
+    
      
     /**
      * @ORM\PrePersist()
@@ -366,6 +370,7 @@ class Programacion {
         }
     }
 
+    
     public function getAbsolutePath() {
         return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }

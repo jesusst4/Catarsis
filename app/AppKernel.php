@@ -21,7 +21,8 @@ class AppKernel extends Kernel
             new RUGC\AutenticacionBundle\RUGCAutenticacionBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
-            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Ps\PdfBundle\PsPdfBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

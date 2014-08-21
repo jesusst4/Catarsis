@@ -70,3 +70,9 @@ programacion_seleccionada:
 programacion_locale:
     path: /locale
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:establecerLocale" }
+    
+programacion_pdf:
+    path:     /{_locale}/reporteProgramacion
+    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Programacion:programacionPDF" }
+    requirements:
+        _locale: en|es

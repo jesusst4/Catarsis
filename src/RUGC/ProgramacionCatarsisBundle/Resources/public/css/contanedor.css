@@ -145,8 +145,8 @@ form div label{
     font-size:14px;
     font-family:sans-serif;
     margin-left: 5px;
-/*    text-align: right;
-    padding-right: 10px;*/
+    /*    text-align: right;
+        padding-right: 10px;*/
 }
 
 form div .lblGrande label{
@@ -161,7 +161,7 @@ form div .lblGrande label{
     margin-left: 5px;
 }
 .lblGrande{
-   
+
 }
 
 
@@ -820,10 +820,20 @@ form{
     font-size: 14px;
     text-decoration: none;
     font-family: sans-serif;
-     color: #579c84;
+    color: #579c84;
 }
 
 .current{
     font-size: 16px;
     font-family: sans-serif;
+}
+
+.botonAsLink {
+    background: none;
+    border: none;
+    color: blue;
+    width: 150px;
+    text-decoration: underline;
+    cursor: pointer;
+    background: #FFF url(/bundles/rugcprogramacioncatarsis/images/pdf.png) no-repeat left center;
 }

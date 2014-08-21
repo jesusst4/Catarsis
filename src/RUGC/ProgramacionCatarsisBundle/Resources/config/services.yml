@@ -1,11 +1,18 @@
 parameters:
     enviarNotificacionServices.class: RUGC\ProgramacionCatarsisBundle\Services\EnviarNotificacionServices
+    reporteProgramacionesServices.class: RUGC\ProgramacionCatarsisBundle\Services\ReporteProgramacionesServices
 
 
 services:
     enviarNotificacionServices:
         class: %enviarNotificacionServices.class%
         arguments: [@mailer]
+        
+    reporteProgramacionesServices:
+        class: %reporteProgramacionesServices.class%
+        arguments: [@doctrine]
+    
+    
 #    rugc_programacion_catarsis.example:
 #        class: %rugc_programacion_catarsis.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

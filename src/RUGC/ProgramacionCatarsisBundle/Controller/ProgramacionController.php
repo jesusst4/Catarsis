@@ -432,4 +432,22 @@ class ProgramacionController extends Controller {
         return $this->redirect($this->generateUrl('programacion', array('_locale' => $request->getLocale())));
     }
 
+    public function programacionPDFAction(Request $request) {
+
+        $objFecha = new FechasServices();
+        $fechaPost = $request->request->get("fechaProgramacion");
+        $fecha = split("-", $fechaPost);
+        $idioma = $this->get('session')->get('_locale');
+        $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
+        echo 'fecha ' . $fecha1;
+        $pdfGenerado = $this->get('reporteProgramacionesServices')->generarPDFProgramaciones($fechaPost, $fecha1);
+        header("Content-type: application/x-pdf; charset=utf-8");
+        header("Content-Disposition: attachment; filename=Programacion " . $fechaPost . ".pdf");
+        header("Cache-Control: no-cache, must-revalidate");
+        echo $pdfGenerado->render();
+
+
+        return new Response("Reporte generado con éxito");
+    }
+
 }
