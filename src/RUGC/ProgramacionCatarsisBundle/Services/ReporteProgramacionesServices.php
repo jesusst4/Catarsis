@@ -34,7 +34,7 @@ class ReporteProgramacionesServices {
 
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha);
 
-        $pdf = new \ZendPdf\PdfDocument(__DIR__ . '\documentos\plantillaProgramaciones.pdf', NULL, TRUE);
+        $pdf = new \ZendPdf\PdfDocument(__DIR__ . '/documentos/plantillaProgramaciones.pdf', NULL, TRUE);
         $pageIntroduccion = $pdf->pages[0];
 
         $style = $this->estilo();
@@ -55,7 +55,7 @@ class ReporteProgramacionesServices {
 
         $this->programacionTVAbajo($pageProgramaciones, $listaProgramaciones);
 
-        $pdf->save(__DIR__ . '\documentos\doc.pdf');
+        $pdf->save(__DIR__ . '/documentos/doc.pdf');
         return $pdf;
     }
 
@@ -103,7 +103,7 @@ class ReporteProgramacionesServices {
         foreach ($listaProgramaciones as $programacion) {
 
             if ($programacion->getTipo() == 1) {
-                $this->drawCenteredText($pageProgramaciones, $programacion->getFecha()->format('d-M-Y'), $posYPro);
+                $this->drawCenteredText($pageProgramaciones, $programacion->getFecha()->format('d-m-Y'), $posYPro);
                 $this->drawCenteredText($pageProgramaciones, $programacion->getTitulo(), $posYPro - 9);
                 if ($programacion->getObra()) {
                     $this->drawCenteredText($pageProgramaciones, $programacion->getObra(), $posYPro - 18);
@@ -134,7 +134,7 @@ class ReporteProgramacionesServices {
         foreach ($listaProgramaciones as $programacion) {
 
             if ($programacion->getTipo() == 1) {
-                $this->drawCenteredText($pageProgramaciones, $programacion->getFecha()->format('d-M-Y'), $posYPro);
+                $this->drawCenteredText($pageProgramaciones, $programacion->getFecha()->format('d-m-Y'), $posYPro);
                 $this->drawCenteredText($pageProgramaciones, $programacion->getTitulo(), $posYPro - 9);
                 if ($programacion->getObra()) {
                     $this->drawCenteredText($pageProgramaciones, $programacion->getObra(), $posYPro - 18);
@@ -166,7 +166,7 @@ class ReporteProgramacionesServices {
         foreach ($listaProgramaciones as $programacion) {
 
             if ($programacion->getTipo() == 2) {
-                $this->drawCenteredTextTv($pageProgramaciones, $programacion->getFecha()->format('d-M-Y'), $posYPro);
+                $this->drawCenteredTextTv($pageProgramaciones, $programacion->getFecha()->format('d-m-Y'), $posYPro);
                 $this->drawCenteredTextTv($pageProgramaciones, $programacion->getTitulo(), $posYPro - 9);
                 if ($programacion->getObra()) {
                     $this->drawCenteredTextTv($pageProgramaciones, $programacion->getObra(), $posYPro - 18);
@@ -198,7 +198,7 @@ class ReporteProgramacionesServices {
         foreach ($listaProgramaciones as $programacion) {
 
             if ($programacion->getTipo() == 2) {
-                $this->drawCenteredTextTv($pageProgramaciones, $programacion->getFecha()->format('d-M-Y'), $posYPro);
+                $this->drawCenteredTextTv($pageProgramaciones, $programacion->getFecha()->format('d-m-Y'), $posYPro);
                 $this->drawCenteredTextTv($pageProgramaciones, $programacion->getTitulo(), $posYPro - 9);
                 $this->drawCenteredTextTv($pageProgramaciones, $programacion->getObra(), $posYPro - 18);
 

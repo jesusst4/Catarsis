@@ -411,12 +411,11 @@ class ProgramacionController extends Controller {
                         'titulo' => '',
                         'obra' => '',
                         'programaciones' => "",
-                        'programaciones' => $pagination,
-                        'last_page' => $last_page,
-                        'previous_page' => $previous_page,
-                        'current_page' => $page,
-                        'next_page' => $next_page,
-                        'totalRegister' => $totalRegister
+                        'last_page' => 0,
+                        'previous_page' => "",
+                        'current_page' => "",
+                        'next_page' => "",
+                        'totalRegister' => ""
             ));
         }
     }
