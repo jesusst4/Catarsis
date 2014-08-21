@@ -332,7 +332,7 @@ class Programacion {
         if (null !== $this->getImagen()) {
             // haz lo que quieras para generar un nombre único
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->path = $filename . '.' . $this->getImagen()->guessExtension();
+            $this->path = $filename . '.' . $this->getImagen()->guessClientExtension();
         }
     }
 
@@ -355,8 +355,8 @@ class Programacion {
             // clear the temp image path
             $this->temp = null;
         } 
-            $this->path = $this->getImagen()->getClientOriginalName();
-            $this->getImagen()->move($this->getUploadRootDir(), $this->path);
+//            $this->path = $this->getImagen()->getClientOriginalName();
+        $this->getImagen()->move($this->getUploadRootDir(), $this->path);
         
         $this->imagen = null;
     }

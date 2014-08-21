@@ -58,7 +58,7 @@ class ProgramacionController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionesXMes($fecha1);
         if ($form->isValid()) {
-
+            $entity->preUpload();
             $em->persist($entity);
             $em->flush();
             $entity->upload();
