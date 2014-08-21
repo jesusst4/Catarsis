@@ -153,7 +153,7 @@ form div .lblGrande label{
     display: block; 
     float: left; 
     height: 20px;
-    width: 175px;
+    width: 200px;
     color: grey; 
     font-weight: bold; 
     font-size:14px;
@@ -562,6 +562,13 @@ form{
     width: 100px;
     height: 100px;
     float: left;
+}
+
+.divProgramacionComentario td{
+    width: 450px;
+}
+.divProgramacionComentario th{
+    width: 150px;
 }
 
 .divFormComentario{

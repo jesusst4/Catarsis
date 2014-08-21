@@ -23,7 +23,7 @@ security:
                 path: fos_user_security_logout
                 target: /contenido/es/home
             anonymous:    true
-            access_denied_url: /contenido/home
+            access_denied_url: /contenido/es/home
             
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

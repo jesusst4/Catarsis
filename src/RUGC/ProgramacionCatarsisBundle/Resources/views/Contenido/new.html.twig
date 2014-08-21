@@ -2,6 +2,7 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Crear_Contenido"|trans }}</h1>
 
     <form action="{{path('contenido_create')}}" method="POST">
@@ -15,7 +16,6 @@
                 {{form_row(form.opcionMenu.nombreOpcionEn)}}
             </div>
             <div class="lblGrande">
-                {#            {{form_row(form.opcionMenu.ruta)}} #}
                 {{form_row(form.opcionMenu.prioridad)}}
             </div>
             <div class="lblGrande">
@@ -30,7 +30,6 @@
                 {{form_row(form.textoen)}}
             </div>
             {{ form(form)}}
-
             {{ tinymce_init() }}
             {{ form_end(form) }}
         </div>

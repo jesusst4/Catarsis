@@ -1,20 +1,3 @@
-#encabezado:
-#    path:     /
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:index" }
-
-#encabezado_show:
-#    path:     /{id}/show
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:show" }
-
-#encabezado_new:
-#    path:     /new
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:new" }
-
-#encabezado_create:
-#    path:     /create
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:create" }
-#    requirements: { _method: post }
-
 encabezado_edit:
     path:     /{_locale}/{id}/edit
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:edit" }
@@ -25,8 +8,3 @@ encabezado_update:
     path:     /{_locale}/{id}/update
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:update" }
     requirements: { _method: post|put , _locale: en|es }
-
-#encabezado_delete:
-#    path:     /{id}/delete
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Encabezado:delete" }
-#    requirements: { _method: post|delete }

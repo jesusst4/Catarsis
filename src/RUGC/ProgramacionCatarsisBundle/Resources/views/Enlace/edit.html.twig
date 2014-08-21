@@ -1,20 +1,21 @@
 {% extends '::base.html.twig' %}
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Editar_Enlace"|trans }}</h1>
 
     {{ form(edit_form) }}
 
-
     <form action="{{path('enlace_delete',{'id':entity.id})}}" method="POST">
-            <div>
+        <div>
+            {% if app.request.locale == 'es' %}
+                <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('¿Está usted seguro que desea eliminar este enlace?')"/>
+            {%else%}
+                <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('Are you sure you want to remove this link?')"/>
+            {% endif %}
 
-                {% if app.request.locale == 'es' %}
-                    <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('¿Está usted seguro que desea eliminar este enlace?')"/>
-                {%else%}
-                     <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('Are you sure you want to remove this link?')"/>
-                {% endif %}
-               
-            </div>
-        </form>
+        </div>
+    </form>
+
 {% endblock %}

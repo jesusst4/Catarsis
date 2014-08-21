@@ -4,7 +4,6 @@ namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use RUGC\ProgramacionCatarsisBundle\Entity\Enlace;
 use RUGC\ProgramacionCatarsisBundle\Form\EnlaceType;
 
@@ -12,15 +11,13 @@ use RUGC\ProgramacionCatarsisBundle\Form\EnlaceType;
  * Enlace controller.
  *
  */
-class EnlaceController extends Controller
-{
+class EnlaceController extends Controller {
 
     /**
      * Lists all Enlace entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->findBy(array(), array('id' => 'DESC'));
@@ -29,17 +26,17 @@ class EnlaceController extends Controller
         $pagination = $paginator->paginate(
                 $entities, $this->get('request')->query->get('page', 1), 10
         );
-        
+
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:index.html.twig', array(
-            'entities' => $pagination,
+                    'entities' => $pagination,
         ));
     }
+
     /**
      * Creates a new Enlace entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new Enlace();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -53,8 +50,8 @@ class EnlaceController extends Controller
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -65,8 +62,7 @@ class EnlaceController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Enlace $entity)
-    {
+    private function createCreateForm(Enlace $entity) {
         $form = $this->createForm(new EnlaceType(), $entity, array(
             'action' => $this->generateUrl('enlace_create'),
             'method' => 'POST',
@@ -81,14 +77,13 @@ class EnlaceController extends Controller
      * Displays a form to create a new Enlace entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new Enlace();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -96,8 +91,7 @@ class EnlaceController extends Controller
      * Finds and displays a Enlace entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->find($id);
@@ -109,8 +103,8 @@ class EnlaceController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -118,8 +112,7 @@ class EnlaceController extends Controller
      * Displays a form to edit an existing Enlace entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->find($id);
@@ -129,24 +122,21 @@ class EnlaceController extends Controller
         }
 
         $editForm = $this->createEditForm($entity);
-//        $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-//            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Enlace entity.
-    *
-    * @param Enlace $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Enlace $entity)
-    {
+     * Creates a form to edit a Enlace entity.
+     *
+     * @param Enlace $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Enlace $entity) {
         $form = $this->createForm(new EnlaceType(), $entity, array(
             'action' => $this->generateUrl('enlace_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -156,12 +146,12 @@ class EnlaceController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Enlace entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->find($id);
@@ -181,28 +171,27 @@ class EnlaceController extends Controller
         }
 
         return $this->render('RUGCProgramacionCatarsisBundle:Enlace:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Enlace entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
-       
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->find($id);
+    public function deleteAction(Request $request, $id) {
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Enlace entity.');
-            }
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Enlace')->find($id);
 
-            $em->remove($entity);
-            $em->flush();
-        
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Enlace entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
 
         return $this->redirect($this->generateUrl('enlace'));
     }
@@ -214,13 +203,13 @@ class EnlaceController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('enlace_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'form.submit_eliminar','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr'=>array('class'=>'btnIzq')))
-            ->getForm()
+                        ->setAction($this->generateUrl('enlace_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'form.submit_eliminar', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnIzq')))
+                        ->getForm()
         ;
     }
+
 }

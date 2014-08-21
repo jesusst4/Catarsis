@@ -2,26 +2,20 @@
 <div id="menubar" class="s">
     <nav>
         <ul class="menu-horizontal">
-
             <!-- FOR QUE RECORRE TODAS LAS OPCIONES DE MENÚ -->
             {%  for opcion in entities %}
-
                 <!-- SI LA OPCION TIENE SUBMENUS -->
                 {% if  opcion.children %}
-
                     {%if opcion.permiso==0 %}
                         <li class="prin">
                             {% if opcion.ruta == 'contenido_show' %}
-
                                 <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {%else%}
                                 <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {% endif %}
 
                             <ul class="sub">
-
                                 {%for subOpcion in opcion.children %}
-
                                     {%if subOpcion.permiso==0 %}
                                         <li>
                                             {% if subOpcion.ruta == 'contenido_show' %}
@@ -29,8 +23,6 @@
                                             {%else%}
                                                 <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                             {% endif %}
-
-
                                         </li>
                                     {% else%}
                                         {%if is_granted('ROLE_ADMIN')%}
@@ -40,14 +32,10 @@
                                                 {%else%}
                                                     <a href="{{path(subOpcion.ruta)}}">{{subOpcion.nombreOpcionEn | upper}}</a>
                                                 {% endif %}
-
-
                                             </li>
                                         {% endif %}
-
                                     {% endif %}
                                 {%endfor%}
-
                             </ul>
                         </li>
                     {% else%}
@@ -59,7 +47,6 @@
                                     <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                                 {% endif %}
 
-
                                 <ul class="sub">
                                     {%for subOpcion in opcion.children %}
                                         <li>
@@ -70,12 +57,10 @@
                                             {% endif %}
                                         </li>
                                     {%endfor%}
-
                                 </ul>
                             </li>
                         {%endif%}
                     {% endif %}
-
                     <!-- SI LA OPCION NO TIENE SUBMENUS -->
                 {%else%}
                     {%if opcion.permiso==0 %}
@@ -85,18 +70,15 @@
                             {%else%}
                                 <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
                             {% endif %}
-
-
                         </li>
                     {%else%}
                         {%if is_granted('ROLE_ADMIN')%}
                             <li class="prin">
-                               {% if opcion.ruta == 'contenido_show' %}
-                                 <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
-                            {%else%}
-                                 <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
-                            {% endif %}
-                               
+                                {% if opcion.ruta == 'contenido_show' %}
+                                    <a href="{{path(opcion.ruta, {'id':opcion.id})}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
+                                {%else%}
+                                    <a href="{{path(opcion.ruta)}}" title="Texto">{{opcion.nombreOpcionEn}}</a>
+                                {% endif %}
                             </li>
                         {%endif%}
                     {%endif%}

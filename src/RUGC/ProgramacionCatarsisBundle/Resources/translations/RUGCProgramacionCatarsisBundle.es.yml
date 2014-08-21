@@ -6,6 +6,7 @@ form:
         comentario: "Comentario"
         estado: "Estado"
         fecha: "Fecha"
+        sinRevisar : "Sin Revisar"
                 
     Noticia:
         resumen: "Resumen"
@@ -46,7 +47,7 @@ form:
         titulo_Editar_Noticia: "Editar Noticias"
         
         titulo_Listar_Comentario: "Lista de Comentarios"
-        titulo_Mostrar_Comentario: "Mostar  Comentario"
+        titulo_Mostrar_Comentario: "Comentario"
         
         titulo_Crear_Contenido: "Crear Contenido"
         titulo_Editar_Contenido: "Editar Contenido"
@@ -54,20 +55,20 @@ form:
         
         titulo_Comentarios: "Comentarios"        
         
-        titulo_Enlaces: "Enlaces Recomendados"
-        
+        titulo_Enlaces: "Enlaces Recomendados"        
         titulo_Crear_Enlace: "Crear Enlace"
         titulo_Editar_Enlace: "Editar Enlace"
         
         titulo_esta_seguro: ¿Está seguro que desea eliminar este contenido?
         
-    Enlace:
-        descripcion: Descripción
-        enlace: Enlace
-        
     tabla_accion: "Acciones"
     tabla_opciones_menu: "Opción de Menú"
     tabla_prioridad: "Prioridad"
+        
+    placeholder_buscar: "Buscar programación por mes específico"
+    
+    label_mes_anio: "Mes y Año"
+    
     submit_editar: "Editar"
     submit_eliminar: "Eliminar"
     submit_crear: "Crear"
@@ -80,9 +81,7 @@ form:
     submit_ver_programacion: "Ver Programación"
     submit_ver_comentarios: "Ver Comentarios"
     submit_editar_contenido: "Editar Contenido"
-    placeholder_buscar: "Buscar programación por mes específico"
     submit_guardar_contenido: "Guardar"
-    label_mes_anio: "Mes y Año"
     submit_ir: "Ir"
     submit_ver_mas: "Ver más"
     submit_revisar: "Revisar"

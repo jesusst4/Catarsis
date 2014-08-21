@@ -32,7 +32,7 @@ class Contenido {
      * )
      */
     private $textoes;
-    
+
     /**
      * @var string
      *
@@ -78,7 +78,7 @@ class Contenido {
     public function getTextoes() {
         return $this->textoes;
     }
-    
+
     /**
      * Set textoen
      *

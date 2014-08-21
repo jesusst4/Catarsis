@@ -35,7 +35,6 @@ class Enlace
      */
     private $enlace;
 
-
     /**
      * Get id
      *

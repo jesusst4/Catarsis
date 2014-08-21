@@ -3,7 +3,6 @@
 namespace RUGC\ProgramacionCatarsisBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use RUGC\ProgramacionCatarsisBundle\Entity\Contenido;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -42,7 +41,7 @@ class OpcionesMenu {
      * )
      */
     private $nombreOpcionEs;
-    
+
     /**
      * @var string
      *
@@ -94,7 +93,6 @@ class OpcionesMenu {
      */
     private $children;
 
-    
     /**
      * @var integer
      *
@@ -102,9 +100,7 @@ class OpcionesMenu {
      * 
      */
     private $permiso;
-    
-    
-    
+
     /**
      * Get id
      *
@@ -134,8 +130,8 @@ class OpcionesMenu {
     public function getNombreOpcionEs() {
         return $this->nombreOpcionEs;
     }
-    
-     /**
+
+    /**
      * Set nombreOpcionEn
      *
      * @param string $nombreOpcionEn
@@ -241,7 +237,7 @@ class OpcionesMenu {
     }
 
     public function __toString() {
-        return $this->nombreOpcionEs.' - '.  $this->nombreOpcionEn;
+        return $this->nombreOpcionEs . ' - ' . $this->nombreOpcionEn;
     }
 
     public function setChildren($subMenu) {
@@ -256,8 +252,7 @@ class OpcionesMenu {
     public function getChildren() {
         return $this->children;
     }
-    
-    
+
     /**
      * Set permiso
      *
@@ -278,9 +273,5 @@ class OpcionesMenu {
     public function getPermiso() {
         return $this->permiso;
     }
-    
-//    public function toString() {
-//        return $this->nombreOpcion_es;
-//    }
 
 }

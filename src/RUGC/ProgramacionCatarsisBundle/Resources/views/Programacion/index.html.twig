@@ -1,8 +1,8 @@
 {% extends '::base.html.twig' %}
-
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}  
+
     <script type="text/javascript" >
         function validar() {
             var mes = $('#txtDate').val();
@@ -59,7 +59,7 @@
         {% else %}
             <p> {{ tv.textoen | trans | raw}}</p>
         {% endif%}
-        
+
         {% if is_granted('ROLE_ADMIN') %}
             <a class="link" href="{{ path('encabezado_edit', { 'id': tv.id }) }}">
                 {{'form.submit_editar_contenido'|trans}}
@@ -107,7 +107,6 @@
                         <h2>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y') }}{% endif %}</h2>
                         <p>
                             <label class="tiulo">{{ entity.titulo }}</label><br>
-
                             {%if entity.obra%}
                                 <label  class="obra" >"{{ entity.obra }}"</label><br>
                             {% endif %}
@@ -137,6 +136,7 @@
     {% endif %}
 
     <div style="clear: both"></div>
+
     <form action="{{path('programacion_secuencial')}}" method="POST" >
         <div class="divPaginacion">
             <input type="hidden" name="fecha" value="{{fecha}}"/>
@@ -144,4 +144,5 @@
             <input type="submit" class="enlaceDer" value="{{'form.submit_siguiente'|trans}}" name="btnSiguiente"/>
         </div>
     </form>
+
 {% endblock %}

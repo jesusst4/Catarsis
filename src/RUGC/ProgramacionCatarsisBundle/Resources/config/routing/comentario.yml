@@ -10,18 +10,10 @@ comentario_show:
     requirements:
         _locale: en|es    
 
-#comentario_new:
-#    path:     /new
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:new" }
-
 comentario_create:
     path:     /{_locale}/create
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:create" }
     requirements: { _method: post , _locale: en|es }
-
-#comentario_edit:
-#    path:     /{id}/edit
-#    defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:edit" }
 
 comentario_update:
     path:     /{_locale}/{id}/update

@@ -8,8 +8,6 @@
         {{ entity.textoen | raw}}
     {% endif%}
 
-
-    {#    {% if is_granted('ROLE_ADMIN') %}#}    
     <ul class="record_actions">
         <li>
             <a class="link" href="{{ path('encabezado_edit', { 'id': entity.id }) }}">
@@ -17,5 +15,5 @@
             </a>
         </li>
     </ul>
-    {#    {% endif %}#}            
+
 {% endblock %}

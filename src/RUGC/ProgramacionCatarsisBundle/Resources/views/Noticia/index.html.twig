@@ -2,6 +2,7 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <div class="divTodo">
         <h1>{{ "form.Titulo.titulo_Noticia"|trans }}</h1>
 
@@ -10,38 +11,30 @@
                 {%if is_granted('ROLE_ADMIN')%}
                     <div class="divNoticiaResumen">                       
                         <label style="float: left; color: red;">{{'form.sin_publicar'|trans}}</label>                        
-                        <label>{{ entity.autor }} | {% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</label>                
-
+                        <label>{{ entity.autor }} | {% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</label>
                         <h3><a href="{{ path('noticia_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
                         <br>
-
                         <div class="divNoticiaResumenTexto">
                             {{ entity.resumen }}...
                         </div>
                         <a href="{{ path('noticia_show', { 'id': entity.id }) }}">{{'form.submit_ver_mas'|trans}}</a>                        
-
                     </div>
                 {% endif %}
             {% else %}
                 <div class="divNoticiaResumen">
                     <label>{{ entity.autor }} | {% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</label>                
-
                     <h3><a href="{{ path('noticia_show', { 'id': entity.id }) }}">{{ entity.titulo }}</a></h3>
                     <br>
-
                     <div class="divNoticiaResumenTexto">
                         {{ entity.resumen }}...
                     </div>
-
                     <a href="{{ path('noticia_show', { 'id': entity.id }) }}">{{'form.submit_ver_mas'|trans}}</a>
                 </div>
             {% endif %}
         {% endfor %}
-
         <div class="paginacion">
             {{ knp_pagination_render(entities) }}
         </div>
-
     </div>
 
 {% endblock %}

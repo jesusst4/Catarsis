@@ -2,7 +2,9 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Editar_Noticia"|trans }}</h1>
+
     <div class="validaciones">
         {{ form_start(edit_form) }}
         {{form_row(edit_form.titulo)}}
@@ -13,22 +15,21 @@
         <div class="areaTexto">
             {{form_row(edit_form.contenido)}}
         </div>
-        
-        {{ form(edit_form)}}
 
+        {{ form(edit_form)}}
         {{ tinymce_init() }}
-        
         {{ form_end(edit_form) }}
+
         <form action="{{path('noticia_delete',{'id':entity.id})}}" method="POST">
             <div>
-
                 {% if app.request.locale == 'es' %}
                     <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('¿Está usted seguro que desea eliminar esta noticia?')"/>
                 {%else%}
-                     <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('Are you sure you want to remove this new?')"/>
+                    <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('Are you sure you want to remove this new?')"/>
                 {% endif %}
-               
+
             </div>
         </form>
     </div>
+
 {% endblock %}

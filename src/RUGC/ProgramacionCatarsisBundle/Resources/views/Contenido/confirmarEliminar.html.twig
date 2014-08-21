@@ -1,36 +1,29 @@
 {% extends '::base.html.twig' %}
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+
 {% block body -%}
 
     {% if mensaje=='' %}
         <h1 style="color: red;">{{'form.Titulo.titulo_esta_seguro'|trans}}</h1>
-        
+
         {% if  app.request.locale == 'es' %}            
             {{ entity.contenido.textoes | raw}}
         {% else %}
             {{ entity.contenido.textoen | raw}}
-        {% endif%}
-        
-        
-        
+        {% endif%}     
 
     {% else %}
         {{mensaje}}
-
     {% endif %}
 
     <ul class="record_actions">
-
         {% if is_granted('ROLE_ADMIN') %}
-
-
             {% if mensaje=='' %}
-               <a class="link" href="{{ path('contenido_delete', { 'id': entity.id }) }}">
-                   {{ 'form.submit_eliminar'|trans}}
-            </a>
-
+                <a class="link" href="{{ path('contenido_delete', { 'id': entity.id }) }}">
+                    {{ 'form.submit_eliminar'|trans}}
+                </a>
             {% endif %}
         {% endif %}
-
     </ul>
+
 {% endblock %}

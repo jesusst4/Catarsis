@@ -11,11 +11,5 @@ use Doctrine\ORM\EntityRepository;
  * repository methods below.
  */
 class ComentarioRepository extends EntityRepository {
-    
-    public function listarComentariosXProgramacion($idProgramacion) {
-        return $this->getEntityManager()->createQuery('SELECT c FROM RUGCProgramacionCatarsisBundle:Comentario c ')->getResult();
-    }
-
-
 
 }

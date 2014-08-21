@@ -24,7 +24,7 @@ class ContenidoController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->listarOpcionesMenu();
-        
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $entities, $this->get('request')->query->get('page', 1), 10
@@ -82,6 +82,7 @@ class ContenidoController extends Controller {
         $form = $this->createCreateForm($entity);
         $opcionMenu = new OpcionesMenu();
         $entity->setOpcionMenu($opcionMenu);
+
         return $this->render('RUGCProgramacionCatarsisBundle:Contenido:new.html.twig', array(
                     'entity' => $entity,
                     'opcionMenu' => $opcionMenu,
@@ -184,17 +185,17 @@ class ContenidoController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-       
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->find($id);
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Contenido entity.');
-            }
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->find($id);
 
-            $em->remove($entity);
-            $em->flush();
-        
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Contenido entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
 
         return $this->redirect($this->generateUrl('contenido'));
     }
@@ -219,7 +220,10 @@ class ContenidoController extends Controller {
      * Finds and displays a Contenido entity.
      *
      */
-    public function homeAction() {
+    public function homeAction(Request $request) {
+        $request->setLocale('es');
+        $this->get('session')->set('_locale', 'es');
+
         $em = $this->getDoctrine()->getManager();
 
         $idOpcion = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->consultarHome();
@@ -228,7 +232,6 @@ class ContenidoController extends Controller {
         if ($idOpcion) {
             $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Contenido')->findOneByopcionMenu($idOpcion[0]['id']);
         }
-
 
         if (!$entity) {
             return $this->render('RUGCProgramacionCatarsisBundle:Contenido:show.html.twig', array(
@@ -246,7 +249,7 @@ class ContenidoController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:OpcionesMenu')->find($id);
 
-       return $this->render('RUGCProgramacionCatarsisBundle:Contenido:confirmarEliminar.html.twig', array(
+        return $this->render('RUGCProgramacionCatarsisBundle:Contenido:confirmarEliminar.html.twig', array(
                     'entity' => $entity,
                     'mensaje' => ''
         ));
