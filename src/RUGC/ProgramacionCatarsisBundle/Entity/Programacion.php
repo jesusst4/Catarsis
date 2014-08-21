@@ -307,6 +307,11 @@ class Programacion {
         return $this->comentarios;
     }
 
+    
+    public function getPath() {
+        return $this->path;  
+    }
+
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -353,6 +358,7 @@ class Programacion {
         }
     }
 
+    
     public function getAbsolutePath() {
         return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }

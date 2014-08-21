@@ -23,6 +23,15 @@
             }
     </script>
     <div class="divBusqueda">
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <form action="{{path('programacion_pdf')}}" method="POST" >
+
+                <input type ="submit" name="btnPDF" style="float: left;" class="botonAsLink" value="Generar PDF"/>
+                <input   type="hidden" name="fechaProgramacion" value="{{ fecha}}" />
+
+            </form>
+        {% endif %} 
         <form action="{{path('programacion_searchMonth')}}" method="POST"    onsubmit="return validar()">
             <input type ="submit" name="btnBuscar" class="btnBuscar" value=""/>
             <div class="validaciones"> 
