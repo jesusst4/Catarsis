@@ -346,9 +346,20 @@ class ProgramacionController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionXArtista_Titulo($request->request->get("txtTitulo"), $request->request->get("txtObra"));
 
+
+
+            $page = 1;
+            $total_jobs = count($listaProgramaciones);
+            $last_page = ceil($total_jobs / 10);
+            $previous_page = $page > 1 ? $page - 1 : 1;
+            $next_page = $page < $last_page ? $page + 1 : $last_page;
+
+
+
+
             $paginator = $this->get('knp_paginator');
             $pagination = $paginator->paginate(
-                    $listaProgramaciones, $this->get('request')->query->get('page', 1), 2
+                    $listaProgramaciones, $this->get('request')->query->get('page', 1), 10
             );
 
             if (count($listaProgramaciones) > 0) {
@@ -360,14 +371,60 @@ class ProgramacionController extends Controller {
                         'mensaje' => $mensaje,
                         'titulo' => $request->request->get("txtTitulo"),
                         'obra' => $request->request->get("txtObra"),
-                        'programaciones' => $pagination
+                        'programaciones' => $pagination,
+                        'last_page' => $last_page,
+                        'previous_page' => $previous_page,
+                        'current_page' => $page,
+                        'next_page' => $next_page,
+                        'total_jobs' => $total_jobs
+            ));
+        } elseif ($this->getRequest()->query->get('page') != null) {
+            $em = $this->getDoctrine()->getManager();
+            $listaProgramaciones = $em->getRepository('RUGCProgramacionCatarsisBundle:Programacion')->programacionXArtista_Titulo($this->getRequest()->query->get('titulo'), $this->getRequest()->query->get('obra'));
+
+
+
+            $page = $this->getRequest()->query->get('page');
+            $total_jobs = count($listaProgramaciones);
+            $last_page = ceil($total_jobs / 10);
+            $previous_page = $page > 1 ? $page - 1 : 1;
+            $next_page = $page < $last_page ? $page + 1 : $last_page;
+
+
+
+            $paginator = $this->get('knp_paginator');
+            $pagination = $paginator->paginate(
+                    $listaProgramaciones, $this->get('request')->query->get('page', $page), 10
+            );
+
+            if (count($listaProgramaciones) > 0) {
+                $mensaje = "";
+            } else {
+                $mensaje = "form.no_coincidencias";
+            }
+            return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
+                        'mensaje' => $mensaje,
+                        'titulo' => $this->getRequest()->query->get('titulo'),
+                        'obra' => $this->getRequest()->query->get('obra'),
+                        'programaciones' => $pagination,
+                        'last_page' => $last_page,
+                        'previous_page' => $previous_page,
+                        'current_page' => $page,
+                        'next_page' => $next_page,
+                        'total_jobs' => $total_jobs
             ));
         } else {
             return $this->render('RUGCProgramacionCatarsisBundle:Programacion:Buscar.html.twig', array(
                         'mensaje' => " ",
                         'titulo' => '',
                         'obra' => '',
-                        'programaciones' => ""
+                        'programaciones' => "",
+                        'programaciones' => $pagination,
+                        'last_page' => $last_page,
+                        'previous_page' => $previous_page,
+                        'current_page' => $page,
+                        'next_page' => $next_page,
+                        'total_jobs' => $total_jobs
             ));
         }
     }
