@@ -2,19 +2,23 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
-    <h1>{{ "form.Titulo.titulo_Crear_Noticia"|trans }}</h1>
-    <div class="validaciones">
-    {{ form_start(form) }}
-    {{form_row(form.titulo)}}
-    {{form_row(form.autor)}} 
-    {{form_row(form.estado)}}
-    {{form_row(form.resumen)}}
-    <div class="areaTexto">
-        {{form_row(form.contenido)}}
-    </div>
-    {{ form(form)}}
 
-    {{ tinymce_init() }}
-    {{ form_end(form) }}
+    <h1>{{ "form.Titulo.titulo_Crear_Noticia"|trans }}</h1>
+
+    <div class="validaciones">
+        {{ form_start(form) }}
+        {{form_row(form.titulo)}}
+        {{form_row(form.autor)}} 
+        {{form_row(form.estado)}}
+        {{form_row(form.resumen)}}
+
+        <div class="areaTexto">
+            {{form_row(form.contenido)}}
+        </div>
+
+        {{ form(form)}}
+        {{ tinymce_init() }}
+        {{ form_end(form) }}
     </div>
+
 {% endblock %}

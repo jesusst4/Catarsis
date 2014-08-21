@@ -1,5 +1,6 @@
 {% extends '::base.html.twig' %}
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+
 {% block body -%}
 
     {% if mensaje=='' %}
@@ -10,20 +11,18 @@
         {% endif%}
     {% else %}
         {{mensaje}}
-
     {% endif %}
 
     <ul class="record_actions">
-
         {% if is_granted('ROLE_ADMIN') %}
 
             {% if mensaje=='' %}
                 <a class="link" href="{{ path('contenido_edit', { 'id': entity.id }) }}">
                     {{ 'form.submit_editar_contenido'|trans}}
                 </a>
-
             {% endif %}
-        {% endif %}
 
+        {% endif %}
     </ul>
+
 {% endblock %}

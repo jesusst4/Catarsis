@@ -2,6 +2,7 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Listar_Opciones_Menu"|trans }}</h1>
 
     <table class="records_list table">
@@ -28,4 +29,5 @@
     <div class="paginacion">
         {{ knp_pagination_render(entities) }}
     </div>
+
 {% endblock %}

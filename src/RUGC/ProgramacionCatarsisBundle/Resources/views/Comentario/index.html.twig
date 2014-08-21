@@ -2,9 +2,10 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Listar_Comentario"|trans }}</h1>
 
-    <table class="records_list table">
+    <table class="records_list table">        
         <thead>
             <tr>
                 <th>{{'form.Comentario.correo'|trans}}</th>
@@ -13,8 +14,9 @@
                 <th>{{'form.Comentario.fecha'|trans}}</th>
                 <th>{{'form.tabla_accion'|trans}}</th>
             </tr>
-        </thead>
+        </thead>        
         <tbody>
+
             {% for entity in entities  if entity.estado == 0%}
                 <tr>
                     <td>{{ entity.correo }}</td>
@@ -22,19 +24,16 @@
                     <td>{{ entity.comentario }}</td>
                     <td>{% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</td>
                     <td>
-
                         <a href="{{ path('comentario_show', { 'id': entity.id }) }}">{{'form.submit_revisar'|trans}}</a>
-
-                        {#  <li>
-                              <a href="{{ path('comentario_edit', { 'id': entity.id }) }}">edit</a>
-                          </li>#}
                     </td>
                 </tr>
             {% endfor %}
+
         </tbody>
     </table>
 
     <div class="paginacion">
         {{ knp_pagination_render(entities) }}
     </div>
+
 {% endblock %}

@@ -19,12 +19,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Programacion {
 
-    
-    
     public function __construct() {
-        $this->comentarios=new ArrayCollection();
+        $this->comentarios = new ArrayCollection();
     }
-
 
     /**
      * @var integer
@@ -75,8 +72,8 @@ class Programacion {
      * )
      */
     private $descripciones;
-    
-        /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="descripcionen", type="string", length=255)
@@ -103,7 +100,6 @@ class Programacion {
     public $path;
     private $temp;
 
-    
     /**
      * @var integer
      *
@@ -112,18 +108,14 @@ class Programacion {
      *      message = "validaciones.tipo.not_null"
      * )
      */
-    
     private $tipo;
 
-
-    
     /**
      * @var type 
      * 
      * @ORM\OneToMany(targetEntity="Comentario", mappedBy="programacion", cascade={"all"})
      */
-    private  $comentarios;
-
+    private $comentarios;
 
     /**
      * Get id
@@ -217,7 +209,7 @@ class Programacion {
     public function getDescripciones() {
         return $this->descripciones;
     }
-    
+
     /**
      * Set descripcionen
      *
@@ -290,8 +282,6 @@ class Programacion {
         return $this->enlace;
     }
 
-    
-    
     /**
      * Get tipo
      *
@@ -312,18 +302,16 @@ class Programacion {
 
         return $this;
     }
-    
-    
+
     public function getComentarios() {
         return $this->comentarios;
-        
     }
+
     
     public function getPath() {
         return $this->path;  
     }
-    
-     
+
     /**
      * @ORM\PrePersist()
      * @ORM\PreUpdate()

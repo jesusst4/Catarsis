@@ -1,31 +1,20 @@
 {% extends '::base.html.twig' %}
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
+
 {% block body -%}
 
     <div class="divNoticia">
         <label>{{ entity.autor }} | {% if entity.fecha %}{{ entity.fecha|date('d-m-Y H:i:s') }}{% endif %}</label>
         <h1>{{ entity.titulo }}</h1>
         {{ entity.contenido | raw }}                
-
     </div>
+
     <a  href="{{ path('noticia') }}"><input class="enlaceIzq" type="button" value="{{'form.submit_noticias'|trans}}"/></a>
 
     {%if is_granted('ROLE_ADMIN')%}
-        <a href="{{ path('noticia_edit', { 'id': entity.id }) }}"><input class="btnDer" type="button" value="{{'form.submit_editar'|trans}}"/></a>
-
-        {#<form action="{{path('noticia_delete',{'id':entity.id})}}" method="POST">
-            <div>
-
-                {% if app.request.locale == 'es' %}
-                    <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('¿Está usted seguro que desea eliminar esta noticia?')"/>
-                {%else%}
-                     <input type="submit"  value="{{'form.submit_eliminar'|trans}}" class="btnIzq" style="margin-top: 13px;" onclick=" return confirm('Are you sure you want to remove this new?')"/>
-                {% endif %}
-               
-            </div>
-        </form>#}
-        {#        {{ form(delete_form) }}#}
-
+        <a href="{{ path('noticia_edit', { 'id': entity.id }) }}">
+            <input class="btnDer" type="button" value="{{'form.submit_editar'|trans}}"/>
+        </a>
     {% endif %}
 
 {% endblock %}

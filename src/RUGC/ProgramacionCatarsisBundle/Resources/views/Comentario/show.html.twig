@@ -2,8 +2,9 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Mostrar_Comentario"|trans }}</h1>
-    
+
     <form action="{{ path('comentario_update', { 'id': entity.id }) }}" method="POST">
         <table class="record_properties">
             <tbody>
@@ -21,13 +22,7 @@
                 </tr>
                 <tr>
                     <th>{{'form.Comentario.estado'|trans}}</th>
-                    <td>
-                        {% if entity.estado == 0%}
-                            Sin revisar
-                        {%else%}
-                            Revisado
-                        {% endif %}
-                    </td>
+                    <td>{{'form.Comentario.sinRevisar'|trans}}</td>
                 </tr>
                 <tr>
                     <th>{{'form.Comentario.fecha'|trans}}</th>
@@ -35,11 +30,7 @@
                 </tr>
             </tbody>
         </table>
-
-
-
         <input type="submit"   class="btnDer" value="{{'form.submit_publicar' | trans}}" />
-
     </form>
 
     {{ form(delete_form) }}

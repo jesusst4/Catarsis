@@ -2,6 +2,7 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Editar_Contenido"|trans }}</h1>
 
     <form action="{{path('contenido_update',{'id':entity.opcionMenu.id})}}" method="POST">
@@ -13,7 +14,6 @@
             </div>
             <div class="lblGrande">
                 {{form_row(edit_form.opcionMenu.nombreOpcionEn)}}
-                {#            {{form_row(edit_form.opcionMenu.ruta)}} #}
             </div>
             <div class="lblGrande">
                 {{form_row(edit_form.opcionMenu.prioridad)}}
@@ -21,7 +21,6 @@
             <div class="lblGrande">
                 {{form_row(edit_form.opcionMenu.menuPrincipal)}}
             </div>
-
             <div> <label>{{'form.contenido_es'|trans}}</label></div>
             <div class="areaTexto">
                 {{form_row(edit_form.textoes)}}
@@ -32,7 +31,6 @@
             </div>
 
             {{ form(edit_form)}}
-
             {{ tinymce_init() }}
             {{ form_end(edit_form) }}
         </div>

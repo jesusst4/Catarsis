@@ -1,10 +1,9 @@
 <?php
+
 namespace RUGC\ProgramacionCatarsisBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-//use RUGC\ProgramacionCatarsisBundle\Entity\Programacion;
-//use RUGC\ProgramacionCatarsisBundle\Form\ProgramacionType;
 use RUGC\ProgramacionCatarsisBundle\Entity\Comentario;
 use RUGC\ProgramacionCatarsisBundle\Form\ComentarioType;
 use RUGC\ProgramacionCatarsisBundle\Services\ValidarEmail;
@@ -23,7 +22,7 @@ class ComentarioController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findBy(array('estado' => '0'), array('fecha' => 'DESC'));
-        
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $entities, $this->get('request')->query->get('page', 1), 10
@@ -42,6 +41,7 @@ class ComentarioController extends Controller {
         $comentario = new Comentario();
         $form = $this->createCreateComentarioForm($comentario);
         $form->handleRequest($request);
+
         $em = $this->getDoctrine()->getManager();
 
         $idProgramacion = $request->request->get("idProgramacion");
@@ -87,24 +87,10 @@ class ComentarioController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit', array('label' => 'Crear', 'attr' => array('class' => 'btnDer')));
+        $form->add('submit', 'submit',array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle','attr' => array('class' => 'btnDer')));
 
         return $form;
     }
-
-    /**
-     * Displays a form to create a new Comentario entity.
-     *
-     */
-//    public function newAction() {
-//        $entity = new Comentario();
-//        $form = $this->createCreateForm($entity);
-//
-//        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:new.html.twig', array(
-//                    'entity' => $entity,
-//                    'form' => $form->createView(),
-//        ));
-//    }
 
     /**
      * Finds and displays a Comentario entity.
@@ -126,29 +112,6 @@ class ComentarioController extends Controller {
                     'delete_form' => $deleteForm->createView(),
         ));
     }
-
-    /**
-     * Displays a form to edit an existing Comentario entity.
-     *
-     */
-//    public function editAction($id) {
-//        $em = $this->getDoctrine()->getManager();
-//
-//        $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->find($id);
-//
-//        if (!$entity) {
-//            throw $this->createNotFoundException('Unable to find Comentario entity.');
-//        }
-//
-//        $editForm = $this->createEditForm($entity);
-//        $deleteForm = $this->createDeleteForm($id);
-//
-//        return $this->render('RUGCProgramacionCatarsisBundle:Comentario:edit.html.twig', array(
-//                    'entity' => $entity,
-//                    'edit_form' => $editForm->createView(),
-//                    'delete_form' => $deleteForm->createView(),
-//        ));
-//    }
 
     /**
      * Creates a form to edit a Comentario entity.
@@ -181,7 +144,6 @@ class ComentarioController extends Controller {
             throw $this->createNotFoundException('Unable to find Comentario entity.');
         }
 
-//        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
@@ -225,7 +187,7 @@ class ComentarioController extends Controller {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('comentario_delete', array('id' => $id)))
                         ->setMethod('DELETE')
-                        ->add('submit', 'submit', array('label' => 'form.submit_eliminar','translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnIzq')))
+                        ->add('submit', 'submit', array('label' => 'form.submit_eliminar', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnIzq')))
                         ->getForm()
         ;
     }

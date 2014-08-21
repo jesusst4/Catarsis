@@ -2,14 +2,11 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <div class="divTodo">
         <div class="divProgramacionComentario">            
-            <table style="width: 300px;" class="record_properties">
+            <table style="width: 500px;" class="record_properties">
                 <tbody >
-                    {#<tr>
-                        <th>Tipo</th>
-                        <td>{{ entity.tipo }}</td>
-                    </tr>#}
                 <label>{{ entity.fecha|date('d-m-Y') }}</label>
                 {% if entity.path %}
                     <img src="{{asset('uploads/documents/'~entity.path)}}"/>
@@ -35,8 +32,12 @@
                 <tr>
                     {% if entity.enlace %}
                         <th>{{'form.Programacion.enlace'|trans}}</th>
-                        <td><div style="width:450px;"><a  style="word-wrap: break-word;" href="http://{{entity.enlace }}" target="_blank">{{ entity.enlace }}</a></div></td>
-                            {% endif %}
+                        <td>
+                            <div style="width:450px;">
+                                <a  style="word-wrap: break-word;" href="http://{{entity.enlace }}" target="_blank">{{ entity.enlace }}</a>
+                            </div>
+                        </td>
+                    {% endif %}
                 </tr>
                 </tbody>
             </table>
@@ -66,13 +67,12 @@
                 <br>
             </div>
         {% endfor %}
-        
-        
-        
+
     </div>
-        <div style="clear: both"></div>
-        
-        <div class="paginacion">
-            {{ knp_pagination_render(listaComentarios) }}
-        </div>
+    <div style="clear: both"></div>
+
+    <div class="paginacion">
+        {{ knp_pagination_render(listaComentarios) }}
+    </div>
+
 {% endblock %}

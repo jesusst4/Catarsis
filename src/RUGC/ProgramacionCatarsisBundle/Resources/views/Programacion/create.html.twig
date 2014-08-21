@@ -1,22 +1,22 @@
 {% extends '::base.html.twig' %}
-
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
 
-
-     <h1>{{ "form.Titulo.titulo_Seleccionar_Mes_Programacion"|trans }}</h1>
+    <h1>{{ "form.Titulo.titulo_Seleccionar_Mes_Programacion"|trans }}</h1>
 
     <form action="{{path('programacion_new')}}" method="POST" >
         <input   type="hidden" id="idioma" value="{{ app.request.locale }}" />
         <div class="validaciones">
             <label>{{'form.label_mes_anio'|trans}}</label> 
             {% if mensaje %}
-                <ul><li>{{mensaje|trans}}</li></ul>
-                    {% endif %}
+                <ul>
+                    <li>{{mensaje|trans}}</li>
+                </ul>
+            {% endif %}
             <input type='text' class="txt" id='txtDate' name='fecha' readonly=""/>
         </div>
-                    <input type="submit" name="btnBuscar" class="btnDer" value="{{'form.submit_ir'|trans}}"/>
-
+        <input type="submit" name="btnBuscar" class="btnDer" value="{{'form.submit_ir'|trans}}"/>
     </form>
+
 {% endblock %}

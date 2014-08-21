@@ -44,6 +44,7 @@ class NoticiaController extends Controller {
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity->setFecha(new \DateTime("now"));
+
             $em->persist($entity);
             $em->flush();
 
@@ -101,11 +102,8 @@ class NoticiaController extends Controller {
             throw $this->createNotFoundException('Unable to find Noticia entity.');
         }
 
-//        $deleteForm = $this->createDeleteForm($id);
-
         return $this->render('RUGCProgramacionCatarsisBundle:Noticia:show.html.twig', array(
                     'entity' => $entity,
-//            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -185,7 +183,6 @@ class NoticiaController extends Controller {
      *
      */
     public function deleteAction(Request $request, $id) {
-
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('RUGCProgramacionCatarsisBundle:Noticia')->find($id);
 
@@ -195,7 +192,6 @@ class NoticiaController extends Controller {
 
         $em->remove($entity);
         $em->flush();
-
 
         return $this->redirect($this->generateUrl('noticia'));
     }

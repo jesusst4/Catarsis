@@ -17,7 +17,7 @@ class EncabezadoType extends AbstractType {
                 ->add('textoes', 'textarea', array(
                     'attr' => array(
                         'class' => 'tinymce textArea',
-                        'data-theme' => 'advanced' // Skip it if you want to use default theme
+                        'data-theme' => 'advanced'
                     ),
                     'required' => true,
                     'label' => false
@@ -25,7 +25,7 @@ class EncabezadoType extends AbstractType {
                 ->add('textoen', 'textarea', array(
                     'attr' => array(
                         'class' => 'tinymce textArea',
-                        'data-theme' => 'advanced' // Skip it if you want to use default theme
+                        'data-theme' => 'advanced'
                     ),
                     'required' => true,
                     'label' => false

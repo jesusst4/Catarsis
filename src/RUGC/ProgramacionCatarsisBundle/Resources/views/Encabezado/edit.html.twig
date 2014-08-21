@@ -2,6 +2,7 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Editar_Contenido"|trans }}</h1>
 
     <form action="{{path('encabezado_update',{'id':entity.id})}}" method="POST">
@@ -21,4 +22,5 @@
             {{ form_end(edit_form) }}
         </div>
     </form>
+
 {% endblock %}

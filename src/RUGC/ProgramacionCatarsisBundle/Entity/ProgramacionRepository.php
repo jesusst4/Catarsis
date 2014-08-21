@@ -16,14 +16,13 @@ class ProgramacionRepository extends EntityRepository {
         $mes = date("m", strtotime($fecha));
         $anio = date("Y", strtotime($fecha));
         $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
-        $fechaActual = $anio . "-" . $mes . "-" . "01";
+        $fechaInicio = $anio . "-" . $mes . "-" . "01";
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
-
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio order by p.fecha')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :fecInicio AND  p.fecha <= :fecFin order by p.fecha')
                         ->setParameters(array(
-                            'mes' => $fechaActual,
-                            'anio' => $fechaFin
+                            'fecInicio' => $fechaInicio,
+                            'fecFin' => $fechaFin
                         ))->getResult();
     }
 
@@ -31,13 +30,13 @@ class ProgramacionRepository extends EntityRepository {
         $mes = strftime('%m');
         $anio = strftime('%Y');
         $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
-        $fechaActual = $anio . "-" . $mes . "-" . "1";
+        $fechaInicio = $anio . "-" . $mes . "-" . "1";
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio order by p.fecha')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :fecInicio AND  p.fecha <= :fecFin order by p.fecha')
                         ->setParameters(array(
-                            'mes' => $fechaActual,
-                            'anio' => $fechaFin
+                            'fecInicio' => $fechaInicio,
+                            'fecFin' => $fechaFin
                         ))->getResult();
     }
 
@@ -46,19 +45,17 @@ class ProgramacionRepository extends EntityRepository {
         $mes = $arrayFecha[1];
         $anio = $arrayFecha[0];
         $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);
-        $fechaActual = $fechaInicial;
+        $fechaInicio = $fechaInicial;
         $fechaFin = $anio . "-" . $mes . "-" . $ultimo_dia;
 
-        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :mes AND  p.fecha <= :anio order by p.fecha')
+        return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE p.fecha >= :fecInicio AND  p.fecha <= :fecFin order by p.fecha')
                         ->setParameters(array(
-                            'mes' => $fechaActual,
-                            'anio' => $fechaFin
+                            'fecInicio' => $fechaInicio,
+                            'fecFin' => $fechaFin
                         ))->getResult();
     }
 
     public function programacionXArtista_Titulo($pArtista, $pObra) {
-
-        //r.codigo = :codigo or :codigo is null ) and (h.nombre like :cliente or :cliente is null)
         return $this->getEntityManager()->createQuery('SELECT p FROM RUGCProgramacionCatarsisBundle:Programacion p WHERE (p.titulo like :titulo or :titulo is null) AND (p.obra like :obra or :obra is null ) order by p.fecha')
                         ->setParameters(array(
                             'titulo' => $pArtista . "%",

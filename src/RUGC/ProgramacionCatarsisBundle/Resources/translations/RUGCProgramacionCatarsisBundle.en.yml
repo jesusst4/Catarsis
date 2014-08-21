@@ -6,6 +6,7 @@ form:
         comentario: "Comment"
         estado: "Condition"
         fecha: "Date"
+        sinRevisar : "Unrevised"
                 
     Noticia:
         resumen: "Abstract"
@@ -46,7 +47,7 @@ form:
         titulo_Editar_Noticia: "Edit New"
         
         titulo_Listar_Comentario: "List Comments"
-        titulo_Mostrar_Comentario: "Show Comment"
+        titulo_Mostrar_Comentario: "Comment"
         
         titulo_Crear_Contenido: "Create Content"
         titulo_Editar_Contenido: "Edit Content"
@@ -60,13 +61,14 @@ form:
         
         titulo_esta_seguro: Are you sure you want to remove this content?
         
-    Enlace:
-        descripcion: Description
-        enlace: Link
-        
     tabla_accion: "Actions"
     tabla_opciones_menu: "Menu Option"
     tabla_prioridad: "Priority"
+    
+    placeholder_buscar: "Programming search specific month"
+    
+    label_mes_anio: "Month and Year"
+    
     submit_editar: "Edit"
     submit_eliminar: "Delete"
     submit_crear: "Create"
@@ -79,9 +81,7 @@ form:
     submit_ver_programacion: "View Programing"
     submit_ver_comentarios: "View Comments"
     submit_editar_contenido: "Edit Content"
-    placeholder_buscar: "Programming search specific month"
     submit_guardar_contenido: "Save"
-    label_mes_anio: "Month and Year"
     submit_ir: "Go"
     submit_ver_mas: "View more"
     submit_revisar: "Check"
@@ -95,4 +95,3 @@ form:
     sin_publicar: Unpublish
     contenido_es: Content Spanish
     contenido_en: Content English
-    

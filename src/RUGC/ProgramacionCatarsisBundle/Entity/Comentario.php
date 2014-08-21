@@ -11,8 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RUGC\ProgramacionCatarsisBundle\Entity\ComentarioRepository")
  */
-class Comentario
-{
+class Comentario {
+
     /**
      * @var integer
      *
@@ -73,24 +73,21 @@ class Comentario
      * @ORM\Column(name="fecha", type="datetime")
      */
     private $fecha;
-    
-    
+
     /**
      * @var type 
      * @ORM\ManyToOne(targetEntity="Programacion", inversedBy="comentarios")
      * @ORM\JoinColumn(name="programacion_id", referencedColumnName="id" )
      * 
      */
-    private  $programacion;
-
+    private $programacion;
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -100,8 +97,7 @@ class Comentario
      * @param string $correo
      * @return Comentario
      */
-    public function setCorreo($correo)
-    {
+    public function setCorreo($correo) {
         $this->correo = $correo;
 
         return $this;
@@ -112,8 +108,7 @@ class Comentario
      *
      * @return string 
      */
-    public function getCorreo()
-    {
+    public function getCorreo() {
         return $this->correo;
     }
 
@@ -123,8 +118,7 @@ class Comentario
      * @param string $nombre
      * @return Comentario
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -135,8 +129,7 @@ class Comentario
      *
      * @return string 
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
@@ -146,8 +139,7 @@ class Comentario
      * @param string $comentario
      * @return Comentario
      */
-    public function setComentario($comentario)
-    {
+    public function setComentario($comentario) {
         $this->comentario = $comentario;
 
         return $this;
@@ -158,8 +150,7 @@ class Comentario
      *
      * @return string 
      */
-    public function getComentario()
-    {
+    public function getComentario() {
         return $this->comentario;
     }
 
@@ -169,8 +160,7 @@ class Comentario
      * @param integer $estado
      * @return Comentario
      */
-    public function setEstado($estado)
-    {
+    public function setEstado($estado) {
         $this->estado = $estado;
 
         return $this;
@@ -181,8 +171,7 @@ class Comentario
      *
      * @return integer 
      */
-    public function getEstado()
-    {
+    public function getEstado() {
         return $this->estado;
     }
 
@@ -192,8 +181,7 @@ class Comentario
      * @param \DateTime $fecha
      * @return Comentario
      */
-    public function setFecha($fecha)
-    {
+    public function setFecha($fecha) {
         $this->fecha = $fecha;
 
         return $this;
@@ -204,12 +192,11 @@ class Comentario
      *
      * @return \DateTime 
      */
-    public function getFecha()
-    {
+    public function getFecha() {
         return $this->fecha;
     }
-    
-     /**
+
+    /**
      * Set programacion
      *
      * @param string programacion
@@ -229,4 +216,5 @@ class Comentario
     public function getProgramacion() {
         return $this->programacion;
     }
+
 }

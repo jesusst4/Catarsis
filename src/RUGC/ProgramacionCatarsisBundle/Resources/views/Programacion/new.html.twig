@@ -2,7 +2,9 @@
 {% trans_default_domain "RUGCProgramacionCatarsisBundle" %}
 
 {% block body -%}
+
     <h1>{{ "form.Titulo.titulo_Crear_Programacion"|trans }} {{fecha}}</h1>
+
     <form action="{{ path('programacion_create')}}" method="POST" {{form_enctype(form)}}>
         <input   type="hidden" id="idioma" value="{{ app.request.locale }}" />
         <div class="validaciones">
@@ -20,14 +22,15 @@
                 <th>{{'form.Programacion.titulo'|trans}}</th>
                 <th>{{'form.Programacion.obra'|trans}}</th>
 
-
                 {% if  app.request.locale == 'es' %}            
-                    <th>{{'form.Programacion.descripciones'|trans}}</th>
-                    {% else %}
-                    <th>{{'form.Programacion.descripcionen'|trans}}</th>
-                    {% endif%}
-
-
+                    <th>
+                        {{'form.Programacion.descripciones'|trans}}
+                    </th>
+                {% else %}
+                    <th>
+                        {{'form.Programacion.descripcionen'|trans}}
+                    </th>
+                {% endif%}
                 <th>{{'form.tabla_accion'|trans}}</th>
             </tr>
         </thead>
@@ -56,4 +59,5 @@
             {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}
