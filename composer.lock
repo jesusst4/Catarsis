@@ -293,12 +293,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "fce77af2c3c6f8446b868c729cd15257c2c9bd81"
+                "reference": "14f730fb2e02df2c1daf8df09057b6771d5c226a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fce77af2c3c6f8446b868c729cd15257c2c9bd81",
-                "reference": "fce77af2c3c6f8446b868c729cd15257c2c9bd81",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/14f730fb2e02df2c1daf8df09057b6771d5c226a",
+                "reference": "14f730fb2e02df2c1daf8df09057b6771d5c226a",
                 "shasum": ""
             },
             "require": {
@@ -356,7 +356,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-08-21 17:53:42"
+            "time": "2014-08-22 07:42:27"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -654,12 +654,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "e47b31845c68d2fc466eae634fc60063c32cfb82"
+                "reference": "65f8357b46cf247405ca4bb5bf348e0ffc67854b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/e47b31845c68d2fc466eae634fc60063c32cfb82",
-                "reference": "e47b31845c68d2fc466eae634fc60063c32cfb82",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/65f8357b46cf247405ca4bb5bf348e0ffc67854b",
+                "reference": "65f8357b46cf247405ca4bb5bf348e0ffc67854b",
                 "shasum": ""
             },
             "require": {
@@ -720,7 +720,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-08-21 09:22:35"
+            "time": "2014-08-22 12:00:20"
         },
         {
             "name": "friendsofsymfony/user-bundle",

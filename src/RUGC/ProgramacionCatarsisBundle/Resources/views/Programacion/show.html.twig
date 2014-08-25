@@ -59,20 +59,32 @@
             </div>
         </div>
 
-        <h1>{{'form.Titulo.titulo_Comentarios' | trans}}</h1> 
-        {% for comentario in listaComentarios if comentario.estado == 1 %}
+        {% if listaComentarios %}
+            <h1>{{'form.Titulo.titulo_Comentarios' | trans}}</h1> 
+        {% endif %}
+        {% for comentario in listaComentarios %}
             <div class="divComentario">
-                <p><label>{{comentario.nombre}}</label> {{comentario.fecha|date('d-m-Y')}}</p>
-                {{comentario.comentario}}
-                <br>
+                {% if comentario.estado == 1 %}
+                    <p><label>{{comentario.nombre}}</label> {{comentario.fecha|date('d-m-Y')}}</p>
+                    {{comentario.comentario}}
+                    <br>
+                {% else %}
+                    <p><label>{{comentario.nombre}}</label> {{comentario.fecha|date('d-m-Y')}}</p>
+                    <div style="color: lightcoral;">
+                        {{comentario.comentario}}
+                        <br>
+                    </div>
+                {% endif %}
             </div>
         {% endfor %}
 
     </div>
     <div style="clear: both"></div>
 
-    <div class="paginacion">
-        {{ knp_pagination_render(listaComentarios) }}
-    </div>
+    {% if listaComentarios %}
+        <div class="paginacion">
+            {{ knp_pagination_render(listaComentarios) }}
+        </div>
+    {% endif %}
 
 {% endblock %}

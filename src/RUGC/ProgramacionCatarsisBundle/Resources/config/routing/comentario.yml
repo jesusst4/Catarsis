@@ -13,7 +13,7 @@ comentario_show:
 comentario_create:
     path:     /{_locale}/create
     defaults: { _controller: "RUGCProgramacionCatarsisBundle:Comentario:create" }
-    requirements: { _method: post , _locale: en|es }
+    requirements: { _method: post|get , _locale: en|es }
 
 comentario_update:
     path:     /{_locale}/{id}/update

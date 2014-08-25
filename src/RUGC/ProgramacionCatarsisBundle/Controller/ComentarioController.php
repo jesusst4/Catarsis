@@ -58,13 +58,14 @@ class ComentarioController extends Controller {
                             'entity' => $entity,
                             'emailError' => "Correo electrónico inválido",
                             'comentario' => $comentario,
-                            'form' => $form->createView()
+                            'form' => $form->createView(),
+                            'listaComentarios' => ""
                 ));
             }
 
             $em->persist($comentario);
             $em->flush();
-            $this->get('enviarNotificacionServices')->enviarEmail();
+            $this->get('enviarNotificacionServices')->notificarNuevoComentario();
 
             return $this->redirect($this->generateUrl('programacion'));
         }
@@ -73,7 +74,8 @@ class ComentarioController extends Controller {
                     'entity' => $entity,
                     'emailError' => "",
                     'comentario' => $comentario,
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'listaComentarios' => ""
         ));
     }
 
@@ -87,7 +89,7 @@ class ComentarioController extends Controller {
     private function createCreateComentarioForm(Comentario $entity) {
         $form = $this->createForm(new ComentarioType(), $entity);
 
-        $form->add('submit', 'submit',array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle','attr' => array('class' => 'btnDer')));
+        $form->add('submit', 'submit', array('label' => 'form.submit_crear', 'translation_domain' => 'RUGCProgramacionCatarsisBundle', 'attr' => array('class' => 'btnDer')));
 
         return $form;
     }
@@ -144,13 +146,26 @@ class ComentarioController extends Controller {
             throw $this->createNotFoundException('Unable to find Comentario entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+        if ($request->request->get("btnPublicar")) {
+            $editForm = $this->createEditForm($entity);
+            $editForm->handleRequest($request);
 
-        $entity->setEstado(1);
-        $em->flush();
+            $entity->setEstado(1);
+            $em->flush();
 
-        return $this->redirect($this->generateUrl('comentario'));
+            return $this->redirect($this->generateUrl('comentario'));
+        } elseif ($request->request->get("btnRechazar")) {
+
+            $editForm = $this->createEditForm($entity);
+            $editForm->handleRequest($request);
+
+            $entity->setEstado(2);
+            $entity->setComentario("Comentario eliminado debido a su contenido");
+            $em->flush();
+
+            $this->get('enviarNotificacionServices')->notificarComentarioEliminado($entity);
+            return $this->redirect($this->generateUrl('comentario'));
+        }
     }
 
     /**

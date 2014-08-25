@@ -153,7 +153,7 @@ class ProgramacionController extends Controller {
         $comentario = new Comentario();
         $comentario->setProgramacion($entity);
 
-        $listaComentarios = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findBy(array('estado' => '1', 'programacion' => $id), array('fecha' => 'DESC'));
+        $listaComentarios = $em->getRepository('RUGCProgramacionCatarsisBundle:Comentario')->findBy(array('estado' => array(1, 2), 'programacion' => $id), array('fecha' => 'DESC'));
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(

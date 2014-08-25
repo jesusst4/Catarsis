@@ -14,7 +14,7 @@ $(document).ready(function() {
                     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
                     'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                dateFormat: 'MM yy', };
+                dateFormat: 'MM yy' };
             $.datepicker.setDefaults($.datepicker.regional['es']);
         });
     }
@@ -31,7 +31,7 @@ $(document).ready(function() {
                     'July', 'August', 'September', 'October', 'November', 'December'],
                 monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                dateFormat: 'MM yy', };
+                dateFormat: 'MM yy' };
             $.datepicker.setDefaults($.datepicker.regional['en']);
         });
 
