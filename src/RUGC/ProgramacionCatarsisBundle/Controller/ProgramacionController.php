@@ -47,7 +47,7 @@ class ProgramacionController extends Controller {
      */
     public function createAction(Request $request) {
         $pFecha = $request->request->get("fecha");
-        $fecha = split(" ", $request->request->get("fecha"));
+        $fecha = preg_split("/ /", $request->request->get("fecha"));
 
         $objFecha = new FechasServices();
         $idioma = $this->get('session')->get('_locale');
@@ -317,7 +317,7 @@ class ProgramacionController extends Controller {
     }
 
     public function searchMonthAction(Request $request) {
-        $pFecha = split(" ", $request->request->get("fecha"));
+        $pFecha = preg_split("/ /", $request->request->get("fecha"));
 
         $objFecha = new FechasServices();
         $idioma = $this->get('session')->get('_locale');
@@ -423,7 +423,7 @@ class ProgramacionController extends Controller {
     public function programacionSecuencialAction(Request $request) {
         $objFecha = new FechasServices();
         $fechaPost = $request->request->get("fecha");
-        $fecha = split("-", $fechaPost);
+        $fecha = preg_split("/-/", $fechaPost);
         $idioma = $this->get('session')->get('_locale');
         $numFecha = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         $primerDia = null;
@@ -485,7 +485,7 @@ class ProgramacionController extends Controller {
 
         $objFecha = new FechasServices();
         $fechaPost = $request->request->get("fechaProgramacion");
-        $fecha = split("-", $fechaPost);
+        $fecha = preg_split("/-/", $fechaPost);
         $idioma = $this->get('session')->get('_locale');
         $fecha1 = $objFecha->obtenerFechaEnNumeros($fecha[0], $fecha[1], $idioma);
         echo 'fecha ' . $fecha1;

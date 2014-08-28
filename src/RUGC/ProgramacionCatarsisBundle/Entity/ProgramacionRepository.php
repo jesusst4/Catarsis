@@ -41,7 +41,7 @@ class ProgramacionRepository extends EntityRepository {
     }
 
     public function programacionMesSecuencial($fechaInicial) {
-        $arrayFecha = split("-", $fechaInicial);
+        $arrayFecha = preg_split("/-/", $fechaInicial);
         $mes = $arrayFecha[1];
         $anio = $arrayFecha[0];
         $ultimo_dia = cal_days_in_month(CAL_GREGORIAN, $mes, $anio);

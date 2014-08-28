@@ -41,7 +41,7 @@ class FechasServices {
     }
 
     public function obtenerNombreMesSeleccionado($fecha, $pIdioma) {
-        $fechaS = split("-", $fecha);
+        $fechaS = preg_split("/-/", $fecha);
         $pMes = $fechaS[1];
         $mesesEs = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
             'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
